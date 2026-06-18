@@ -137,5 +137,3 @@ private:
         }
     }
 };
-
-#endif // IMAGE_ACCELERATOR_H
