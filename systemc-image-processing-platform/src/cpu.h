@@ -117,4 +117,3 @@ SC_MODULE(cpu) {
     }
 };
 
-#endif // CPU_H

@@ -9,7 +9,7 @@ SC_MODULE(disk_storage) {
     std::ofstream output_file;
 
     // Note: this module expects binary raw pixel files. 
-    SC_CTOR(disk_storage) : target_socket("target_socket"), output_file("output.raw", std::ios::out | std::ios::binary) {
+    SC_CTOR(disk_storage) : target_socket("target_socket"), output_file("../output.raw", std::ios::out | std::ios::binary) {
         target_socket.register_b_transport(this, &disk_storage::b_transport);
     }
 
@@ -30,7 +30,7 @@ SC_MODULE(disk_storage) {
             output_file.flush();
         } else if (cmd == tlm::TLM_READ_COMMAND) {
             // Read from an input.raw file into the transaction data buffer
-            std::ifstream in("input.raw", std::ios::in | std::ios::binary);
+            std::ifstream in("../input.raw", std::ios::in | std::ios::binary);
             if (!in) {
                 trans.set_response_status(tlm::TLM_ADDRESS_ERROR_RESPONSE);
                 return;
