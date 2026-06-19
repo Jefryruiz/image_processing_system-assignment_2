@@ -106,6 +106,8 @@ It also provides memory-mapped control registers
 Persistent memory device. It loads the image from disk and save processed image.
 
 # Block Diagram
+<img width="581" height="581" alt="image_accel_diagram" src="https://github.com/user-attachments/assets/9846dbb4-56d7-4be3-a87f-297713e21829" />
+
 
 # Sequence Diagram
 
