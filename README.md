@@ -1,6 +1,6 @@
 # Image processing system using SystemC and TLM 2.0
 
-##Description
+## Description
 
 This project implements a Transaction-Level Model (TLM) of an image processing system in SystemC.
 
@@ -83,3 +83,6 @@ The system uses TLM-2.0 Generic Payloads transactions
 # Memory Map
 
 # Results
+
+<img width="1920" height="1080" alt="img_1080p" src="https://github.com/user-attachments/assets/0b561cc8-9a24-41d3-a285-f219f7b14e50" />
+
