@@ -14,7 +14,29 @@ The architecture is composed of:
 The accelerator receives an RGB image stored in memory and generates a grayscale version of the same image
 
 # Repository Organization
-
+```text
+.
+├── README.md
+├── img_1080p.png
+├── input.raw
+├── output.png
+├── output.raw
+├── systemc-image-processing-platform
+│   ├── Makefile
+│   ├── build
+│   │   └── main.o
+│   ├── image_processor
+│   └── src
+│       ├── cpu.h
+│       ├── defines.h
+│       ├── disk_storage.h
+│       ├── image_accelerator.h
+│       ├── main.cpp
+│       ├── ram_mem.h
+│       └── routing.h
+└── testbench
+    └── main.cpp
+```
 # Build requirements
 
 # Module Organization
