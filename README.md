@@ -64,9 +64,9 @@ The Makefile now supports:
 
 From $PROJ_HOME/systemc_tlm_image_processor/image_processing_system-assignment_2/systemc-image-processing-platform:
 
-make clean
-SYSTEMC_HOME=/usr/local/systemc make all
-make run
+- make clean
+- SYSTEMC_HOME=/usr/local/systemc make all
+- make run
 
 # Module Organization
 
