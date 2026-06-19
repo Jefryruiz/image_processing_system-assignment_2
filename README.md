@@ -104,6 +104,22 @@ The system uses TLM-2.0 Generic Payloads transactions
 
 # Memory Map
 
+| Address Range | Module      |
+| ------------- | ----------- |
+| 0x00000000    | RAM         |
+| 0x10000000    | Storage     |
+| 0x20000000    | Accelerator |
+
+## Accelerator Registers
+
+| Address    | Register    |
+| ---------- | ----------- |
+| 0x20000000 | START       |
+| 0x20000004 | STATUS      |
+| 0x20000008 | INPUT_ADDR  |
+| 0x2000000C | OUTPUT_ADDR |
+
+
 # Results
 
 ## Input
