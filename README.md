@@ -19,7 +19,7 @@ The accelerator receives an RGB image stored in memory and generates a grayscale
 
 # Module Organization
 
-##Procesor 
+## Procesor 
 
 The processor cordinates the execution flow
 
@@ -31,7 +31,7 @@ It is charged of:
 - Start processing
 - Store final image
 
-##RAM
+## RAM
 
 Stores:
 
@@ -40,7 +40,7 @@ Stores:
 
 Provides TLM target interface
 
-##Accelerator
+## Accelerator
 
 Responsible for RGB to grayscale conversion
 
@@ -50,7 +50,7 @@ Gray = 0.299*R + 0.587*G + 0.114*B
 
 It also provides memory-mapped control registers
 
-##Storage
+## Storage
 
 Persistent memory device. It loads the image from disk and save processed image.
 
@@ -59,6 +59,26 @@ Persistent memory device. It loads the image from disk and save processed image.
 # Sequence Diagram
 
 # Transaction Format
+The system uses TLM-2.0 Generic Payloads transactions
+
+## Write Transaction
+
+| Field    | Description       |
+| -------- | ----------------- |
+| Command  | TLM_WRITE_COMMAND |
+| Address  | Target address    |
+| Data Ptr | Source buffer     |
+| Length   | Number of bytes   |
+
+## Read Transaction
+
+| Field    | Description        |
+| -------- | ------------------ |
+| Command  | TLM_READ_COMMAND   |
+| Address  | Target address     |
+| Data Ptr | Destination buffer |
+| Length   | Number of bytes    |
+
 
 # Memory Map
 
