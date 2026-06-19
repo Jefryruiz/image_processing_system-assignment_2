@@ -15,8 +15,6 @@ The accelerator receives an RGB image stored in memory and generates a grayscale
 
 # Repository Organization
 
-image_processing_system-assignment_2 │ ├── README.md ├── img_1080p.png ├── input.raw ├── output.raw ├── output.png │ ├── systemc-image-processing-platform │ ├── Makefile │ ├── build/ │ ├── image_processor │ └── src/ │ ├── main.cpp │ ├── cpu.h │ ├── ram_mem.h │ ├── disk_storage.h │ ├── image_accelerator.h │ ├── routing.h │ └── defines.h │ └── testbench └── main.cpp
-
 # Build requirements
 
 # Module Organization
