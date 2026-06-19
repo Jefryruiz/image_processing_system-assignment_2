@@ -1,4 +1,4 @@
-# image processing system using SystemC and TLM 2.0
+# Image processing system using SystemC and TLM 2.0
 
 ##Description
 
@@ -14,6 +14,29 @@ The architecture is composed of:
 The accelerator receives an RGB image stored in memory and generates a grayscale version of the same image
 
 # Repository Organization
+.
+└── image_processing_system-assignment_2
+    ├── README.md
+    ├── img_1080p.png
+    ├── input.raw
+    ├── output.png
+    ├── output.raw
+    ├── systemc-image-processing-platform
+    │   ├── Makefile
+    │   ├── build
+    │   │   └── main.o
+    │   ├── image_processor
+    │   └── src
+    │       ├── cpu.h
+    │       ├── defines.h
+    │       ├── disk_storage.h
+    │       ├── image_accelerator.h
+    │       ├── main.cpp
+    │       ├── ram_mem.h
+    │       └── routing.h
+    └── testbench
+        └── main.cpp
+
 
 # Build requirements
 
@@ -56,7 +79,7 @@ Persistent memory device. It loads the image from disk and save processed image.
 
 # Block Diagram
 
-# Sequence diagram
+# Sequence Diagram
 
 # Transaction Format
 
