@@ -82,16 +82,6 @@ g++ -std=c++17 -Wall -O2 -I. -I/usr/include \
 
 ### Run
 
-```bash
-g++ -std=c++17 -Wall -O2 -I. -I/usr/include \
-    main.cpp \
-    -o simulacion \
-    -L/usr/lib/x86_64-linux-gnu -lsystemc \
-    -Wl,-rpath=/usr/lib/x86_64-linux-gnu
-```
-
-### Run
-
 ./simulacion
 
 
