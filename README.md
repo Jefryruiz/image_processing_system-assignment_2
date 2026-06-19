@@ -16,3 +16,50 @@ The accelerator receives an RGB image stored in memory and generates a grayscale
 # Repository Organization
 
 # Build requirements
+
+# Module Organization
+
+##Procesor 
+
+The processor cordinates the execution flow
+
+It is charged of:
+
+- Read image from storage
+- Transfer image to RAM
+- Configure the accelerator
+- Start processing
+- Store final image
+
+##RAM
+
+Stores:
+
+- Input RGB image
+- Output grayscale image
+
+Provides TLM target interface
+
+##Accelerator
+
+Responsible for RGB to grayscale conversion
+
+The conversion is:
+
+Gray = 0.299*R + 0.587*G + 0.114*B
+
+It also provides memory-mapped control registers
+
+##Storage
+
+Persistent memory device. It loads the image from disk and save processed image.
+
+# Block Diagram
+
+# Sequence diagram
+
+# Transaction Format
+
+# Memory Map
+
+# Results
