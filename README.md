@@ -109,6 +109,8 @@ Persistent memory device. It loads the image from disk and save processed image.
 
 # Sequence Diagram
 
+![Sequence Diagram](Diagrama_de_secuencias.png)
+
 # Transaction Format
 The system uses TLM-2.0 Generic Payloads transactions
 
