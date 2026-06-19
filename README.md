@@ -39,6 +39,35 @@ The accelerator receives an RGB image stored in memory and generates a grayscale
 ```
 # Build requirements
 
+## Dependencies and required software
+- Ubuntu
+- g++ with C++17 support
+- make
+- pkg-config is no longer required after the Makefile update, but can still be useful
+- A SystemC Instalation
+
+## Expected SystemC layout
+
+The Makefile now supports:
+
+- a source-tree install:
+    - headers in $(SYSTEMC_HOME)/src
+    - libraries in $(SYSTEMC_HOME)/build/src/.libs
+- a packaged install:
+    - headers in $(SYSTEMC_HOME)/include
+    - libraries in $(SYSTEMC_HOME)/lib-linux64
+## Environment
+
+- SYSTEMC_HOME should point to your SystemC root directory like: SYSTEMC_HOME=/usr/local/systemc make all
+
+## Build Commands
+
+From $PROJ_HOME/systemc_tlm_image_processor/image_processing_system-assignment_2/systemc-image-processing-platform:
+
+make clean
+SYSTEMC_HOME=/usr/local/systemc make all
+make run
+
 # Module Organization
 
 ## Procesor 
