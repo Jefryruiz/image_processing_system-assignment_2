@@ -1,3 +1,6 @@
+#ifndef IMAGE_ACCELERATOR_H
+#define IMAGE_ACCELERATOR_H
+
 #include <systemc.h>
 #include <tlm.h>
 #include <tlm_utils/simple_target_socket.h>
@@ -8,12 +11,45 @@
 #include <iostream>
 #include "defines.h"
 
+/* GEM5 adaptation includes */
+#ifndef WITHOUT_GEM5 /*Funciona para compilar de las dos maneras con o sin GEM5*/
+#include "mem/port.hh"
+#include "params/ImageAccelerator.hh"
+#include "sim/sim_object.hh"
+#endif
+
+/* Módulo original de la Evaluación 1, con adaptaciones para GEM5:
+
+ ADAPTACIÓN 1: Hereda opcionalmente de gem5::SimObject para que GEM5 pueda
+ registrar este módulo como un dispositivo del sistema.
+
+ ADAPTACIÓN 2: Se agregó getAddrRanges(), GEM5 llama a esto para saber qué
+ direcciones físicas pertenecen a este periférico.
+
+ ADAPTACIÓN 3: Clase interna AccelPort, convierte el formato Packet de GEM5 a tlm_generic_payload de TLM-2.0 
+ antes de llamar a b_transport.
+
+ SIN CAMBIOS: b_transport(), mem_access(), process_image(), sockets, mapa de registros, conversión BT.601, SC_THREAD.
+*/ 
+
+#ifndef WITHOUT_GEM5
+struct image_accelerator
+    : public sc_core::sc_module
+    , public gem5::SimObject
+{
+    typedef gem5::ImageAcceleratorParams Params;
+#else
 SC_MODULE(image_accelerator) {
-    // Recibe configuracion y control del CPU (via bus)
+#endif
+
+// Recibe configuracion y control del CPU (via bus)
     tlm_utils::simple_target_socket<image_accelerator>    target_socket;
     // Accede a RAM para leer RGB y escribir Gray (via bus)
     tlm_utils::simple_initiator_socket<image_accelerator> init_socket;
-
+ 
+    // ---------------------------------------------------------------
+    // Constructor original — standalone SystemC (UNCHANGED)
+    // ---------------------------------------------------------------
     SC_CTOR(image_accelerator)
         : target_socket("target_socket"), init_socket("initiator_socket"),
           reg_base_in(0), reg_base_out(0), reg_num_pixels(0), reg_status(0)
@@ -21,6 +57,79 @@ SC_MODULE(image_accelerator) {
         target_socket.register_b_transport(this, &image_accelerator::b_transport);
         SC_THREAD(process_image);
     }
+ 
+#ifndef WITHOUT_GEM5
+    
+// ADAPTACIÓN 1: Hereda de gem5::SimObject, se agrega constructor con parámetros de GEM5
+
+     image_accelerator(const Params &p)
+        : sc_core::sc_module(sc_core::sc_module_name(p.name.c_str())),
+          gem5::SimObject(p),
+          target_socket("target_socket"),
+          init_socket("initiator_socket"),
+          reg_base_in(0), reg_base_out(0),
+          reg_num_pixels(0), reg_status(0)
+    {
+        target_socket.register_b_transport(
+            this, &image_accelerator::b_transport);
+        SC_THREAD(process_image);
+    }
+
+    // ADAPTACIÓN 2: getAddrRanges()
+    gem5::AddrRangeList getAddrRanges() const {
+        gem5::AddrRangeList ranges;
+        ranges.push_back(gem5::AddrRange(
+            sys_cfg::ACCEL_BASE_ADDR,
+            sys_cfg::ACCEL_BASE_ADDR + sys_cfg::ACCEL_REG_SIZE - 1
+        ));
+        return ranges;
+    }
+
+    // ADAPTACIÓN 3: Clase interna AccelPort, convierte el formato Packet de GEM5 a tlm_generic_payload de TLM-2.0 
+    class AccelPort : public gem5::SimpleTimingPort {
+      public:
+        AccelPort(const std::string &name, image_accelerator *owner)
+            : gem5::SimpleTimingPort(name, owner), accel(owner) {}
+ 
+        gem5::AddrRangeList getAddrRanges() const override {
+            return accel->getAddrRanges();
+        }
+ 
+      protected:
+        gem5::Tick recvAtomic(gem5::PacketPtr pkt) override {
+            tlm::tlm_generic_payload trans;
+            sc_core::sc_time delay = sc_core::SC_ZERO_TIME;
+ 
+            // Ajustar direccion al offset desde ACCEL_BASE (igual que routing.h)
+            trans.set_address(pkt->getAddr() - sys_cfg::ACCEL_BASE_ADDR);
+            trans.set_data_ptr(pkt->getPtr<unsigned char>());
+            trans.set_data_length(pkt->getSize());
+            trans.set_streaming_width(pkt->getSize());
+            trans.set_byte_enable_ptr(nullptr);
+            trans.set_dmi_allowed(false);
+            trans.set_command(pkt->isWrite()
+                ? tlm::TLM_WRITE_COMMAND
+                : tlm::TLM_READ_COMMAND);
+            trans.set_response_status(tlm::TLM_INCOMPLETE_RESPONSE);
+ 
+            accel->b_transport(trans, delay);
+            pkt->makeAtomicResponse();
+            return 1;
+        }
+ 
+      private:
+        image_accelerator *accel;
+    };
+ 
+    AccelPort cpu_side_port{"cpu_side", this};
+ 
+    gem5::Port &getPort(const std::string &if_name,
+                        gem5::PortID idx = gem5::InvalidPortID) override {
+        if (if_name == "cpu_side")
+            return cpu_side_port;
+        return gem5::SimObject::getPort(if_name, idx);
+    }
+#endif // WITHOUT_GEM5
 
 private:
     // Registros internos de control y estado
