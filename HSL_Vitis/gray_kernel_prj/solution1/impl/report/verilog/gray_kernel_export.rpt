@@ -1,0 +1,23 @@
+
+
+Implementation tool: Xilinx Vivado v.2024.1
+Project:             gray_kernel_prj
+Solution:            solution1
+Device target:       xck26-sfvc784-2LV-c
+Report date:         Sun Jul 19 18:31:09 CST 2026
+
+#=== Post-Synthesis Resource usage ===
+SLICE:            0
+LUT:           2551
+FF:            3092
+DSP:              3
+BRAM:             3
+URAM:             0
+LATCH:            0
+SRL:            404
+CLB:              0
+
+#=== Final timing ===
+CP required:                     4.000
+CP achieved post-synthesis:      2.182
+Timing met

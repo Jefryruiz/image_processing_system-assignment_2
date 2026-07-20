@@ -1,0 +1,8 @@
+,entry_proc_U0,,status1.csv
+,read_stage_U0,,status2.csv
+,proc_stage_U0,,status3.csv
+,write_stage_U0,,status4.csv
+,AESL_inst_gray_kernel,,module_status1.csv
+read_stage_U0,grp_read_stage_Pipeline_VITIS_LOOP_15_1_fu_82,,module_status2.csv
+proc_stage_U0,grp_proc_stage_Pipeline_VITIS_LOOP_24_1_fu_50,,module_status3.csv
+write_stage_U0,grp_write_stage_Pipeline_VITIS_LOOP_38_1_fu_69,,module_status4.csv

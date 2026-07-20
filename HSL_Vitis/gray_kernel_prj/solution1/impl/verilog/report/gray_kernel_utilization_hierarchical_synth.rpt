@@ -1,0 +1,125 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2024.1 (lin64) Build 5076996 Wed May 22 18:36:09 MDT 2024
+| Date         : Sun Jul 19 18:30:57 2026
+| Host         : ezr45 running 64-bit Ubuntu 26.04 LTS
+| Command      : report_utilization -hierarchical -hierarchical_depth 7 -file ./report/gray_kernel_utilization_hierarchical_synth.rpt
+| Design       : bd_0_wrapper
+| Device       : xck26-sfvc784-2LV-c
+| Speed File   : -2LV
+| Design State : Synthesized
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Utilization Design Information
+
+Table of Contents
+-----------------
+1. Utilization by Hierarchy
+
+1. Utilization by Hierarchy
+---------------------------
+
++---------------------------------------------------------------------+----------------------------------------------------------------------+------------+------------+---------+------+------+--------+--------+------+------------+
+|                               Instance                              |                                Module                                | Total LUTs | Logic LUTs | LUTRAMs | SRLs |  FFs | RAMB36 | RAMB18 | URAM | DSP Blocks |
++---------------------------------------------------------------------+----------------------------------------------------------------------+------------+------------+---------+------+------+--------+--------+------+------------+
+| bd_0_wrapper                                                        |                                                                (top) |       2551 |       2107 |      40 |  404 | 3092 |      0 |      3 |    0 |          3 |
+|   bd_0_i                                                            |                                                                 bd_0 |       2551 |       2107 |      40 |  404 | 3092 |      0 |      3 |    0 |          3 |
+|     hls_inst                                                        |                                                      bd_0_hls_inst_0 |       2551 |       2107 |      40 |  404 | 3092 |      0 |      3 |    0 |          3 |
+|       (hls_inst)                                                    |                                                      bd_0_hls_inst_0 |          0 |          0 |       0 |    0 |    0 |      0 |      0 |    0 |          0 |
+|       inst                                                          |                                          bd_0_hls_inst_0_gray_kernel |       2551 |       2107 |      40 |  404 | 3092 |      0 |      3 |    0 |          3 |
+|         (inst)                                                      |                                          bd_0_hls_inst_0_gray_kernel |          0 |          0 |       0 |    0 |    2 |      0 |      0 |    0 |          0 |
+|         control_s_axi_U                                             |                            bd_0_hls_inst_0_gray_kernel_control_s_axi |        263 |        263 |       0 |    0 |  213 |      0 |      0 |    0 |          0 |
+|         entry_proc_U0                                               |                               bd_0_hls_inst_0_gray_kernel_entry_proc |          0 |          0 |       0 |    0 |    1 |      0 |      0 |    0 |          0 |
+|         gmem_m_axi_U                                                |                               bd_0_hls_inst_0_gray_kernel_gmem_m_axi |       1668 |       1329 |       0 |  339 | 2274 |      0 |      2 |    0 |          0 |
+|           bus_read                                                  |                          bd_0_hls_inst_0_gray_kernel_gmem_m_axi_read |        405 |        404 |       0 |    1 |  624 |      0 |      0 |    0 |          0 |
+|             fifo_burst                                              |        bd_0_hls_inst_0_gray_kernel_gmem_m_axi_fifo__parameterized2_8 |         17 |         16 |       0 |    1 |   13 |      0 |      0 |    0 |          0 |
+|               (fifo_burst)                                          |        bd_0_hls_inst_0_gray_kernel_gmem_m_axi_fifo__parameterized2_8 |         15 |         15 |       0 |    0 |   12 |      0 |      0 |    0 |          0 |
+|               U_fifo_srl                                            |        bd_0_hls_inst_0_gray_kernel_gmem_m_axi_srl__parameterized1_13 |          2 |          1 |       0 |    1 |    1 |      0 |      0 |    0 |          0 |
+|             fifo_rctl                                               |        bd_0_hls_inst_0_gray_kernel_gmem_m_axi_fifo__parameterized2_9 |          9 |          9 |       0 |    0 |    8 |      0 |      0 |    0 |          0 |
+|             rreq_burst_conv                                         |            bd_0_hls_inst_0_gray_kernel_gmem_m_axi_burst_converter_10 |        339 |        339 |       0 |    0 |  532 |      0 |      0 |    0 |          0 |
+|               (rreq_burst_conv)                                     |            bd_0_hls_inst_0_gray_kernel_gmem_m_axi_burst_converter_10 |        166 |        166 |       0 |    0 |  335 |      0 |      0 |    0 |          0 |
+|               rs_req                                                |  bd_0_hls_inst_0_gray_kernel_gmem_m_axi_reg_slice__parameterized0_12 |        173 |        173 |       0 |    0 |  197 |      0 |      0 |    0 |          0 |
+|             rs_rdata                                                |                  bd_0_hls_inst_0_gray_kernel_gmem_m_axi_reg_slice_11 |         40 |         40 |       0 |    0 |   71 |      0 |      0 |    0 |          0 |
+|           bus_write                                                 |                         bd_0_hls_inst_0_gray_kernel_gmem_m_axi_write |        613 |        505 |       0 |  108 |  882 |      0 |      0 |    0 |          0 |
+|             (bus_write)                                             |                         bd_0_hls_inst_0_gray_kernel_gmem_m_axi_write |          6 |          6 |       0 |    0 |   46 |      0 |      0 |    0 |          0 |
+|             fifo_burst                                              |          bd_0_hls_inst_0_gray_kernel_gmem_m_axi_fifo__parameterized6 |         24 |         20 |       0 |    4 |   16 |      0 |      0 |    0 |          0 |
+|               (fifo_burst)                                          |          bd_0_hls_inst_0_gray_kernel_gmem_m_axi_fifo__parameterized6 |         10 |         10 |       0 |    0 |   12 |      0 |      0 |    0 |          0 |
+|               U_fifo_srl                                            |           bd_0_hls_inst_0_gray_kernel_gmem_m_axi_srl__parameterized4 |         14 |         10 |       0 |    4 |    4 |      0 |      0 |    0 |          0 |
+|             fifo_resp                                               |        bd_0_hls_inst_0_gray_kernel_gmem_m_axi_fifo__parameterized2_6 |         17 |         16 |       0 |    1 |   13 |      0 |      0 |    0 |          0 |
+|               (fifo_resp)                                           |        bd_0_hls_inst_0_gray_kernel_gmem_m_axi_fifo__parameterized2_6 |         14 |         14 |       0 |    0 |   12 |      0 |      0 |    0 |          0 |
+|               U_fifo_srl                                            |         bd_0_hls_inst_0_gray_kernel_gmem_m_axi_srl__parameterized1_7 |          3 |          2 |       0 |    1 |    1 |      0 |      0 |    0 |          0 |
+|             rs_resp                                                 |     bd_0_hls_inst_0_gray_kernel_gmem_m_axi_reg_slice__parameterized2 |          4 |          4 |       0 |    0 |    5 |      0 |      0 |    0 |          0 |
+|             wreq_burst_conv                                         |               bd_0_hls_inst_0_gray_kernel_gmem_m_axi_burst_converter |        341 |        341 |       0 |    0 |  532 |      0 |      0 |    0 |          0 |
+|               (wreq_burst_conv)                                     |               bd_0_hls_inst_0_gray_kernel_gmem_m_axi_burst_converter |        167 |        167 |       0 |    0 |  335 |      0 |      0 |    0 |          0 |
+|               rs_req                                                |     bd_0_hls_inst_0_gray_kernel_gmem_m_axi_reg_slice__parameterized0 |        174 |        174 |       0 |    0 |  197 |      0 |      0 |    0 |          0 |
+|             wreq_throttle                                           |                      bd_0_hls_inst_0_gray_kernel_gmem_m_axi_throttle |        221 |        118 |       0 |  103 |  270 |      0 |      0 |    0 |          0 |
+|               (wreq_throttle)                                       |                      bd_0_hls_inst_0_gray_kernel_gmem_m_axi_throttle |          1 |          1 |       0 |    0 |    6 |      0 |      0 |    0 |          0 |
+|               data_fifo                                             |          bd_0_hls_inst_0_gray_kernel_gmem_m_axi_fifo__parameterized8 |         64 |         27 |       0 |   37 |   49 |      0 |      0 |    0 |          0 |
+|               req_fifo                                              |          bd_0_hls_inst_0_gray_kernel_gmem_m_axi_fifo__parameterized7 |         83 |         17 |       0 |   66 |   78 |      0 |      0 |    0 |          0 |
+|               rs_req                                                |     bd_0_hls_inst_0_gray_kernel_gmem_m_axi_reg_slice__parameterized1 |         73 |         73 |       0 |    0 |  137 |      0 |      0 |    0 |          0 |
+|           load_unit_0                                               |                          bd_0_hls_inst_0_gray_kernel_gmem_m_axi_load |        312 |        212 |       0 |  100 |  363 |      0 |      1 |    0 |          0 |
+|             (load_unit_0)                                           |                          bd_0_hls_inst_0_gray_kernel_gmem_m_axi_load |          1 |          1 |       0 |    0 |  134 |      0 |      0 |    0 |          0 |
+|             buff_rdata                                              |          bd_0_hls_inst_0_gray_kernel_gmem_m_axi_fifo__parameterized5 |         40 |         40 |       0 |    0 |   36 |      0 |      1 |    0 |          0 |
+|               (buff_rdata)                                          |          bd_0_hls_inst_0_gray_kernel_gmem_m_axi_fifo__parameterized5 |         27 |         27 |       0 |    0 |   28 |      0 |      0 |    0 |          0 |
+|               U_fifo_mem                                            |           bd_0_hls_inst_0_gray_kernel_gmem_m_axi_mem__parameterized0 |         13 |         13 |       0 |    0 |    8 |      0 |      1 |    0 |          0 |
+|             bus_wide_gen.rreq_offset                                |          bd_0_hls_inst_0_gray_kernel_gmem_m_axi_fifo__parameterized4 |         32 |         28 |       0 |    4 |   16 |      0 |      0 |    0 |          0 |
+|               (bus_wide_gen.rreq_offset)                            |          bd_0_hls_inst_0_gray_kernel_gmem_m_axi_fifo__parameterized4 |          9 |          9 |       0 |    0 |   12 |      0 |      0 |    0 |          0 |
+|               U_fifo_srl                                            |           bd_0_hls_inst_0_gray_kernel_gmem_m_axi_srl__parameterized3 |         23 |         19 |       0 |    4 |    4 |      0 |      0 |    0 |          0 |
+|             bus_wide_gen.rs_tmp_rdata                               |                     bd_0_hls_inst_0_gray_kernel_gmem_m_axi_reg_slice |         91 |         91 |       0 |    0 |   71 |      0 |      0 |    0 |          0 |
+|             fifo_rreq                                               |        bd_0_hls_inst_0_gray_kernel_gmem_m_axi_fifo__parameterized0_4 |        148 |         52 |       0 |   96 |  106 |      0 |      0 |    0 |          0 |
+|               (fifo_rreq)                                           |        bd_0_hls_inst_0_gray_kernel_gmem_m_axi_fifo__parameterized0_4 |         11 |         11 |       0 |    0 |   10 |      0 |      0 |    0 |          0 |
+|               U_fifo_srl                                            |         bd_0_hls_inst_0_gray_kernel_gmem_m_axi_srl__parameterized0_5 |        137 |         41 |       0 |   96 |   96 |      0 |      0 |    0 |          0 |
+|           store_unit                                                |                         bd_0_hls_inst_0_gray_kernel_gmem_m_axi_store |        338 |        208 |       0 |  130 |  405 |      0 |      1 |    0 |          0 |
+|             (store_unit)                                            |                         bd_0_hls_inst_0_gray_kernel_gmem_m_axi_store |         67 |         67 |       0 |    0 |  206 |      0 |      0 |    0 |          0 |
+|             buff_wdata                                              |          bd_0_hls_inst_0_gray_kernel_gmem_m_axi_fifo__parameterized1 |         35 |         35 |       0 |    0 |   28 |      0 |      1 |    0 |          0 |
+|               (buff_wdata)                                          |          bd_0_hls_inst_0_gray_kernel_gmem_m_axi_fifo__parameterized1 |         28 |         28 |       0 |    0 |   22 |      0 |      0 |    0 |          0 |
+|               U_fifo_mem                                            |                           bd_0_hls_inst_0_gray_kernel_gmem_m_axi_mem |          7 |          7 |       0 |    0 |    6 |      0 |      1 |    0 |          0 |
+|             bus_wide_gen.wreq_offset                                |                          bd_0_hls_inst_0_gray_kernel_gmem_m_axi_fifo |         61 |         27 |       0 |   34 |   46 |      0 |      0 |    0 |          0 |
+|               (bus_wide_gen.wreq_offset)                            |                          bd_0_hls_inst_0_gray_kernel_gmem_m_axi_fifo |         16 |         16 |       0 |    0 |   12 |      0 |      0 |    0 |          0 |
+|               U_fifo_srl                                            |                           bd_0_hls_inst_0_gray_kernel_gmem_m_axi_srl |         45 |         11 |       0 |   34 |   34 |      0 |      0 |    0 |          0 |
+|             fifo_wreq                                               |          bd_0_hls_inst_0_gray_kernel_gmem_m_axi_fifo__parameterized0 |        147 |         52 |       0 |   95 |  105 |      0 |      0 |    0 |          0 |
+|               (fifo_wreq)                                           |          bd_0_hls_inst_0_gray_kernel_gmem_m_axi_fifo__parameterized0 |         12 |         12 |       0 |    0 |   10 |      0 |      0 |    0 |          0 |
+|               U_fifo_srl                                            |           bd_0_hls_inst_0_gray_kernel_gmem_m_axi_srl__parameterized0 |        135 |         40 |       0 |   95 |   95 |      0 |      0 |    0 |          0 |
+|             fifo_wrsp                                               |          bd_0_hls_inst_0_gray_kernel_gmem_m_axi_fifo__parameterized2 |         18 |         17 |       0 |    1 |   13 |      0 |      0 |    0 |          0 |
+|               (fifo_wrsp)                                           |          bd_0_hls_inst_0_gray_kernel_gmem_m_axi_fifo__parameterized2 |          4 |          4 |       0 |    0 |   12 |      0 |      0 |    0 |          0 |
+|               U_fifo_srl                                            |           bd_0_hls_inst_0_gray_kernel_gmem_m_axi_srl__parameterized1 |         14 |         13 |       0 |    1 |    1 |      0 |      0 |    0 |          0 |
+|             user_resp                                               |          bd_0_hls_inst_0_gray_kernel_gmem_m_axi_fifo__parameterized3 |         10 |         10 |       0 |    0 |    7 |      0 |      0 |    0 |          0 |
+|         num_pixels_c1_U                                             |                            bd_0_hls_inst_0_gray_kernel_fifo_w32_d2_S |         23 |         23 |       0 |    0 |   70 |      0 |      0 |    0 |          0 |
+|           (num_pixels_c1_U)                                         |                            bd_0_hls_inst_0_gray_kernel_fifo_w32_d2_S |          7 |          7 |       0 |    0 |    6 |      0 |      0 |    0 |          0 |
+|           U_gray_kernel_fifo_w32_d2_S_ShiftReg                      |                 bd_0_hls_inst_0_gray_kernel_fifo_w32_d2_S_ShiftReg_3 |         16 |         16 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|         num_pixels_c_U                                              |                          bd_0_hls_inst_0_gray_kernel_fifo_w32_d2_S_0 |         41 |         41 |       0 |    0 |   70 |      0 |      0 |    0 |          0 |
+|           (num_pixels_c_U)                                          |                          bd_0_hls_inst_0_gray_kernel_fifo_w32_d2_S_0 |          9 |          9 |       0 |    0 |    6 |      0 |      0 |    0 |          0 |
+|           U_gray_kernel_fifo_w32_d2_S_ShiftReg                      |                   bd_0_hls_inst_0_gray_kernel_fifo_w32_d2_S_ShiftReg |         32 |         32 |       0 |    0 |   64 |      0 |      0 |    0 |          0 |
+|         out_r_c_U                                                   |                            bd_0_hls_inst_0_gray_kernel_fifo_w64_d4_S |         74 |         10 |       0 |   64 |    7 |      0 |      0 |    0 |          0 |
+|           (out_r_c_U)                                               |                            bd_0_hls_inst_0_gray_kernel_fifo_w64_d4_S |         10 |         10 |       0 |    0 |    7 |      0 |      0 |    0 |          0 |
+|           U_gray_kernel_fifo_w64_d4_S_ShiftReg                      |                   bd_0_hls_inst_0_gray_kernel_fifo_w64_d4_S_ShiftReg |         64 |          0 |       0 |   64 |    0 |      0 |      0 |    0 |          0 |
+|         proc_stage_U0                                               |                               bd_0_hls_inst_0_gray_kernel_proc_stage |         88 |         87 |       0 |    1 |   75 |      0 |      0 |    0 |          3 |
+|           (proc_stage_U0)                                           |                               bd_0_hls_inst_0_gray_kernel_proc_stage |          1 |          1 |       0 |    0 |   36 |      0 |      0 |    0 |          0 |
+|           grp_proc_stage_Pipeline_VITIS_LOOP_24_1_fu_50             |      bd_0_hls_inst_0_gray_kernel_proc_stage_Pipeline_VITIS_LOOP_24_1 |         87 |         86 |       0 |    1 |   39 |      0 |      0 |    0 |          3 |
+|             (grp_proc_stage_Pipeline_VITIS_LOOP_24_1_fu_50)         |      bd_0_hls_inst_0_gray_kernel_proc_stage_Pipeline_VITIS_LOOP_24_1 |         11 |         10 |       0 |    1 |   37 |      0 |      0 |    0 |          0 |
+|             flow_control_loop_pipe_sequential_init_U                | bd_0_hls_inst_0_gray_kernel_flow_control_loop_pipe_sequential_init_2 |         75 |         75 |       0 |    0 |    2 |      0 |      0 |    0 |          0 |
+|             mac_muladd_10ns_8ns_17ns_18_4_1_U14                     |          bd_0_hls_inst_0_gray_kernel_mac_muladd_10ns_8ns_17ns_18_4_1 |          0 |          0 |       0 |    0 |    0 |      0 |      0 |    0 |          1 |
+|               gray_kernel_mac_muladd_10ns_8ns_17ns_18_4_1_DSP48_0_U |  bd_0_hls_inst_0_gray_kernel_mac_muladd_10ns_8ns_17ns_18_4_1_DSP48_0 |          0 |          0 |       0 |    0 |    0 |      0 |      0 |    0 |          1 |
+|             mac_muladd_8ns_7ns_17ns_17_4_1_U13                      |           bd_0_hls_inst_0_gray_kernel_mac_muladd_8ns_7ns_17ns_17_4_1 |          1 |          1 |       0 |    0 |    0 |      0 |      0 |    0 |          2 |
+|               gray_kernel_mac_muladd_8ns_7ns_17ns_17_4_1_DSP48_0_U  |   bd_0_hls_inst_0_gray_kernel_mac_muladd_8ns_7ns_17ns_17_4_1_DSP48_0 |          1 |          1 |       0 |    0 |    0 |      0 |      0 |    0 |          2 |
+|         read_stage_U0                                               |                               bd_0_hls_inst_0_gray_kernel_read_stage |        111 |        111 |       0 |    0 |  108 |      0 |      0 |    0 |          0 |
+|           (read_stage_U0)                                           |                               bd_0_hls_inst_0_gray_kernel_read_stage |         26 |         26 |       0 |    0 |   45 |      0 |      0 |    0 |          0 |
+|           grp_read_stage_Pipeline_VITIS_LOOP_15_1_fu_82             |      bd_0_hls_inst_0_gray_kernel_read_stage_Pipeline_VITIS_LOOP_15_1 |         85 |         85 |       0 |    0 |   63 |      0 |      0 |    0 |          0 |
+|             (grp_read_stage_Pipeline_VITIS_LOOP_15_1_fu_82)         |      bd_0_hls_inst_0_gray_kernel_read_stage_Pipeline_VITIS_LOOP_15_1 |         24 |         24 |       0 |    0 |   61 |      0 |      0 |    0 |          0 |
+|             flow_control_loop_pipe_sequential_init_U                | bd_0_hls_inst_0_gray_kernel_flow_control_loop_pipe_sequential_init_1 |         61 |         61 |       0 |    0 |    2 |      0 |      0 |    0 |          0 |
+|         start_for_proc_stage_U0_U                                   |                  bd_0_hls_inst_0_gray_kernel_start_for_proc_stage_U0 |          5 |          5 |       0 |    0 |    4 |      0 |      0 |    0 |          0 |
+|         start_for_write_stage_U0_U                                  |                 bd_0_hls_inst_0_gray_kernel_start_for_write_stage_U0 |          7 |          7 |       0 |    0 |    5 |      0 |      0 |    0 |          0 |
+|         stream_in_U                                                 |                          bd_0_hls_inst_0_gray_kernel_fifo_w24_d256_A |         40 |         40 |       0 |    0 |   37 |      0 |      1 |    0 |          0 |
+|           (stream_in_U)                                             |                          bd_0_hls_inst_0_gray_kernel_fifo_w24_d256_A |         40 |         40 |       0 |    0 |   37 |      0 |      0 |    0 |          0 |
+|           U_gray_kernel_fifo_w24_d256_A_ram                         |                      bd_0_hls_inst_0_gray_kernel_fifo_w24_d256_A_ram |          0 |          0 |       0 |    0 |    0 |      0 |      1 |    0 |          0 |
+|         stream_out_U                                                |                           bd_0_hls_inst_0_gray_kernel_fifo_w8_d256_A |         92 |         52 |      40 |    0 |   45 |      0 |      0 |    0 |          0 |
+|           (stream_out_U)                                            |                           bd_0_hls_inst_0_gray_kernel_fifo_w8_d256_A |         40 |         40 |       0 |    0 |   37 |      0 |      0 |    0 |          0 |
+|           U_gray_kernel_fifo_w8_d256_A_ram                          |                       bd_0_hls_inst_0_gray_kernel_fifo_w8_d256_A_ram |         52 |         12 |      40 |    0 |    8 |      0 |      0 |    0 |          0 |
+|         write_stage_U0                                              |                              bd_0_hls_inst_0_gray_kernel_write_stage |        139 |        139 |       0 |    0 |  181 |      0 |      0 |    0 |          0 |
+|           (write_stage_U0)                                          |                              bd_0_hls_inst_0_gray_kernel_write_stage |         56 |         56 |       0 |    0 |  137 |      0 |      0 |    0 |          0 |
+|           grp_write_stage_Pipeline_VITIS_LOOP_38_1_fu_69            |     bd_0_hls_inst_0_gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1 |         83 |         83 |       0 |    0 |   44 |      0 |      0 |    0 |          0 |
+|             (grp_write_stage_Pipeline_VITIS_LOOP_38_1_fu_69)        |     bd_0_hls_inst_0_gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1 |         12 |         12 |       0 |    0 |   42 |      0 |      0 |    0 |          0 |
+|             flow_control_loop_pipe_sequential_init_U                |   bd_0_hls_inst_0_gray_kernel_flow_control_loop_pipe_sequential_init |         71 |         71 |       0 |    0 |    2 |      0 |      0 |    0 |          0 |
++---------------------------------------------------------------------+----------------------------------------------------------------------+------------+------------+---------+------+------+--------+--------+------+------------+
+
+

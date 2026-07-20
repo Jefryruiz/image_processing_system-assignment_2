@@ -1,0 +1,224 @@
+--- !Passed
+Pass:            reflow-burst-inference
+Name:            BurstInferred
+DebugLoc:        { File: gray_kernel.cpp, Line: 15, Column: 19 }
+Function:        _Z10read_stagePK7ap_uintILi8EERN3hls6streamIS_ILi24EELi0EEEi
+Args:            
+  - String:          'Sequential '
+  - Direction:       read
+  - String:          ' of '
+  - Length:          variable
+  - String:          ' length'
+  - String:          ' has been inferred'
+  - String:          ' _XLX_SEP_ '
+  - AccessID:        in1seq
+  - ArrayName:       in
+  - String:          ' '
+  - BundleName:      gmem
+  - String:          ' '
+  - LoopName:        VITIS_LOOP_15_1
+  - String:          ' '
+  - LoopLoc:         'gray_kernel.cpp:15:19'
+  - String:          ' '
+  - Function:        'read_stage(ap_uint<8> const*, hls::stream<ap_uint<24>, 0>&, int)'
+    DebugLoc:        { File: gray_kernel.cpp, Line: 13, Column: 0 }
+  - String:          ' '
+  - String:          ' _XLX_SEP_ '
+  - OrigAccess:      load
+    DebugLoc:        { File: gray_kernel.cpp, Line: 17, Column: 12 }
+  - OrigDirection:   read
+  - OrigID:          for.inc.load.10
+  - OrigAccess:      load
+    DebugLoc:        { File: gray_kernel.cpp, Line: 17, Column: 35 }
+  - OrigDirection:   read
+  - OrigID:          for.inc.load.16
+  - OrigAccess:      load
+    DebugLoc:        { File: gray_kernel.cpp, Line: 17, Column: 59 }
+  - OrigDirection:   read
+  - OrigID:          for.inc.load.24
+...
+--- !Passed
+Pass:            reflow-burst-inference
+Name:            BurstInferred
+DebugLoc:        { File: gray_kernel.cpp, Line: 38, Column: 19 }
+Function:        _Z11write_stageP7ap_uintILi8EERN3hls6streamIS0_Li0EEEi
+Args:            
+  - String:          'Sequential '
+  - Direction:       write
+  - String:          ' of '
+  - Length:          variable
+  - String:          ' length'
+  - String:          ' has been inferred'
+  - String:          ' _XLX_SEP_ '
+  - AccessID:        out2seq
+  - ArrayName:       out
+  - String:          ' '
+  - BundleName:      gmem
+  - String:          ' '
+  - LoopName:        VITIS_LOOP_38_1
+  - String:          ' '
+  - LoopLoc:         'gray_kernel.cpp:38:19'
+  - String:          ' '
+  - Function:        'write_stage(ap_uint<8>*, hls::stream<ap_uint<8>, 0>&, int)'
+    DebugLoc:        { File: gray_kernel.cpp, Line: 36, Column: 0 }
+  - String:          ' '
+  - String:          ' _XLX_SEP_ '
+  - OrigAccess:      store
+    DebugLoc:        { File: gray_kernel.cpp, Line: 40, Column: 9 }
+  - OrigDirection:   write
+  - OrigID:          for.inc.store.5
+...
+--- !Missed
+Pass:            reflow-burst-widen
+Name:            GreaterOrEqualThreshold
+DebugLoc:        { File: gray_kernel.cpp, Line: 15, Column: 19 }
+Function:        _Z10read_stagePK7ap_uintILi8EERN3hls6streamIS_ILi24EELi0EEEi
+Args:            
+  - String:          'Could not widen since type '
+  - Type:            i8
+  - String:          ' size is greater than or equal to the max_widen_bitwidth threshold of '
+  - Threshold:       '0'
+  - String:          ' _XLX_SEP_ '
+  - OrigAccess:      call
+    DebugLoc:        { File: gray_kernel.cpp, Line: 15, Column: 19 }
+  - OrigDirection:   read
+  - OrigID:          in1seq
+  - ArrayName:       in
+  - String:          ' '
+  - BundleName:      gmem
+  - String:          ' '
+  - LoopName:        VITIS_LOOP_15_1
+  - String:          ' '
+  - LoopLoc:         'gray_kernel.cpp:15:19'
+  - String:          ' '
+  - Function:        'read_stage(ap_uint<8> const*, hls::stream<ap_uint<24>, 0>&, int)'
+    DebugLoc:        { File: gray_kernel.cpp, Line: 13, Column: 0 }
+  - String:          ' '
+...
+--- !Missed
+Pass:            reflow-burst-widen
+Name:            GreaterOrEqualThreshold
+DebugLoc:        { File: gray_kernel.cpp, Line: 38, Column: 19 }
+Function:        _Z11write_stageP7ap_uintILi8EERN3hls6streamIS0_Li0EEEi
+Args:            
+  - String:          'Could not widen since type '
+  - Type:            i8
+  - String:          ' size is greater than or equal to the max_widen_bitwidth threshold of '
+  - Threshold:       '0'
+  - String:          ' _XLX_SEP_ '
+  - OrigAccess:      call
+    DebugLoc:        { File: gray_kernel.cpp, Line: 38, Column: 19 }
+  - OrigDirection:   write
+  - OrigID:          out2seq
+  - ArrayName:       out
+  - String:          ' '
+  - BundleName:      gmem
+  - String:          ' '
+  - LoopName:        VITIS_LOOP_38_1
+  - String:          ' '
+  - LoopLoc:         'gray_kernel.cpp:38:19'
+  - String:          ' '
+  - Function:        'write_stage(ap_uint<8>*, hls::stream<ap_uint<8>, 0>&, int)'
+    DebugLoc:        { File: gray_kernel.cpp, Line: 36, Column: 0 }
+  - String:          ' '
+...
+--- !Passed
+Pass:            reflow-burst-summary
+Name:            BurstInferredVerboseSummary
+DebugLoc:        { File: gray_kernel.cpp, Line: 15, Column: 19 }
+Function:        _Z10read_stagePK7ap_uintILi8EERN3hls6streamIS_ILi24EELi0EEEi.1
+Args:            
+  - String:          'Multiple burst '
+  - Direction:       reads
+  - String:          ' of '
+  - Length:          variable
+  - String:          ' length and bit width '
+  - Width:           '8'
+  - String:          ' has been inferred.'
+  - String:          ' These burst requests might be further partitioned into multiple requests during RTL generation, based on max_read_burst_length or max_write_burst_length settings.'
+  - String:          ' _XLX_SEP_ '
+  - AccessID:        seq
+  - ArrayName:       ''
+  - String:          ' '
+  - BundleName:      gmem
+  - String:          ' '
+  - LoopName:        VITIS_LOOP_15_1
+  - String:          ' '
+  - LoopLoc:         'gray_kernel.cpp:15:19'
+  - String:          ' '
+  - Function:        'read_stage(ap_uint<8> const*, hls::stream<ap_uint<24>, 0>&, int) (.1)'
+    DebugLoc:        { File: gray_kernel.cpp, Line: 13, Column: 0 }
+  - String:          ' '
+...
+--- !Passed
+Pass:            reflow-burst-summary
+Name:            BurstInferredSummary
+DebugLoc:        { File: gray_kernel.cpp, Line: 15, Column: 19 }
+Function:        _Z10read_stagePK7ap_uintILi8EERN3hls6streamIS_ILi24EELi0EEEi.1
+Args:            
+  - String:          'Multiple burst '
+  - Direction:       reads
+  - String:          ' of '
+  - Length:          variable
+  - String:          ' length and bit width '
+  - Width:           '8'
+  - String:          ' in loop '''
+  - LoopName:        VITIS_LOOP_15_1
+  - String:          '''('
+  - LoopLoc:         'gray_kernel.cpp:15:19'
+  - String:          ')'
+  - String:          ' has been inferred on bundle '''
+  - BundleName:      gmem
+  - String:          '''.'
+  - String:          ' These burst requests might be further partitioned into multiple requests during RTL generation, based on max_read_burst_length or max_write_burst_length settings.'
+...
+--- !Passed
+Pass:            reflow-burst-summary
+Name:            BurstInferredVerboseSummary
+DebugLoc:        { File: gray_kernel.cpp, Line: 38, Column: 19 }
+Function:        _Z11write_stageP7ap_uintILi8EERN3hls6streamIS0_Li0EEEi.1
+Args:            
+  - String:          'Multiple burst '
+  - Direction:       writes
+  - String:          ' of '
+  - Length:          variable
+  - String:          ' length and bit width '
+  - Width:           '8'
+  - String:          ' has been inferred.'
+  - String:          ' These burst requests might be further partitioned into multiple requests during RTL generation, based on max_read_burst_length or max_write_burst_length settings.'
+  - String:          ' _XLX_SEP_ '
+  - AccessID:        seq
+  - ArrayName:       ''
+  - String:          ' '
+  - BundleName:      gmem
+  - String:          ' '
+  - LoopName:        VITIS_LOOP_38_1
+  - String:          ' '
+  - LoopLoc:         'gray_kernel.cpp:38:19'
+  - String:          ' '
+  - Function:        'write_stage(ap_uint<8>*, hls::stream<ap_uint<8>, 0>&, int) (.1)'
+    DebugLoc:        { File: gray_kernel.cpp, Line: 36, Column: 0 }
+  - String:          ' '
+...
+--- !Passed
+Pass:            reflow-burst-summary
+Name:            BurstInferredSummary
+DebugLoc:        { File: gray_kernel.cpp, Line: 38, Column: 19 }
+Function:        _Z11write_stageP7ap_uintILi8EERN3hls6streamIS0_Li0EEEi.1
+Args:            
+  - String:          'Multiple burst '
+  - Direction:       writes
+  - String:          ' of '
+  - Length:          variable
+  - String:          ' length and bit width '
+  - Width:           '8'
+  - String:          ' in loop '''
+  - LoopName:        VITIS_LOOP_38_1
+  - String:          '''('
+  - LoopLoc:         'gray_kernel.cpp:38:19'
+  - String:          ')'
+  - String:          ' has been inferred on bundle '''
+  - BundleName:      gmem
+  - String:          '''.'
+  - String:          ' These burst requests might be further partitioned into multiple requests during RTL generation, based on max_read_burst_length or max_write_burst_length settings.'
+...

@@ -1,0 +1,757 @@
+#-----------------------------------------------------------
+# Vivado v2024.1 (64-bit)
+# SW Build 5076996 on Wed May 22 18:36:09 MDT 2024
+# IP Build 5075265 on Wed May 22 21:45:21 MDT 2024
+# SharedData Build 5076995 on Wed May 22 18:29:18 MDT 2024
+# Start of session at: Sun Jul 19 18:29:28 2026
+# Process ID: 90833
+# Current directory: /home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.runs/bd_0_hls_inst_0_synth_1
+# Command line: vivado -log bd_0_hls_inst_0.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source bd_0_hls_inst_0.tcl
+# Log file: /home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.runs/bd_0_hls_inst_0_synth_1/bd_0_hls_inst_0.vds
+# Journal file: /home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.runs/bd_0_hls_inst_0_synth_1/vivado.jou
+# Running On        :ezr45
+# Platform          :Ubuntu
+# Operating System  :Ubuntu 26.04 LTS
+# Processor Detail  :AMD Ryzen 9 5900X 12-Core Processor
+# CPU Frequency     :3445.607 MHz
+# CPU Physical cores:12
+# CPU Logical cores :24
+# Host memory       :32474 MB
+# Swap memory       :8589 MB
+# Total Virtual     :41064 MB
+# Available Virtual :27633 MB
+#-----------------------------------------------------------
+source bd_0_hls_inst_0.tcl -notrace
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository '/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/ip'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/home/jezuniga/tools/Xilinx/Vivado/2024.1/data/ip'.
+INFO: [IP_Flow 19-6924] IPCACHE: Running cache check for IP inst: bd_0_hls_inst_0
+Command: synth_design -top bd_0_hls_inst_0 -part xck26-sfvc784-2LV-c -directive sdx_optimization_effort_high -incremental_mode off -mode out_of_context
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xck26'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xck26'
+INFO: [Device 21-403] Loading part xck26-sfvc784-2LV-c
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 4 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 90853
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:03 . Memory (MB): peak = 2657.609 ; gain = 299.777 ; free physical = 335 ; free virtual = 24705
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'bd_0_hls_inst_0' [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ip/bd_0_hls_inst_0/synth/bd_0_hls_inst_0.v:53]
+INFO: [Synth 8-6157] synthesizing module 'gray_kernel' [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel.v:9]
+INFO: [Synth 8-6157] synthesizing module 'gray_kernel_control_s_axi' [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_control_s_axi.v:9]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_control_s_axi.v:224]
+INFO: [Synth 8-6155] done synthesizing module 'gray_kernel_control_s_axi' (0#1) [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_control_s_axi.v:9]
+INFO: [Synth 8-6157] synthesizing module 'gray_kernel_gmem_m_axi' [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_gmem_m_axi.v:14]
+INFO: [Synth 8-6157] synthesizing module 'gray_kernel_gmem_m_axi_store' [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_gmem_m_axi.v:820]
+INFO: [Synth 8-6157] synthesizing module 'gray_kernel_gmem_m_axi_fifo' [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_gmem_m_axi.v:2582]
+INFO: [Synth 8-6157] synthesizing module 'gray_kernel_gmem_m_axi_srl' [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_gmem_m_axi.v:2760]
+INFO: [Synth 8-6155] done synthesizing module 'gray_kernel_gmem_m_axi_srl' (0#1) [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_gmem_m_axi.v:2760]
+INFO: [Synth 8-6155] done synthesizing module 'gray_kernel_gmem_m_axi_fifo' (0#1) [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_gmem_m_axi.v:2582]
+INFO: [Synth 8-6157] synthesizing module 'gray_kernel_gmem_m_axi_fifo__parameterized0' [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_gmem_m_axi.v:2582]
+INFO: [Synth 8-6157] synthesizing module 'gray_kernel_gmem_m_axi_srl__parameterized0' [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_gmem_m_axi.v:2760]
+INFO: [Synth 8-6155] done synthesizing module 'gray_kernel_gmem_m_axi_srl__parameterized0' (0#1) [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_gmem_m_axi.v:2760]
+INFO: [Synth 8-6155] done synthesizing module 'gray_kernel_gmem_m_axi_fifo__parameterized0' (0#1) [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_gmem_m_axi.v:2582]
+INFO: [Synth 8-6157] synthesizing module 'gray_kernel_gmem_m_axi_fifo__parameterized1' [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_gmem_m_axi.v:2582]
+INFO: [Synth 8-6157] synthesizing module 'gray_kernel_gmem_m_axi_mem' [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_gmem_m_axi.v:2814]
+INFO: [Synth 8-6155] done synthesizing module 'gray_kernel_gmem_m_axi_mem' (0#1) [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_gmem_m_axi.v:2814]
+INFO: [Synth 8-6155] done synthesizing module 'gray_kernel_gmem_m_axi_fifo__parameterized1' (0#1) [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_gmem_m_axi.v:2582]
+INFO: [Synth 8-6157] synthesizing module 'gray_kernel_gmem_m_axi_fifo__parameterized2' [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_gmem_m_axi.v:2582]
+INFO: [Synth 8-6157] synthesizing module 'gray_kernel_gmem_m_axi_srl__parameterized1' [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_gmem_m_axi.v:2760]
+INFO: [Synth 8-6155] done synthesizing module 'gray_kernel_gmem_m_axi_srl__parameterized1' (0#1) [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_gmem_m_axi.v:2760]
+INFO: [Synth 8-6155] done synthesizing module 'gray_kernel_gmem_m_axi_fifo__parameterized2' (0#1) [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_gmem_m_axi.v:2582]
+INFO: [Synth 8-6157] synthesizing module 'gray_kernel_gmem_m_axi_fifo__parameterized3' [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_gmem_m_axi.v:2582]
+INFO: [Synth 8-6157] synthesizing module 'gray_kernel_gmem_m_axi_srl__parameterized2' [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_gmem_m_axi.v:2760]
+INFO: [Synth 8-6155] done synthesizing module 'gray_kernel_gmem_m_axi_srl__parameterized2' (0#1) [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_gmem_m_axi.v:2760]
+INFO: [Synth 8-6155] done synthesizing module 'gray_kernel_gmem_m_axi_fifo__parameterized3' (0#1) [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_gmem_m_axi.v:2582]
+INFO: [Synth 8-6155] done synthesizing module 'gray_kernel_gmem_m_axi_store' (0#1) [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_gmem_m_axi.v:820]
+INFO: [Synth 8-6157] synthesizing module 'gray_kernel_gmem_m_axi_load' [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_gmem_m_axi.v:328]
+INFO: [Synth 8-6157] synthesizing module 'gray_kernel_gmem_m_axi_fifo__parameterized4' [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_gmem_m_axi.v:2582]
+INFO: [Synth 8-6157] synthesizing module 'gray_kernel_gmem_m_axi_srl__parameterized3' [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_gmem_m_axi.v:2760]
+INFO: [Synth 8-6155] done synthesizing module 'gray_kernel_gmem_m_axi_srl__parameterized3' (0#1) [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_gmem_m_axi.v:2760]
+INFO: [Synth 8-6155] done synthesizing module 'gray_kernel_gmem_m_axi_fifo__parameterized4' (0#1) [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_gmem_m_axi.v:2582]
+INFO: [Synth 8-6157] synthesizing module 'gray_kernel_gmem_m_axi_reg_slice' [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_gmem_m_axi.v:2480]
+INFO: [Synth 8-6155] done synthesizing module 'gray_kernel_gmem_m_axi_reg_slice' (0#1) [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_gmem_m_axi.v:2480]
+INFO: [Synth 8-6157] synthesizing module 'gray_kernel_gmem_m_axi_fifo__parameterized5' [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_gmem_m_axi.v:2582]
+INFO: [Synth 8-6157] synthesizing module 'gray_kernel_gmem_m_axi_mem__parameterized0' [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_gmem_m_axi.v:2814]
+INFO: [Synth 8-6155] done synthesizing module 'gray_kernel_gmem_m_axi_mem__parameterized0' (0#1) [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_gmem_m_axi.v:2814]
+INFO: [Synth 8-6155] done synthesizing module 'gray_kernel_gmem_m_axi_fifo__parameterized5' (0#1) [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_gmem_m_axi.v:2582]
+INFO: [Synth 8-6155] done synthesizing module 'gray_kernel_gmem_m_axi_load' (0#1) [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_gmem_m_axi.v:328]
+INFO: [Synth 8-6157] synthesizing module 'gray_kernel_gmem_m_axi_write' [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_gmem_m_axi.v:1628]
+INFO: [Synth 8-6157] synthesizing module 'gray_kernel_gmem_m_axi_burst_converter' [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_gmem_m_axi.v:1948]
+INFO: [Synth 8-6157] synthesizing module 'gray_kernel_gmem_m_axi_reg_slice__parameterized0' [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_gmem_m_axi.v:2480]
+INFO: [Synth 8-6155] done synthesizing module 'gray_kernel_gmem_m_axi_reg_slice__parameterized0' (0#1) [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_gmem_m_axi.v:2480]
+INFO: [Synth 8-6155] done synthesizing module 'gray_kernel_gmem_m_axi_burst_converter' (0#1) [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_gmem_m_axi.v:1948]
+INFO: [Synth 8-6157] synthesizing module 'gray_kernel_gmem_m_axi_fifo__parameterized6' [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_gmem_m_axi.v:2582]
+INFO: [Synth 8-6157] synthesizing module 'gray_kernel_gmem_m_axi_srl__parameterized4' [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_gmem_m_axi.v:2760]
+INFO: [Synth 8-6155] done synthesizing module 'gray_kernel_gmem_m_axi_srl__parameterized4' (0#1) [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_gmem_m_axi.v:2760]
+INFO: [Synth 8-6155] done synthesizing module 'gray_kernel_gmem_m_axi_fifo__parameterized6' (0#1) [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_gmem_m_axi.v:2582]
+INFO: [Synth 8-6157] synthesizing module 'gray_kernel_gmem_m_axi_throttle' [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_gmem_m_axi.v:2254]
+INFO: [Synth 8-6157] synthesizing module 'gray_kernel_gmem_m_axi_reg_slice__parameterized1' [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_gmem_m_axi.v:2480]
+INFO: [Synth 8-6155] done synthesizing module 'gray_kernel_gmem_m_axi_reg_slice__parameterized1' (0#1) [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_gmem_m_axi.v:2480]
+INFO: [Synth 8-6157] synthesizing module 'gray_kernel_gmem_m_axi_fifo__parameterized7' [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_gmem_m_axi.v:2582]
+INFO: [Synth 8-6157] synthesizing module 'gray_kernel_gmem_m_axi_srl__parameterized5' [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_gmem_m_axi.v:2760]
+INFO: [Synth 8-6155] done synthesizing module 'gray_kernel_gmem_m_axi_srl__parameterized5' (0#1) [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_gmem_m_axi.v:2760]
+INFO: [Synth 8-6155] done synthesizing module 'gray_kernel_gmem_m_axi_fifo__parameterized7' (0#1) [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_gmem_m_axi.v:2582]
+INFO: [Synth 8-6157] synthesizing module 'gray_kernel_gmem_m_axi_fifo__parameterized8' [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_gmem_m_axi.v:2582]
+INFO: [Synth 8-6157] synthesizing module 'gray_kernel_gmem_m_axi_srl__parameterized6' [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_gmem_m_axi.v:2760]
+INFO: [Synth 8-6155] done synthesizing module 'gray_kernel_gmem_m_axi_srl__parameterized6' (0#1) [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_gmem_m_axi.v:2760]
+INFO: [Synth 8-6155] done synthesizing module 'gray_kernel_gmem_m_axi_fifo__parameterized8' (0#1) [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_gmem_m_axi.v:2582]
+INFO: [Synth 8-6155] done synthesizing module 'gray_kernel_gmem_m_axi_throttle' (0#1) [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_gmem_m_axi.v:2254]
+INFO: [Synth 8-6157] synthesizing module 'gray_kernel_gmem_m_axi_reg_slice__parameterized2' [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_gmem_m_axi.v:2480]
+INFO: [Synth 8-6155] done synthesizing module 'gray_kernel_gmem_m_axi_reg_slice__parameterized2' (0#1) [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_gmem_m_axi.v:2480]
+WARNING: [Synth 8-589] replacing case/wildcard equality operator === with logical equality operator == [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_gmem_m_axi.v:1939]
+WARNING: [Synth 8-589] replacing case/wildcard equality operator === with logical equality operator == [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_gmem_m_axi.v:1942]
+INFO: [Synth 8-6155] done synthesizing module 'gray_kernel_gmem_m_axi_write' (0#1) [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_gmem_m_axi.v:1628]
+INFO: [Synth 8-6157] synthesizing module 'gray_kernel_gmem_m_axi_read' [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_gmem_m_axi.v:1436]
+WARNING: [Synth 8-589] replacing case/wildcard equality operator === with logical equality operator == [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_gmem_m_axi.v:1620]
+INFO: [Synth 8-6155] done synthesizing module 'gray_kernel_gmem_m_axi_read' (0#1) [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_gmem_m_axi.v:1436]
+INFO: [Synth 8-6155] done synthesizing module 'gray_kernel_gmem_m_axi' (0#1) [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_gmem_m_axi.v:14]
+INFO: [Synth 8-6157] synthesizing module 'gray_kernel_entry_proc' [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_entry_proc.v:9]
+INFO: [Synth 8-6155] done synthesizing module 'gray_kernel_entry_proc' (0#1) [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_entry_proc.v:9]
+INFO: [Synth 8-6157] synthesizing module 'gray_kernel_read_stage' [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_read_stage.v:9]
+INFO: [Synth 8-6157] synthesizing module 'gray_kernel_read_stage_Pipeline_VITIS_LOOP_15_1' [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_read_stage_Pipeline_VITIS_LOOP_15_1.v:9]
+INFO: [Synth 8-6157] synthesizing module 'gray_kernel_flow_control_loop_pipe_sequential_init' [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_flow_control_loop_pipe_sequential_init.v:11]
+INFO: [Synth 8-6155] done synthesizing module 'gray_kernel_flow_control_loop_pipe_sequential_init' (0#1) [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_flow_control_loop_pipe_sequential_init.v:11]
+INFO: [Synth 8-6155] done synthesizing module 'gray_kernel_read_stage_Pipeline_VITIS_LOOP_15_1' (0#1) [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_read_stage_Pipeline_VITIS_LOOP_15_1.v:9]
+INFO: [Synth 8-6155] done synthesizing module 'gray_kernel_read_stage' (0#1) [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_read_stage.v:9]
+INFO: [Synth 8-6157] synthesizing module 'gray_kernel_proc_stage' [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_proc_stage.v:9]
+INFO: [Synth 8-6157] synthesizing module 'gray_kernel_proc_stage_Pipeline_VITIS_LOOP_24_1' [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_proc_stage_Pipeline_VITIS_LOOP_24_1.v:9]
+INFO: [Synth 8-6157] synthesizing module 'gray_kernel_mul_8ns_10ns_17_1_1' [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_mul_8ns_10ns_17_1_1.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'gray_kernel_mul_8ns_10ns_17_1_1' (0#1) [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_mul_8ns_10ns_17_1_1.v:5]
+INFO: [Synth 8-6157] synthesizing module 'gray_kernel_mac_muladd_8ns_7ns_17ns_17_4_1' [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_mac_muladd_8ns_7ns_17ns_17_4_1.v:55]
+INFO: [Synth 8-6157] synthesizing module 'gray_kernel_mac_muladd_8ns_7ns_17ns_17_4_1_DSP48_0' [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_mac_muladd_8ns_7ns_17ns_17_4_1.v:12]
+INFO: [Synth 8-6155] done synthesizing module 'gray_kernel_mac_muladd_8ns_7ns_17ns_17_4_1_DSP48_0' (0#1) [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_mac_muladd_8ns_7ns_17ns_17_4_1.v:12]
+INFO: [Synth 8-6155] done synthesizing module 'gray_kernel_mac_muladd_8ns_7ns_17ns_17_4_1' (0#1) [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_mac_muladd_8ns_7ns_17ns_17_4_1.v:55]
+INFO: [Synth 8-6157] synthesizing module 'gray_kernel_mac_muladd_10ns_8ns_17ns_18_4_1' [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_mac_muladd_10ns_8ns_17ns_18_4_1.v:55]
+INFO: [Synth 8-6157] synthesizing module 'gray_kernel_mac_muladd_10ns_8ns_17ns_18_4_1_DSP48_0' [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_mac_muladd_10ns_8ns_17ns_18_4_1.v:12]
+INFO: [Synth 8-6155] done synthesizing module 'gray_kernel_mac_muladd_10ns_8ns_17ns_18_4_1_DSP48_0' (0#1) [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_mac_muladd_10ns_8ns_17ns_18_4_1.v:12]
+INFO: [Synth 8-6155] done synthesizing module 'gray_kernel_mac_muladd_10ns_8ns_17ns_18_4_1' (0#1) [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_mac_muladd_10ns_8ns_17ns_18_4_1.v:55]
+INFO: [Synth 8-6155] done synthesizing module 'gray_kernel_proc_stage_Pipeline_VITIS_LOOP_24_1' (0#1) [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_proc_stage_Pipeline_VITIS_LOOP_24_1.v:9]
+INFO: [Synth 8-6155] done synthesizing module 'gray_kernel_proc_stage' (0#1) [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_proc_stage.v:9]
+INFO: [Synth 8-6157] synthesizing module 'gray_kernel_write_stage' [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_write_stage.v:9]
+INFO: [Synth 8-6157] synthesizing module 'gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1' [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1.v:9]
+INFO: [Synth 8-6155] done synthesizing module 'gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1' (0#1) [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1.v:9]
+INFO: [Synth 8-6155] done synthesizing module 'gray_kernel_write_stage' (0#1) [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_write_stage.v:9]
+INFO: [Synth 8-6157] synthesizing module 'gray_kernel_fifo_w64_d4_S' [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_fifo_w64_d4_S.v:11]
+INFO: [Synth 8-6157] synthesizing module 'gray_kernel_fifo_w64_d4_S_ShiftReg' [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_fifo_w64_d4_S.v:129]
+INFO: [Synth 8-6155] done synthesizing module 'gray_kernel_fifo_w64_d4_S_ShiftReg' (0#1) [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_fifo_w64_d4_S.v:129]
+INFO: [Synth 8-6155] done synthesizing module 'gray_kernel_fifo_w64_d4_S' (0#1) [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_fifo_w64_d4_S.v:11]
+INFO: [Synth 8-6157] synthesizing module 'gray_kernel_fifo_w24_d256_A' [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_fifo_w24_d256_A.v:11]
+INFO: [Synth 8-6157] synthesizing module 'gray_kernel_fifo_w24_d256_A_ram' [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_fifo_w24_d256_A.v:202]
+INFO: [Synth 8-6155] done synthesizing module 'gray_kernel_fifo_w24_d256_A_ram' (0#1) [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_fifo_w24_d256_A.v:202]
+INFO: [Synth 8-6155] done synthesizing module 'gray_kernel_fifo_w24_d256_A' (0#1) [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_fifo_w24_d256_A.v:11]
+INFO: [Synth 8-6157] synthesizing module 'gray_kernel_fifo_w32_d2_S' [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_fifo_w32_d2_S.v:11]
+INFO: [Synth 8-6157] synthesizing module 'gray_kernel_fifo_w32_d2_S_ShiftReg' [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_fifo_w32_d2_S.v:129]
+INFO: [Synth 8-6155] done synthesizing module 'gray_kernel_fifo_w32_d2_S_ShiftReg' (0#1) [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_fifo_w32_d2_S.v:129]
+INFO: [Synth 8-6155] done synthesizing module 'gray_kernel_fifo_w32_d2_S' (0#1) [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_fifo_w32_d2_S.v:11]
+INFO: [Synth 8-6157] synthesizing module 'gray_kernel_fifo_w8_d256_A' [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_fifo_w8_d256_A.v:11]
+INFO: [Synth 8-6157] synthesizing module 'gray_kernel_fifo_w8_d256_A_ram' [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_fifo_w8_d256_A.v:202]
+INFO: [Synth 8-6155] done synthesizing module 'gray_kernel_fifo_w8_d256_A_ram' (0#1) [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_fifo_w8_d256_A.v:202]
+INFO: [Synth 8-6155] done synthesizing module 'gray_kernel_fifo_w8_d256_A' (0#1) [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_fifo_w8_d256_A.v:11]
+INFO: [Synth 8-6157] synthesizing module 'gray_kernel_start_for_write_stage_U0' [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_start_for_write_stage_U0.v:11]
+INFO: [Synth 8-6157] synthesizing module 'gray_kernel_start_for_write_stage_U0_ShiftReg' [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_start_for_write_stage_U0.v:125]
+INFO: [Synth 8-6155] done synthesizing module 'gray_kernel_start_for_write_stage_U0_ShiftReg' (0#1) [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_start_for_write_stage_U0.v:125]
+INFO: [Synth 8-6155] done synthesizing module 'gray_kernel_start_for_write_stage_U0' (0#1) [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_start_for_write_stage_U0.v:11]
+INFO: [Synth 8-6157] synthesizing module 'gray_kernel_start_for_proc_stage_U0' [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_start_for_proc_stage_U0.v:11]
+INFO: [Synth 8-6157] synthesizing module 'gray_kernel_start_for_proc_stage_U0_ShiftReg' [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_start_for_proc_stage_U0.v:125]
+INFO: [Synth 8-6155] done synthesizing module 'gray_kernel_start_for_proc_stage_U0_ShiftReg' (0#1) [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_start_for_proc_stage_U0.v:125]
+INFO: [Synth 8-6155] done synthesizing module 'gray_kernel_start_for_proc_stage_U0' (0#1) [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_start_for_proc_stage_U0.v:11]
+INFO: [Synth 8-6155] done synthesizing module 'gray_kernel' (0#1) [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel.v:9]
+INFO: [Synth 8-6155] done synthesizing module 'bd_0_hls_inst_0' (0#1) [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ip/bd_0_hls_inst_0/synth/bd_0_hls_inst_0.v:53]
+WARNING: [Synth 8-6014] Unused sequential element int_ap_done_reg was removed.  [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_control_s_axi.v:299]
+WARNING: [Synth 8-7129] Port addr[1] in module gray_kernel_fifo_w32_d2_S_ShiftReg is either unconnected or has no load
+WARNING: [Synth 8-7129] Port stream_out_num_data_valid[8] in module gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port stream_out_num_data_valid[7] in module gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port stream_out_num_data_valid[6] in module gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port stream_out_num_data_valid[5] in module gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port stream_out_num_data_valid[4] in module gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port stream_out_num_data_valid[3] in module gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port stream_out_num_data_valid[2] in module gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port stream_out_num_data_valid[1] in module gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port stream_out_num_data_valid[0] in module gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port stream_out_fifo_cap[8] in module gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port stream_out_fifo_cap[7] in module gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port stream_out_fifo_cap[6] in module gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port stream_out_fifo_cap[5] in module gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port stream_out_fifo_cap[4] in module gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port stream_out_fifo_cap[3] in module gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port stream_out_fifo_cap[2] in module gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port stream_out_fifo_cap[1] in module gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port stream_out_fifo_cap[0] in module gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port m_axi_gmem_AWREADY in module gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port m_axi_gmem_ARREADY in module gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port m_axi_gmem_RVALID in module gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port m_axi_gmem_RDATA[7] in module gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port m_axi_gmem_RDATA[6] in module gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port m_axi_gmem_RDATA[5] in module gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port m_axi_gmem_RDATA[4] in module gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port m_axi_gmem_RDATA[3] in module gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port m_axi_gmem_RDATA[2] in module gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port m_axi_gmem_RDATA[1] in module gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port m_axi_gmem_RDATA[0] in module gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port m_axi_gmem_RLAST in module gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port m_axi_gmem_RID[0] in module gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port m_axi_gmem_RFIFONUM[10] in module gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port m_axi_gmem_RFIFONUM[9] in module gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port m_axi_gmem_RFIFONUM[8] in module gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port m_axi_gmem_RFIFONUM[7] in module gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port m_axi_gmem_RFIFONUM[6] in module gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port m_axi_gmem_RFIFONUM[5] in module gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port m_axi_gmem_RFIFONUM[4] in module gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port m_axi_gmem_RFIFONUM[3] in module gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port m_axi_gmem_RFIFONUM[2] in module gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port m_axi_gmem_RFIFONUM[1] in module gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port m_axi_gmem_RFIFONUM[0] in module gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port m_axi_gmem_RUSER[0] in module gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port m_axi_gmem_RRESP[1] in module gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port m_axi_gmem_RRESP[0] in module gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port m_axi_gmem_BVALID in module gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port m_axi_gmem_BRESP[1] in module gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port m_axi_gmem_BRESP[0] in module gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port m_axi_gmem_BID[0] in module gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port m_axi_gmem_BUSER[0] in module gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port out_1[63] in module gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port out_1[62] in module gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port out_1[61] in module gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port out_1[60] in module gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port out_1[59] in module gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port out_1[58] in module gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port out_1[57] in module gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port out_1[56] in module gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port out_1[55] in module gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port out_1[54] in module gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port out_1[53] in module gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port out_1[52] in module gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port out_1[51] in module gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port out_1[50] in module gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port out_1[49] in module gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port out_1[48] in module gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port out_1[47] in module gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port out_1[46] in module gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port out_1[45] in module gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port out_1[44] in module gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port out_1[43] in module gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port out_1[42] in module gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port out_1[41] in module gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port out_1[40] in module gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port out_1[39] in module gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port out_1[38] in module gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port out_1[37] in module gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port out_1[36] in module gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port out_1[35] in module gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port out_1[34] in module gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port out_1[33] in module gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port out_1[32] in module gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port out_1[31] in module gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port out_1[30] in module gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port out_1[29] in module gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port out_1[28] in module gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port out_1[27] in module gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port out_1[26] in module gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port out_1[25] in module gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port out_1[24] in module gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port out_1[23] in module gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port out_1[22] in module gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port out_1[21] in module gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port out_1[20] in module gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port out_1[19] in module gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port out_1[18] in module gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port out_1[17] in module gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port out_1[16] in module gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port out_1[15] in module gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1 is either unconnected or has no load
+INFO: [Common 17-14] Message 'Synth 8-7129' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 2771.578 ; gain = 413.746 ; free physical = 292 ; free virtual = 24541
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 2771.578 ; gain = 413.746 ; free physical = 293 ; free virtual = 24542
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 2771.578 ; gain = 413.746 ; free physical = 293 ; free virtual = 24542
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00.05 ; elapsed = 00:00:00.05 . Memory (MB): peak = 2771.578 ; gain = 0.000 ; free physical = 292 ; free virtual = 24542
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ip/bd_0_hls_inst_0/constraints/gray_kernel_ooc.xdc] for cell 'inst'
+Finished Parsing XDC File [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ip/bd_0_hls_inst_0/constraints/gray_kernel_ooc.xdc] for cell 'inst'
+Parsing XDC File [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.runs/bd_0_hls_inst_0_synth_1/dont_touch.xdc]
+Finished Parsing XDC File [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.runs/bd_0_hls_inst_0_synth_1/dont_touch.xdc]
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2902.359 ; gain = 0.000 ; free physical = 273 ; free virtual = 24537
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00.16 ; elapsed = 00:00:00.06 . Memory (MB): peak = 2902.359 ; gain = 0.000 ; free physical = 275 ; free virtual = 24539
+INFO: [Designutils 20-5008] Incremental synthesis strategy off
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:11 ; elapsed = 00:00:11 . Memory (MB): peak = 2902.359 ; gain = 544.527 ; free physical = 261 ; free virtual = 24533
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xck26-sfvc784-2LV-c
+INFO: [Synth 8-6742] Reading net delay rules and data
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:11 ; elapsed = 00:00:11 . Memory (MB): peak = 2910.363 ; gain = 552.531 ; free physical = 261 ; free virtual = 24533
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+Applied set_property KEEP_HIERARCHY = SOFT for inst. (constraint file  /home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.runs/bd_0_hls_inst_0_synth_1/dont_touch.xdc, line 9).
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:11 ; elapsed = 00:00:11 . Memory (MB): peak = 2910.363 ; gain = 552.531 ; free physical = 261 ; free virtual = 24533
+---------------------------------------------------------------------------------
+INFO: [Synth 8-802] inferred FSM for state register 'wstate_reg' in module 'gray_kernel_control_s_axi'
+INFO: [Synth 8-802] inferred FSM for state register 'rstate_reg' in module 'gray_kernel_control_s_axi'
+INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'gray_kernel_gmem_m_axi_reg_slice'
+INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'gray_kernel_gmem_m_axi_reg_slice__parameterized0'
+INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'gray_kernel_gmem_m_axi_reg_slice__parameterized1'
+INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'gray_kernel_gmem_m_axi_reg_slice__parameterized2'
+INFO: [Synth 8-4490] FSM extraction disabled for register 'ap_CS_fsm_reg' through user attribute
+INFO: [Synth 8-4490] FSM extraction disabled for register 'ap_CS_fsm_reg' through user attribute
+INFO: [Synth 8-4490] FSM extraction disabled for register 'ap_CS_fsm_reg' through user attribute
+INFO: [Synth 8-4490] FSM extraction disabled for register 'ap_CS_fsm_reg' through user attribute
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                  iSTATE |                             0001 |                               11
+*
+                  WRIDLE |                             0010 |                               00
+                  WRDATA |                             0100 |                               01
+                  WRRESP |                             1000 |                               10
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'wstate_reg' using encoding 'one-hot' in module 'gray_kernel_control_s_axi'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                  iSTATE |                              001 |                               10
+*
+                  RDIDLE |                              010 |                               00
+                  RDDATA |                              100 |                               01
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'rstate_reg' using encoding 'one-hot' in module 'gray_kernel_control_s_axi'
+INFO: [Synth 8-7082] The signal mem_reg is implemented as Block RAM but is better mapped onto distributed LUT RAM for the following reason(s): The depth (6 address bits) is shallow. Please use attribute (* ram_style = "distributed" *) to instruct Vivado to infer distributed LUT RAM.
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                    ZERO |                               00 |                               10
+                     ONE |                               10 |                               11
+                     TWO |                               01 |                               01
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'sequential' in module 'gray_kernel_gmem_m_axi_reg_slice'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                    ZERO |                               00 |                               10
+                     ONE |                               10 |                               11
+                     TWO |                               01 |                               01
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'sequential' in module 'gray_kernel_gmem_m_axi_reg_slice__parameterized0'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                    ZERO |                               00 |                               10
+                     ONE |                               10 |                               11
+                     TWO |                               01 |                               01
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'sequential' in module 'gray_kernel_gmem_m_axi_reg_slice__parameterized1'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                    ZERO |                               00 |                               10
+                     ONE |                               10 |                               11
+                     TWO |                               01 |                               01
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'sequential' in module 'gray_kernel_gmem_m_axi_reg_slice__parameterized2'
+INFO: [Synth 8-6904] The RAM "gray_kernel_fifo_w8_d256_A_ram:/mem_reg" of size (depth=255 x width=8) is automatically implemented using LUTRAM. BRAM implementation would be inefficient 
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 2910.363 ; gain = 552.531 ; free physical = 252 ; free virtual = 24535
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input   52 Bit       Adders := 2     
+	   3 Input   33 Bit       Adders := 1     
+	   2 Input   32 Bit       Adders := 5     
+	   2 Input   31 Bit       Adders := 3     
+	   2 Input   12 Bit       Adders := 4     
+	   2 Input   11 Bit       Adders := 1     
+	   2 Input   10 Bit       Adders := 1     
+	   2 Input    9 Bit       Adders := 6     
+	   3 Input    9 Bit       Adders := 2     
+	   2 Input    8 Bit       Adders := 7     
+	   2 Input    7 Bit       Adders := 2     
+	   2 Input    6 Bit       Adders := 4     
+	   2 Input    5 Bit       Adders := 21    
+	   2 Input    4 Bit       Adders := 15    
+	   2 Input    3 Bit       Adders := 13    
+	   3 Input    3 Bit       Adders := 1     
+	   2 Input    2 Bit       Adders := 8     
+	   2 Input    1 Bit       Adders := 1     
++---XORs : 
+	   2 Input      1 Bit         XORs := 4     
++---Registers : 
+	               96 Bit    Registers := 6     
+	               72 Bit    Registers := 3     
+	               64 Bit    Registers := 7     
+	               52 Bit    Registers := 2     
+	               37 Bit    Registers := 1     
+	               34 Bit    Registers := 3     
+	               33 Bit    Registers := 5     
+	               32 Bit    Registers := 16    
+	               31 Bit    Registers := 4     
+	               24 Bit    Registers := 1     
+	               20 Bit    Registers := 2     
+	               18 Bit    Registers := 2     
+	               11 Bit    Registers := 4     
+	               10 Bit    Registers := 8     
+	                9 Bit    Registers := 9     
+	                8 Bit    Registers := 22    
+	                7 Bit    Registers := 1     
+	                6 Bit    Registers := 5     
+	                5 Bit    Registers := 10    
+	                4 Bit    Registers := 15    
+	                3 Bit    Registers := 10    
+	                2 Bit    Registers := 13    
+	                1 Bit    Registers := 156   
++---RAMs : 
+	               8K Bit	(255 X 34 bit)          RAMs := 1     
+	               5K Bit	(255 X 24 bit)          RAMs := 1     
+	               1K Bit	(255 X 8 bit)          RAMs := 1     
+	              567 Bit	(63 X 9 bit)          RAMs := 1     
++---Muxes : 
+	   2 Input   96 Bit        Muxes := 2     
+	   2 Input   72 Bit        Muxes := 1     
+	   2 Input   64 Bit        Muxes := 8     
+	   2 Input   52 Bit        Muxes := 2     
+	   2 Input   33 Bit        Muxes := 2     
+	   2 Input   32 Bit        Muxes := 8     
+	   2 Input   31 Bit        Muxes := 1     
+	   2 Input   30 Bit        Muxes := 1     
+	   2 Input   20 Bit        Muxes := 2     
+	   4 Input   12 Bit        Muxes := 2     
+	   2 Input   11 Bit        Muxes := 2     
+	   4 Input   11 Bit        Muxes := 2     
+	   2 Input   10 Bit        Muxes := 6     
+	   2 Input    9 Bit        Muxes := 5     
+	   3 Input    9 Bit        Muxes := 2     
+	   2 Input    8 Bit        Muxes := 2     
+	   4 Input    8 Bit        Muxes := 2     
+	   2 Input    7 Bit        Muxes := 2     
+	   2 Input    6 Bit        Muxes := 4     
+	   2 Input    5 Bit        Muxes := 19    
+	   4 Input    4 Bit        Muxes := 1     
+	   2 Input    4 Bit        Muxes := 22    
+	   3 Input    4 Bit        Muxes := 1     
+	   3 Input    3 Bit        Muxes := 3     
+	   2 Input    3 Bit        Muxes := 14    
+	   5 Input    3 Bit        Muxes := 2     
+	   4 Input    3 Bit        Muxes := 1     
+	   2 Input    2 Bit        Muxes := 101   
+	   3 Input    2 Bit        Muxes := 18    
+	   4 Input    2 Bit        Muxes := 6     
+	   5 Input    2 Bit        Muxes := 1     
+	   2 Input    1 Bit        Muxes := 190   
+	   4 Input    1 Bit        Muxes := 1     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 1248 (col length:96)
+BRAMs: 288 (col length: RAMB18 96 RAMB36 48)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+WARNING: [Synth 8-3936] Found unconnected internal register 'grp_proc_stage_Pipeline_VITIS_LOOP_24_1_fu_50/mac_muladd_10ns_8ns_17ns_18_4_1_U14/gray_kernel_mac_muladd_10ns_8ns_17ns_18_4_1_DSP48_0_U/p_reg_reg' and it is trimmed from '46' to '18' bits. [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_mac_muladd_10ns_8ns_17ns_18_4_1.v:45]
+WARNING: [Synth 8-3936] Found unconnected internal register 'grp_proc_stage_Pipeline_VITIS_LOOP_24_1_fu_50/mac_muladd_10ns_8ns_17ns_18_4_1_U14/gray_kernel_mac_muladd_10ns_8ns_17ns_18_4_1_DSP48_0_U/m_reg_reg' and it is trimmed from '45' to '18' bits. [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_mac_muladd_10ns_8ns_17ns_18_4_1.v:37]
+WARNING: [Synth 8-3936] Found unconnected internal register 'grp_proc_stage_Pipeline_VITIS_LOOP_24_1_fu_50/mac_muladd_8ns_7ns_17ns_17_4_1_U13/gray_kernel_mac_muladd_8ns_7ns_17ns_17_4_1_DSP48_0_U/p_reg_reg' and it is trimmed from '46' to '17' bits. [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_mac_muladd_8ns_7ns_17ns_17_4_1.v:45]
+WARNING: [Synth 8-3936] Found unconnected internal register 'grp_proc_stage_Pipeline_VITIS_LOOP_24_1_fu_50/mac_muladd_8ns_7ns_17ns_17_4_1_U13/gray_kernel_mac_muladd_8ns_7ns_17ns_17_4_1_DSP48_0_U/m_reg_reg' and it is trimmed from '45' to '17' bits. [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_mac_muladd_8ns_7ns_17ns_17_4_1.v:37]
+WARNING: [Synth 8-3936] Found unconnected internal register 'grp_proc_stage_Pipeline_VITIS_LOOP_24_1_fu_50/mac_muladd_8ns_7ns_17ns_17_4_1_U13/gray_kernel_mac_muladd_8ns_7ns_17ns_17_4_1_DSP48_0_U/a_reg_reg' and it is trimmed from '27' to '17' bits. [/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.gen/sources_1/bd/bd_0/ipshared/1d66/hdl/verilog/gray_kernel_mac_muladd_8ns_7ns_17ns_17_4_1.v:35]
+DSP Report: Generating DSP grp_proc_stage_Pipeline_VITIS_LOOP_24_1_fu_50/mac_muladd_8ns_7ns_17ns_17_4_1_U13/gray_kernel_mac_muladd_8ns_7ns_17ns_17_4_1_DSP48_0_U/m_reg_reg, operation Mode is: ((A:0x75)'*B2)'.
+DSP Report: register grp_proc_stage_Pipeline_VITIS_LOOP_24_1_fu_50/mac_muladd_8ns_7ns_17ns_17_4_1_U13/gray_kernel_mac_muladd_8ns_7ns_17ns_17_4_1_DSP48_0_U/m_reg_reg is absorbed into DSP grp_proc_stage_Pipeline_VITIS_LOOP_24_1_fu_50/mac_muladd_8ns_7ns_17ns_17_4_1_U13/gray_kernel_mac_muladd_8ns_7ns_17ns_17_4_1_DSP48_0_U/m_reg_reg.
+DSP Report: register grp_proc_stage_Pipeline_VITIS_LOOP_24_1_fu_50/mac_muladd_8ns_7ns_17ns_17_4_1_U13/gray_kernel_mac_muladd_8ns_7ns_17ns_17_4_1_DSP48_0_U/b_reg_reg is absorbed into DSP grp_proc_stage_Pipeline_VITIS_LOOP_24_1_fu_50/mac_muladd_8ns_7ns_17ns_17_4_1_U13/gray_kernel_mac_muladd_8ns_7ns_17ns_17_4_1_DSP48_0_U/m_reg_reg.
+DSP Report: register grp_proc_stage_Pipeline_VITIS_LOOP_24_1_fu_50/mac_muladd_8ns_7ns_17ns_17_4_1_U13/gray_kernel_mac_muladd_8ns_7ns_17ns_17_4_1_DSP48_0_U/m_reg_reg is absorbed into DSP grp_proc_stage_Pipeline_VITIS_LOOP_24_1_fu_50/mac_muladd_8ns_7ns_17ns_17_4_1_U13/gray_kernel_mac_muladd_8ns_7ns_17ns_17_4_1_DSP48_0_U/m_reg_reg.
+DSP Report: operator grp_proc_stage_Pipeline_VITIS_LOOP_24_1_fu_50/mac_muladd_8ns_7ns_17ns_17_4_1_U13/gray_kernel_mac_muladd_8ns_7ns_17ns_17_4_1_DSP48_0_U/m is absorbed into DSP grp_proc_stage_Pipeline_VITIS_LOOP_24_1_fu_50/mac_muladd_8ns_7ns_17ns_17_4_1_U13/gray_kernel_mac_muladd_8ns_7ns_17ns_17_4_1_DSP48_0_U/m_reg_reg.
+DSP Report: Generating DSP grp_proc_stage_Pipeline_VITIS_LOOP_24_1_fu_50/mac_muladd_8ns_7ns_17ns_17_4_1_U13/gray_kernel_mac_muladd_8ns_7ns_17ns_17_4_1_DSP48_0_U/p_reg_reg, operation Mode is: (PCIN+(A:0x133)*B'')'.
+DSP Report: register grp_proc_stage_Pipeline_VITIS_LOOP_24_1_fu_50/mac_muladd_8ns_7ns_17ns_17_4_1_U13/gray_kernel_mac_muladd_8ns_7ns_17ns_17_4_1_DSP48_0_U/p_reg_reg is absorbed into DSP grp_proc_stage_Pipeline_VITIS_LOOP_24_1_fu_50/mac_muladd_8ns_7ns_17ns_17_4_1_U13/gray_kernel_mac_muladd_8ns_7ns_17ns_17_4_1_DSP48_0_U/p_reg_reg.
+DSP Report: register grp_proc_stage_Pipeline_VITIS_LOOP_24_1_fu_50/mac_muladd_8ns_7ns_17ns_17_4_1_U13/gray_kernel_mac_muladd_8ns_7ns_17ns_17_4_1_DSP48_0_U/p_reg_reg is absorbed into DSP grp_proc_stage_Pipeline_VITIS_LOOP_24_1_fu_50/mac_muladd_8ns_7ns_17ns_17_4_1_U13/gray_kernel_mac_muladd_8ns_7ns_17ns_17_4_1_DSP48_0_U/p_reg_reg.
+DSP Report: register grp_proc_stage_Pipeline_VITIS_LOOP_24_1_fu_50/mac_muladd_8ns_7ns_17ns_17_4_1_U13/gray_kernel_mac_muladd_8ns_7ns_17ns_17_4_1_DSP48_0_U/p_reg_reg is absorbed into DSP grp_proc_stage_Pipeline_VITIS_LOOP_24_1_fu_50/mac_muladd_8ns_7ns_17ns_17_4_1_U13/gray_kernel_mac_muladd_8ns_7ns_17ns_17_4_1_DSP48_0_U/p_reg_reg.
+DSP Report: operator grp_proc_stage_Pipeline_VITIS_LOOP_24_1_fu_50/mac_muladd_8ns_7ns_17ns_17_4_1_U13/gray_kernel_mac_muladd_8ns_7ns_17ns_17_4_1_DSP48_0_U/p is absorbed into DSP grp_proc_stage_Pipeline_VITIS_LOOP_24_1_fu_50/mac_muladd_8ns_7ns_17ns_17_4_1_U13/gray_kernel_mac_muladd_8ns_7ns_17ns_17_4_1_DSP48_0_U/p_reg_reg.
+DSP Report: operator grp_proc_stage_Pipeline_VITIS_LOOP_24_1_fu_50/mul_8ns_10ns_17_1_1_U12/tmp_product is absorbed into DSP grp_proc_stage_Pipeline_VITIS_LOOP_24_1_fu_50/mac_muladd_8ns_7ns_17ns_17_4_1_U13/gray_kernel_mac_muladd_8ns_7ns_17ns_17_4_1_DSP48_0_U/p_reg_reg.
+DSP Report: Generating DSP grp_proc_stage_Pipeline_VITIS_LOOP_24_1_fu_50/mac_muladd_10ns_8ns_17ns_18_4_1_U14/gray_kernel_mac_muladd_10ns_8ns_17ns_18_4_1_DSP48_0_U/p_reg_reg, operation Mode is: (C+((A:0x259)'*B'')')'.
+DSP Report: register grp_proc_stage_Pipeline_VITIS_LOOP_24_1_fu_50/mac_muladd_10ns_8ns_17ns_18_4_1_U14/gray_kernel_mac_muladd_10ns_8ns_17ns_18_4_1_DSP48_0_U/p_reg_reg is absorbed into DSP grp_proc_stage_Pipeline_VITIS_LOOP_24_1_fu_50/mac_muladd_10ns_8ns_17ns_18_4_1_U14/gray_kernel_mac_muladd_10ns_8ns_17ns_18_4_1_DSP48_0_U/p_reg_reg.
+DSP Report: register grp_proc_stage_Pipeline_VITIS_LOOP_24_1_fu_50/mac_muladd_10ns_8ns_17ns_18_4_1_U14/gray_kernel_mac_muladd_10ns_8ns_17ns_18_4_1_DSP48_0_U/p_reg_reg is absorbed into DSP grp_proc_stage_Pipeline_VITIS_LOOP_24_1_fu_50/mac_muladd_10ns_8ns_17ns_18_4_1_U14/gray_kernel_mac_muladd_10ns_8ns_17ns_18_4_1_DSP48_0_U/p_reg_reg.
+DSP Report: register grp_proc_stage_Pipeline_VITIS_LOOP_24_1_fu_50/mac_muladd_10ns_8ns_17ns_18_4_1_U14/gray_kernel_mac_muladd_10ns_8ns_17ns_18_4_1_DSP48_0_U/a_reg_reg is absorbed into DSP grp_proc_stage_Pipeline_VITIS_LOOP_24_1_fu_50/mac_muladd_10ns_8ns_17ns_18_4_1_U14/gray_kernel_mac_muladd_10ns_8ns_17ns_18_4_1_DSP48_0_U/p_reg_reg.
+DSP Report: register grp_proc_stage_Pipeline_VITIS_LOOP_24_1_fu_50/mac_muladd_10ns_8ns_17ns_18_4_1_U14/gray_kernel_mac_muladd_10ns_8ns_17ns_18_4_1_DSP48_0_U/p_reg_reg is absorbed into DSP grp_proc_stage_Pipeline_VITIS_LOOP_24_1_fu_50/mac_muladd_10ns_8ns_17ns_18_4_1_U14/gray_kernel_mac_muladd_10ns_8ns_17ns_18_4_1_DSP48_0_U/p_reg_reg.
+DSP Report: register grp_proc_stage_Pipeline_VITIS_LOOP_24_1_fu_50/mac_muladd_10ns_8ns_17ns_18_4_1_U14/gray_kernel_mac_muladd_10ns_8ns_17ns_18_4_1_DSP48_0_U/m_reg_reg is absorbed into DSP grp_proc_stage_Pipeline_VITIS_LOOP_24_1_fu_50/mac_muladd_10ns_8ns_17ns_18_4_1_U14/gray_kernel_mac_muladd_10ns_8ns_17ns_18_4_1_DSP48_0_U/p_reg_reg.
+DSP Report: operator grp_proc_stage_Pipeline_VITIS_LOOP_24_1_fu_50/mac_muladd_10ns_8ns_17ns_18_4_1_U14/gray_kernel_mac_muladd_10ns_8ns_17ns_18_4_1_DSP48_0_U/p is absorbed into DSP grp_proc_stage_Pipeline_VITIS_LOOP_24_1_fu_50/mac_muladd_10ns_8ns_17ns_18_4_1_U14/gray_kernel_mac_muladd_10ns_8ns_17ns_18_4_1_DSP48_0_U/p_reg_reg.
+DSP Report: operator grp_proc_stage_Pipeline_VITIS_LOOP_24_1_fu_50/mac_muladd_10ns_8ns_17ns_18_4_1_U14/gray_kernel_mac_muladd_10ns_8ns_17ns_18_4_1_DSP48_0_U/m is absorbed into DSP grp_proc_stage_Pipeline_VITIS_LOOP_24_1_fu_50/mac_muladd_10ns_8ns_17ns_18_4_1_U14/gray_kernel_mac_muladd_10ns_8ns_17ns_18_4_1_DSP48_0_U/p_reg_reg.
+INFO: [Synth 8-6904] The RAM "inst/stream_out_U/U_gray_kernel_fifo_w8_d256_A_ram/mem_reg" of size (depth=255 x width=8) is automatically implemented using LUTRAM. BRAM implementation would be inefficient 
+INFO: [Synth 8-7082] The signal store_unit/buff_wdata/U_fifo_mem/mem_reg is implemented as Block RAM but is better mapped onto distributed LUT RAM for the following reason(s): The depth (6 address bits) is shallow. Please use attribute (* ram_style = "distributed" *) to instruct Vivado to infer distributed LUT RAM.
+RAM ("inst/stream_in_U/U_gray_kernel_fifo_w24_d256_A_ram/mem_reg") is too shallow (depth = 255) to use URAM. Choosing BRAM instead of URAM 
+INFO: [Synth 8-6904] The RAM "inst/stream_out_U/U_gray_kernel_fifo_w8_d256_A_ram/mem_reg" of size (depth=255 x width=8) is automatically implemented using LUTRAM. BRAM implementation would be inefficient 
+WARNING: [Synth 8-3332] Sequential element (FSM_onehot_wstate_reg[0]) is unused and will be removed from module gray_kernel_control_s_axi.
+WARNING: [Synth 8-3332] Sequential element (FSM_onehot_rstate_reg[0]) is unused and will be removed from module gray_kernel_control_s_axi.
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:17 ; elapsed = 00:00:18 . Memory (MB): peak = 2910.363 ; gain = 552.531 ; free physical = 251 ; free virtual = 24536
+---------------------------------------------------------------------------------
+ Sort Area is  grp_proc_stage_Pipeline_VITIS_LOOP_24_1_fu_50/mac_muladd_10ns_8ns_17ns_18_4_1_U14/gray_kernel_mac_muladd_10ns_8ns_17ns_18_4_1_DSP48_0_U/p_reg_reg_3 : 0 0 : 2630 2630 : Used 1 time 0
+ Sort Area is  grp_proc_stage_Pipeline_VITIS_LOOP_24_1_fu_50/mac_muladd_8ns_7ns_17ns_17_4_1_U13/gray_kernel_mac_muladd_8ns_7ns_17ns_17_4_1_DSP48_0_U/m_reg_reg_0 : 0 0 : 1211 1590 : Used 1 time 0
+ Sort Area is  grp_proc_stage_Pipeline_VITIS_LOOP_24_1_fu_50/mac_muladd_8ns_7ns_17ns_17_4_1_U13/gray_kernel_mac_muladd_8ns_7ns_17ns_17_4_1_DSP48_0_U/m_reg_reg_0 : 0 1 : 379 1590 : Used 1 time 0
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+Block RAM: Preliminary Mapping Report (see note below)
++------------------+-------------------------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+-----------------+
+|Module Name       | RTL Object                                | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | RAMB18 | RAMB36 | Cascade Heights | 
++------------------+-------------------------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+-----------------+
+|inst/gmem_m_axi_U | store_unit/buff_wdata/U_fifo_mem/mem_reg  | 63 x 9(WRITE_FIRST)    |   | R | 63 x 9(READ_FIRST)     | W |   | Port A and B     | 1      | 0      | 1               | 
+|inst/gmem_m_axi_U | load_unit_0/buff_rdata/U_fifo_mem/mem_reg | 255 x 34(READ_FIRST)   | W |   | 255 x 34(WRITE_FIRST)  |   | R | Port A and B     | 1      | 0      |                 | 
+|inst/stream_in_U  | U_gray_kernel_fifo_w24_d256_A_ram/mem_reg | 255 x 24(READ_FIRST)   | W |   | 255 x 24(WRITE_FIRST)  |   | R | Port A and B     | 1      | 0      |                 | 
++------------------+-------------------------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+-----------------+
+
+Note: The table above is a preliminary report that shows the Block RAMs at the current stage of the synthesis flow. Some Block RAMs may be reimplemented as non Block RAM primitives later in the synthesis flow. Multiple instantiated Block RAMs are reported only once. 
+
+Distributed RAM: Preliminary Mapping Report (see note below)
++------------------+------------------------------------------+-----------+----------------------+--------------+
+|Module Name       | RTL Object                               | Inference | Size (Depth x Width) | Primitives   | 
++------------------+------------------------------------------+-----------+----------------------+--------------+
+|inst/stream_out_U | U_gray_kernel_fifo_w8_d256_A_ram/mem_reg | Implied   | 256 x 8              | RAM64M8 x 8  | 
++------------------+------------------------------------------+-----------+----------------------+--------------+
+
+Note: The table above is a preliminary report that shows the Distributed RAMs at the current stage of the synthesis flow. Some Distributed RAMs may be reimplemented as non Distributed RAM primitives later in the synthesis flow. Multiple instantiated RAMs are reported only once.
+
+DSP: Preliminary Mapping Report (see note below. The ' indicates corresponding REG is set)
++-----------------------+------------------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|Module Name            | DSP Mapping            | A Size | B Size | C Size | D Size | P Size | AREG | BREG | CREG | DREG | ADREG | MREG | PREG | 
++-----------------------+------------------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|gray_kernel_proc_stage | ((A:0x75)'*B2)'        | 9      | 17     | -      | -      | 34     | 1    | 1    | -    | -    | -     | 1    | 0    | 
+|gray_kernel_proc_stage | (PCIN+(A:0x133)*B'')'  | 10     | 9      | -      | -      | 17     | 0    | 2    | -    | -    | -     | 0    | 1    | 
+|gray_kernel_proc_stage | (C+((A:0x259)'*B'')')' | 18     | 18     | 18     | -      | 18     | 2    | 1    | 0    | -    | -     | 1    | 1    | 
++-----------------------+------------------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+
+Note: The table above is a preliminary report that shows the DSPs inferred at the current stage of the synthesis flow. Some DSP may be reimplemented as non DSP primitives later in the synthesis flow. Multiple instantiated DSPs are reported only once.
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:22 ; elapsed = 00:00:24 . Memory (MB): peak = 3351.090 ; gain = 993.258 ; free physical = 361 ; free virtual = 24202
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:25 ; elapsed = 00:00:26 . Memory (MB): peak = 3431.535 ; gain = 1073.703 ; free physical = 269 ; free virtual = 24110
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+Block RAM: Final Mapping Report
++------------------+-------------------------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+-----------------+
+|Module Name       | RTL Object                                | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | RAMB18 | RAMB36 | Cascade Heights | 
++------------------+-------------------------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+-----------------+
+|inst/gmem_m_axi_U | store_unit/buff_wdata/U_fifo_mem/mem_reg  | 63 x 9(WRITE_FIRST)    |   | R | 63 x 9(READ_FIRST)     | W |   | Port A and B     | 1      | 0      | 1               | 
+|inst/gmem_m_axi_U | load_unit_0/buff_rdata/U_fifo_mem/mem_reg | 255 x 34(READ_FIRST)   | W |   | 255 x 34(WRITE_FIRST)  |   | R | Port A and B     | 1      | 0      |                 | 
+|inst/stream_in_U  | U_gray_kernel_fifo_w24_d256_A_ram/mem_reg | 255 x 24(READ_FIRST)   | W |   | 255 x 24(WRITE_FIRST)  |   | R | Port A and B     | 1      | 0      |                 | 
++------------------+-------------------------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+-----------------+
+
+
+Distributed RAM: Final Mapping Report
++------------------+------------------------------------------+-----------+----------------------+--------------+
+|Module Name       | RTL Object                               | Inference | Size (Depth x Width) | Primitives   | 
++------------------+------------------------------------------+-----------+----------------------+--------------+
+|inst/stream_out_U | U_gray_kernel_fifo_w8_d256_A_ram/mem_reg | Implied   | 256 x 8              | RAM64M8 x 8  | 
++------------------+------------------------------------------+-----------+----------------------+--------------+
+
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+INFO: [Synth 8-7052] The timing for the instance inst/gmem_m_axi_U/store_unit/buff_wdata/U_fifo_mem/mem_reg_bram_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/gmem_m_axi_U/load_unit_0/buff_rdata/U_fifo_mem/mem_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/stream_in_U/U_gray_kernel_fifo_w24_d256_A_ram/mem_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:26 ; elapsed = 00:00:27 . Memory (MB): peak = 3447.551 ; gain = 1089.719 ; free physical = 377 ; free virtual = 24101
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:28 ; elapsed = 00:00:30 . Memory (MB): peak = 3453.488 ; gain = 1095.656 ; free physical = 377 ; free virtual = 24101
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:28 ; elapsed = 00:00:30 . Memory (MB): peak = 3453.488 ; gain = 1095.656 ; free physical = 377 ; free virtual = 24101
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:28 ; elapsed = 00:00:30 . Memory (MB): peak = 3453.488 ; gain = 1095.656 ; free physical = 377 ; free virtual = 24101
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:28 ; elapsed = 00:00:30 . Memory (MB): peak = 3453.488 ; gain = 1095.656 ; free physical = 377 ; free virtual = 24101
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:28 ; elapsed = 00:00:30 . Memory (MB): peak = 3453.488 ; gain = 1095.656 ; free physical = 377 ; free virtual = 24101
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:28 ; elapsed = 00:00:30 . Memory (MB): peak = 3453.488 ; gain = 1095.656 ; free physical = 377 ; free virtual = 24101
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+Static Shift Register Report:
++------------+--------------------------------------------------------------------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
+|Module Name | RTL Name                                                                                         | Length | Width | Reset Signal | Pull out first Reg | Pull out last Reg | SRL16E | SRLC32E | 
++------------+--------------------------------------------------------------------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
+|gray_kernel | proc_stage_U0/grp_proc_stage_Pipeline_VITIS_LOOP_24_1_fu_50/ap_loop_exit_ready_pp0_iter4_reg_reg | 4      | 1     | NO           | NO                 | YES               | 1      | 0       | 
++------------+--------------------------------------------------------------------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
+
+
+Dynamic Shift Register Report:
++------------+----------------+--------+------------+--------+---------+--------+--------+--------+
+|Module Name | RTL Name       | Length | Data Width | SRL16E | SRLC32E | Mux F7 | Mux F8 | Mux F9 | 
++------------+----------------+--------+------------+--------+---------+--------+--------+--------+
+|dsrl        | mem_reg[14]    | 34     | 34         | 34     | 0       | 0      | 0      | 0      | 
+|dsrl__1     | mem_reg[5]     | 96     | 96         | 96     | 0       | 0      | 0      | 0      | 
+|dsrl__2     | mem_reg[14]    | 1      | 1          | 1      | 0       | 0      | 0      | 0      | 
+|dsrl__3     | mem_reg[5]     | 1      | 1          | 1      | 0       | 0      | 0      | 0      | 
+|dsrl__4     | mem_reg[14]    | 4      | 4          | 4      | 0       | 0      | 0      | 0      | 
+|dsrl__5     | mem_reg[14]    | 8      | 8          | 8      | 0       | 0      | 0      | 0      | 
+|dsrl__6     | mem_reg[14]    | 72     | 72         | 72     | 0       | 0      | 0      | 0      | 
+|dsrl__7     | mem_reg[14]    | 37     | 37         | 37     | 0       | 0      | 0      | 0      | 
+|dsrl__8     | SRL_SIG_reg[3] | 64     | 64         | 64     | 0       | 0      | 0      | 0      | 
+|dsrl__9     | SRL_SIG_reg[2] | 1      | 1          | 1      | 0       | 0      | 0      | 0      | 
++------------+----------------+--------+------------+--------+---------+--------+--------+--------+
+
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+DSP Final Report (the ' indicates corresponding REG is set)
++-----------------------+----------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|Module Name            | DSP Mapping    | A Size | B Size | C Size | D Size | P Size | AREG | BREG | CREG | DREG | ADREG | MREG | PREG | 
++-----------------------+----------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|gray_kernel_proc_stage | (C+(A''*B')')' | 8      | 10     | 17     | -      | 18     | 2    | 1    | 1    | -    | -     | 1    | 1    | 
+|gray_kernel_proc_stage | (A'*B')'       | 8      | 7      | -      | -      | 0      | 1    | 1    | -    | -    | -     | 0    | 1    | 
+|gray_kernel_proc_stage | (PCIN+A*B'')'  | 9      | 8      | -      | -      | 17     | 0    | 2    | -    | -    | -     | 0    | 1    | 
++-----------------------+----------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+----------------+------+
+|      |Cell            |Count |
++------+----------------+------+
+|1     |CARRY8          |    94|
+|2     |DSP_ALU         |     3|
+|4     |DSP_A_B_DATA    |     3|
+|7     |DSP_C_DATA      |     3|
+|9     |DSP_MULTIPLIER  |     3|
+|10    |DSP_M_DATA      |     3|
+|12    |DSP_OUTPUT      |     3|
+|13    |DSP_PREADD      |     3|
+|14    |DSP_PREADD_DATA |     3|
+|15    |LUT1            |   127|
+|16    |LUT2            |   240|
+|17    |LUT3            |   936|
+|18    |LUT4            |   544|
+|19    |LUT5            |   294|
+|20    |LUT6            |   506|
+|21    |RAM64M8         |     4|
+|22    |RAM64X1D        |     4|
+|23    |RAMB18E2        |     3|
+|25    |SRL16E          |   404|
+|26    |FDRE            |  3073|
+|27    |FDSE            |    19|
++------+----------------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:28 ; elapsed = 00:00:30 . Memory (MB): peak = 3453.488 ; gain = 1095.656 ; free physical = 377 ; free virtual = 24101
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 173 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:24 ; elapsed = 00:00:26 . Memory (MB): peak = 3453.488 ; gain = 964.875 ; free physical = 377 ; free virtual = 24101
+Synthesis Optimization Complete : Time (s): cpu = 00:00:29 ; elapsed = 00:00:30 . Memory (MB): peak = 3453.488 ; gain = 1095.656 ; free physical = 377 ; free virtual = 24101
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00.03 ; elapsed = 00:00:00.04 . Memory (MB): peak = 3453.488 ; gain = 0.000 ; free physical = 663 ; free virtual = 24387
+INFO: [Netlist 29-17] Analyzing 105 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 3453.488 ; gain = 0.000 ; free physical = 662 ; free virtual = 24387
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 11 instances were transformed.
+  DSP48E2 => DSP48E2 (DSP_ALU, DSP_A_B_DATA, DSP_C_DATA, DSP_MULTIPLIER, DSP_M_DATA, DSP_OUTPUT, DSP_PREADD, DSP_PREADD_DATA): 3 instances
+  RAM64M8 => RAM64M8 (RAMD64E(x8)): 4 instances
+  RAM64X1D => RAM64X1D (RAMD64E(x2)): 4 instances
+
+Synth Design complete | Checksum: cec7fd01
+INFO: [Common 17-83] Releasing license: Synthesis
+164 Infos, 112 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:35 ; elapsed = 00:00:36 . Memory (MB): peak = 3453.488 ; gain = 2019.898 ; free physical = 662 ; free virtual = 24387
+INFO: [Common 17-2834] synth_design peak Physical Memory [PSS] (MB): overall = 2956.944; main = 2593.071; forked = 394.083
+INFO: [Common 17-2834] synth_design peak Virtual Memory [VSS] (MB): overall = 4517.289; main = 3453.492; forked = 1063.797
+Write ShapeDB Complete: Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.01 . Memory (MB): peak = 3459.824 ; gain = 0.000 ; free physical = 662 ; free virtual = 24387
+INFO: [Common 17-1381] The checkpoint '/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.runs/bd_0_hls_inst_0_synth_1/bd_0_hls_inst_0.dcp' has been generated.
+INFO: [Coretcl 2-1648] Added synthesis output to IP cache for IP bd_0_hls_inst_0, cache-ID = 73760430657dcccf
+INFO: [Coretcl 2-1174] Renamed 68 cell refs.
+Write ShapeDB Complete: Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.01 . Memory (MB): peak = 3459.824 ; gain = 0.000 ; free physical = 617 ; free virtual = 24368
+INFO: [Common 17-1381] The checkpoint '/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.runs/bd_0_hls_inst_0_synth_1/bd_0_hls_inst_0.dcp' has been generated.
+INFO: [Vivado 12-24828] Executing command : report_utilization -file bd_0_hls_inst_0_utilization_synth.rpt -pb bd_0_hls_inst_0_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Sun Jul 19 18:30:14 2026...

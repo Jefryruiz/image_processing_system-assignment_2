@@ -1,0 +1,206 @@
+<profile>
+  <RunData>
+    <RUN_TYPE>synth</RUN_TYPE>
+    <VIVADO_VERSION>v.2024.1</VIVADO_VERSION>
+    <ROOT_MODULE_CELL>bd_0_i/hls_inst</ROOT_MODULE_CELL>
+  </RunData>
+  <TimingReport>
+    <TargetClockPeriod>4.000</TargetClockPeriod>
+    <AchievedClockPeriod>2.182</AchievedClockPeriod>
+    <CLOCK_NAME>ap_clk</CLOCK_NAME>
+    <CP_FINAL>2.182</CP_FINAL>
+    <CP_ROUTE>NA</CP_ROUTE>
+    <CP_SYNTH>2.182</CP_SYNTH>
+    <CP_TARGET>4.000</CP_TARGET>
+    <SLACK_FINAL>1.818</SLACK_FINAL>
+    <SLACK_ROUTE/>
+    <SLACK_SYNTH>1.818</SLACK_SYNTH>
+    <TIMING_MET>TRUE</TIMING_MET>
+    <TNS_FINAL>0.000</TNS_FINAL>
+    <TNS_ROUTE>NA</TNS_ROUTE>
+    <TNS_SYNTH>0.000</TNS_SYNTH>
+    <WNS_FINAL>1.818</WNS_FINAL>
+    <WNS_ROUTE>NA</WNS_ROUTE>
+    <WNS_SYNTH>1.818</WNS_SYNTH>
+  </TimingReport>
+  <AreaReport>
+    <Resources>
+      <BRAM>3</BRAM>
+      <CLB>0</CLB>
+      <DSP>3</DSP>
+      <FF>3092</FF>
+      <LATCH>0</LATCH>
+      <LUT>2551</LUT>
+      <SRL>404</SRL>
+      <URAM>0</URAM>
+    </Resources>
+    <AvailableResources>
+      <BRAM>288</BRAM>
+      <CLB>0</CLB>
+      <DSP>1248</DSP>
+      <FF>234240</FF>
+      <LUT>117120</LUT>
+      <URAM>64</URAM>
+    </AvailableResources>
+  </AreaReport>
+  <RtlModules>
+    <RtlModule CELL="inst" DEPTH="0" IS_TOP="1" TYPE="function" MODULENAME="gray_kernel" DISPNAME="inst" RTLNAME="gray_kernel">
+      <SubModules count="13">control_s_axi_U entry_proc_U0 gmem_m_axi_U num_pixels_c1_U num_pixels_c_U out_r_c_U proc_stage_U0 read_stage_U0 start_for_proc_stage_U0_U start_for_write_stage_U0_U stream_in_U stream_out_U write_stage_U0</SubModules>
+      <Resources BRAM="3" DSP="3" FF="3092" LUT="2551"/>
+      <LocalResources FF="2"/>
+    </RtlModule>
+    <RtlModule CELL="inst/control_s_axi_U" DEPTH="1" TYPE="resource" MODULENAME="control_s_axi" DISPNAME="control_s_axi_U" RTLNAME="gray_kernel_control_s_axi">
+      <Resources FF="213" LUT="263"/>
+      <BindNode BINDTYPE="adapter" BRAM="0" BUNDLEDNAME="control" DISPNAME="bind_adapter " DSP="0" ID="" IMPL="" LATENCY="" LOOP="" OPTYPE="" PRAGMA="" RTLNAME="control_s_axi_U" SOURCE="" STORAGESIZE="" STORAGESUBTYPE="s_axilite" STORAGEUSAGE="interface" URAM="0" VARIABLE=""/>
+    </RtlModule>
+    <RtlModule CELL="inst/entry_proc_U0" DEPTH="1" TYPE="function" MODULENAME="entry_proc" DISPNAME="entry_proc_U0" RTLNAME="gray_kernel_entry_proc">
+      <Resources FF="1"/>
+    </RtlModule>
+    <RtlModule CELL="inst/gmem_m_axi_U" DEPTH="1" TYPE="resource" MODULENAME="gmem_m_axi" DISPNAME="gmem_m_axi_U" RTLNAME="gray_kernel_gmem_m_axi">
+      <Resources BRAM="2" FF="2274" LUT="1668"/>
+      <BindNode BINDTYPE="adapter" BRAM="2" BUNDLEDNAME="gmem" DISPNAME="bind_adapter " DSP="0" ID="" IMPL="" LATENCY="" LOOP="" OPTYPE="" PRAGMA="" RTLNAME="gmem_m_axi_U" SOURCE="" STORAGESIZE="" STORAGESUBTYPE="m_axi" STORAGEUSAGE="interface" URAM="0" VARIABLE=""/>
+    </RtlModule>
+    <RtlModule CELL="inst/num_pixels_c1_U" DEPTH="1" TYPE="resource" MODULENAME="fifo_w32_d2_S" DISPNAME="num_pixels_c1_U" RTLNAME="gray_kernel_fifo_w32_d2_S">
+      <Resources FF="70" LUT="23"/>
+      <LocalResources FF="6" LUT="7"/>
+      <BindNode BINDTYPE="storage" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_storage fifo" DSP="0" ID="" IMPL="srl" LATENCY="0" LOOP="" OPTYPE="fifo" PRAGMA="" RTLNAME="num_pixels_c1_U" SOURCE="gray_kernel.cpp:53" STORAGESIZE="32 2 1" STORAGESUBTYPE="scalar prop" STORAGEUSAGE="fifo channel" URAM="0" VARIABLE="num_pixels_c1" VISIBLE="true"/>
+    </RtlModule>
+    <RtlModule CELL="inst/num_pixels_c_U" DEPTH="1" TYPE="resource" MODULENAME="fifo_w32_d2_S" DISPNAME="num_pixels_c_U" RTLNAME="gray_kernel_fifo_w32_d2_S">
+      <Resources FF="70" LUT="41"/>
+      <LocalResources FF="6" LUT="9"/>
+      <BindNode BINDTYPE="storage" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_storage fifo" DSP="0" ID="" IMPL="srl" LATENCY="0" LOOP="" OPTYPE="fifo" PRAGMA="" RTLNAME="num_pixels_c_U" SOURCE="gray_kernel.cpp:53" STORAGESIZE="32 2 1" STORAGESUBTYPE="scalar prop" STORAGEUSAGE="fifo channel" URAM="0" VARIABLE="num_pixels_c" VISIBLE="true"/>
+    </RtlModule>
+    <RtlModule CELL="inst/out_r_c_U" DEPTH="1" TYPE="resource" MODULENAME="fifo_w64_d4_S" DISPNAME="out_r_c_U" RTLNAME="gray_kernel_fifo_w64_d4_S">
+      <Resources FF="7" LUT="74"/>
+      <LocalResources FF="7" LUT="10"/>
+      <BindNode BINDTYPE="storage" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_storage fifo" DSP="0" ID="" IMPL="srl" LATENCY="0" LOOP="" OPTYPE="fifo" PRAGMA="" RTLNAME="out_r_c_U" SOURCE="gray_kernel.cpp:53" STORAGESIZE="64 4 1" STORAGESUBTYPE="scalar prop" STORAGEUSAGE="fifo channel" URAM="0" VARIABLE="out_r_c" VISIBLE="true"/>
+    </RtlModule>
+    <RtlModule CELL="inst/proc_stage_U0" DEPTH="1" TYPE="function" MODULENAME="proc_stage" DISPNAME="proc_stage_U0" RTLNAME="gray_kernel_proc_stage">
+      <SubModules count="1">grp_proc_stage_Pipeline_VITIS_LOOP_24_1_fu_50</SubModules>
+      <Resources DSP="3" FF="75" LUT="88"/>
+      <LocalResources FF="36" LUT="1"/>
+    </RtlModule>
+    <RtlModule CELL="inst/proc_stage_U0/grp_proc_stage_Pipeline_VITIS_LOOP_24_1_fu_50" DEPTH="2" TYPE="function" MODULENAME="proc_stage_Pipeline_VITIS_LOOP_24_1" DISPNAME="grp_proc_stage_Pipeline_VITIS_LOOP_24_1_fu_50" RTLNAME="gray_kernel_proc_stage_Pipeline_VITIS_LOOP_24_1">
+      <SubModules count="3">flow_control_loop_pipe_sequential_init_U mac_muladd_10ns_8ns_17ns_18_4_1_U14 mac_muladd_8ns_7ns_17ns_17_4_1_U13</SubModules>
+      <Resources DSP="3" FF="39" LUT="87"/>
+      <LocalResources FF="37" LUT="11"/>
+    </RtlModule>
+    <RtlModule CELL="inst/proc_stage_U0/grp_proc_stage_Pipeline_VITIS_LOOP_24_1_fu_50/flow_control_loop_pipe_sequential_init_U" DEPTH="3" TYPE="rtl" MODULENAME="flow_control_loop_pipe_sequential_init" DISPNAME="flow_control_loop_pipe_sequential_init_U" RTLNAME="gray_kernel_flow_control_loop_pipe_sequential_init">
+      <Resources FF="2" LUT="75"/>
+    </RtlModule>
+    <RtlModule CELL="inst/proc_stage_U0/grp_proc_stage_Pipeline_VITIS_LOOP_24_1_fu_50/mac_muladd_10ns_8ns_17ns_18_4_1_U14" DEPTH="3" TYPE="resource" MODULENAME="mac_muladd_10ns_8ns_17ns_18_4_1" DISPNAME="mac_muladd_10ns_8ns_17ns_18_4_1_U14" RTLNAME="gray_kernel_mac_muladd_10ns_8ns_17ns_18_4_1">
+      <Resources DSP="1"/>
+      <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op mul" DSP="1" ID="" IMPL="dsp_slice" LATENCY="3" LOOP="VITIS_LOOP_24_1" OPTYPE="mul" PRAGMA="" RTLNAME="mac_muladd_10ns_8ns_17ns_18_4_1_U14" SOURCE="gray_kernel.cpp:31" STORAGESUBTYPE="" URAM="0" VARIABLE="mul_ln31_1" VISIBLE="true"/>
+      <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op add" DSP="1" ID="" IMPL="dsp_slice" LATENCY="3" LOOP="VITIS_LOOP_24_1" OPTYPE="add" PRAGMA="" RTLNAME="mac_muladd_10ns_8ns_17ns_18_4_1_U14" SOURCE="gray_kernel.cpp:31" STORAGESUBTYPE="" URAM="0" VARIABLE="add_ln31_1" VISIBLE="true"/>
+    </RtlModule>
+    <RtlModule CELL="inst/proc_stage_U0/grp_proc_stage_Pipeline_VITIS_LOOP_24_1_fu_50/mac_muladd_8ns_7ns_17ns_17_4_1_U13" DEPTH="3" TYPE="resource" MODULENAME="mac_muladd_8ns_7ns_17ns_17_4_1" DISPNAME="mac_muladd_8ns_7ns_17ns_17_4_1_U13" RTLNAME="gray_kernel_mac_muladd_8ns_7ns_17ns_17_4_1">
+      <Resources DSP="2" LUT="1"/>
+      <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op mul" DSP="1" ID="" IMPL="dsp_slice" LATENCY="3" LOOP="VITIS_LOOP_24_1" OPTYPE="mul" PRAGMA="" RTLNAME="mac_muladd_8ns_7ns_17ns_17_4_1_U13" SOURCE="gray_kernel.cpp:31" STORAGESUBTYPE="" URAM="0" VARIABLE="mul_ln31_2" VISIBLE="true"/>
+      <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op zext" DSP="1" ID="" IMPL="dsp_slice" LATENCY="3" LOOP="VITIS_LOOP_24_1" OPTYPE="zext" PRAGMA="" RTLNAME="mac_muladd_8ns_7ns_17ns_17_4_1_U13" SOURCE="gray_kernel.cpp:31" STORAGESUBTYPE="" URAM="0" VARIABLE="zext_ln31_3" VISIBLE="false"/>
+      <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op add" DSP="1" ID="" IMPL="dsp_slice" LATENCY="3" LOOP="VITIS_LOOP_24_1" OPTYPE="add" PRAGMA="" RTLNAME="mac_muladd_8ns_7ns_17ns_17_4_1_U13" SOURCE="gray_kernel.cpp:31" STORAGESUBTYPE="" URAM="0" VARIABLE="add_ln31" VISIBLE="true"/>
+    </RtlModule>
+    <RtlModule CELL="inst/read_stage_U0" DEPTH="1" TYPE="function" MODULENAME="read_stage" DISPNAME="read_stage_U0" RTLNAME="gray_kernel_read_stage">
+      <SubModules count="1">grp_read_stage_Pipeline_VITIS_LOOP_15_1_fu_82</SubModules>
+      <Resources FF="108" LUT="111"/>
+      <LocalResources FF="45" LUT="26"/>
+    </RtlModule>
+    <RtlModule CELL="inst/read_stage_U0/grp_read_stage_Pipeline_VITIS_LOOP_15_1_fu_82" DEPTH="2" TYPE="function" MODULENAME="read_stage_Pipeline_VITIS_LOOP_15_1" DISPNAME="grp_read_stage_Pipeline_VITIS_LOOP_15_1_fu_82" RTLNAME="gray_kernel_read_stage_Pipeline_VITIS_LOOP_15_1">
+      <SubModules count="1">flow_control_loop_pipe_sequential_init_U</SubModules>
+      <Resources FF="63" LUT="85"/>
+      <LocalResources FF="61" LUT="24"/>
+    </RtlModule>
+    <RtlModule CELL="inst/read_stage_U0/grp_read_stage_Pipeline_VITIS_LOOP_15_1_fu_82/flow_control_loop_pipe_sequential_init_U" DEPTH="3" TYPE="rtl" MODULENAME="flow_control_loop_pipe_sequential_init" DISPNAME="flow_control_loop_pipe_sequential_init_U" RTLNAME="gray_kernel_flow_control_loop_pipe_sequential_init">
+      <Resources FF="2" LUT="61"/>
+    </RtlModule>
+    <RtlModule CELL="inst/start_for_proc_stage_U0_U" DEPTH="1" TYPE="rtl" MODULENAME="start_for_proc_stage_U0" DISPNAME="start_for_proc_stage_U0_U" RTLNAME="gray_kernel_start_for_proc_stage_U0">
+      <Resources FF="4" LUT="5"/>
+    </RtlModule>
+    <RtlModule CELL="inst/start_for_write_stage_U0_U" DEPTH="1" TYPE="rtl" MODULENAME="start_for_write_stage_U0" DISPNAME="start_for_write_stage_U0_U" RTLNAME="gray_kernel_start_for_write_stage_U0">
+      <Resources FF="5" LUT="7"/>
+    </RtlModule>
+    <RtlModule CELL="inst/stream_in_U" DEPTH="1" TYPE="resource" MODULENAME="fifo_w24_d256_A" DISPNAME="stream_in_U" RTLNAME="gray_kernel_fifo_w24_d256_A">
+      <Resources BRAM="1" FF="37" LUT="40"/>
+      <LocalResources FF="37" LUT="40"/>
+      <BindNode BINDTYPE="storage" BRAM="2" BUNDLEDNAME="" DISPNAME="bind_storage fifo" DSP="0" ID="" IMPL="memory" LATENCY="0" LOOP="" OPTYPE="fifo" PRAGMA="" RTLNAME="stream_in_U" SOURCE="gray_kernel.cpp:54" STORAGESIZE="24 256 1" STORAGESUBTYPE="stream" STORAGEUSAGE="fifo channel" URAM="0" VARIABLE="stream_in" VISIBLE="true"/>
+    </RtlModule>
+    <RtlModule CELL="inst/stream_out_U" DEPTH="1" TYPE="resource" MODULENAME="fifo_w8_d256_A" DISPNAME="stream_out_U" RTLNAME="gray_kernel_fifo_w8_d256_A">
+      <Resources FF="45" LUT="92"/>
+      <LocalResources FF="37" LUT="40"/>
+      <BindNode BINDTYPE="storage" BRAM="1" BUNDLEDNAME="" DISPNAME="bind_storage fifo" DSP="0" ID="" IMPL="memory" LATENCY="0" LOOP="" OPTYPE="fifo" PRAGMA="" RTLNAME="stream_out_U" SOURCE="gray_kernel.cpp:55" STORAGESIZE="8 256 1" STORAGESUBTYPE="stream" STORAGEUSAGE="fifo channel" URAM="0" VARIABLE="stream_out" VISIBLE="true"/>
+    </RtlModule>
+    <RtlModule CELL="inst/write_stage_U0" DEPTH="1" TYPE="function" MODULENAME="write_stage" DISPNAME="write_stage_U0" RTLNAME="gray_kernel_write_stage">
+      <SubModules count="1">grp_write_stage_Pipeline_VITIS_LOOP_38_1_fu_69</SubModules>
+      <Resources FF="181" LUT="139"/>
+      <LocalResources FF="137" LUT="56"/>
+    </RtlModule>
+    <RtlModule CELL="inst/write_stage_U0/grp_write_stage_Pipeline_VITIS_LOOP_38_1_fu_69" DEPTH="2" TYPE="function" MODULENAME="write_stage_Pipeline_VITIS_LOOP_38_1" DISPNAME="grp_write_stage_Pipeline_VITIS_LOOP_38_1_fu_69" RTLNAME="gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1">
+      <SubModules count="1">flow_control_loop_pipe_sequential_init_U</SubModules>
+      <Resources FF="44" LUT="83"/>
+      <LocalResources FF="42" LUT="12"/>
+    </RtlModule>
+    <RtlModule CELL="inst/write_stage_U0/grp_write_stage_Pipeline_VITIS_LOOP_38_1_fu_69/flow_control_loop_pipe_sequential_init_U" DEPTH="3" TYPE="rtl" MODULENAME="flow_control_loop_pipe_sequential_init" DISPNAME="flow_control_loop_pipe_sequential_init_U" RTLNAME="gray_kernel_flow_control_loop_pipe_sequential_init">
+      <Resources FF="2" LUT="71"/>
+    </RtlModule>
+  </RtlModules>
+  <TimingPaths>
+    <TPATH DATAPATH_DELAY="1.582" DATAPATH_LOGIC_DELAY="1.210" DATAPATH_NET_DELAY="0.372" ENDPOINT_PIN="proc_stage_U0/grp_proc_stage_Pipeline_VITIS_LOOP_24_1_fu_50/mac_muladd_8ns_7ns_17ns_17_4_1_U13/gray_kernel_mac_muladd_8ns_7ns_17ns_17_4_1_DSP48_0_U/p_reg_reg/DSP_A_B_DATA_INST/B[4]" LOGIC_LEVELS="0" MAX_FANOUT="1" SLACK="1.818" STARTPOINT_PIN="stream_in_U/U_gray_kernel_fifo_w24_d256_A_ram/mem_reg/CLKARDCLK">
+      <CELL NAME="stream_in_U/U_gray_kernel_fifo_w24_d256_A_ram/mem_reg" PRIMITIVE_TYPE="BLOCKRAM.BRAM.RAMB18E2" FILE_NAME="gray_kernel_fifo_w24_d256_A.v" LINE_NUMBER="225" MODULE_INSTNAME="stream_in_U" IS_FUNCINST="0"/>
+      <CELL NAME="proc_stage_U0/grp_proc_stage_Pipeline_VITIS_LOOP_24_1_fu_50/mac_muladd_8ns_7ns_17ns_17_4_1_U13/gray_kernel_mac_muladd_8ns_7ns_17ns_17_4_1_DSP48_0_U/p_reg_reg/DSP_A_B_DATA_INST" PRIMITIVE_TYPE="ARITHMETIC.DSP.DSP48E2" FILE_NAME="" LINE_NUMBER="" MODULE_INSTNAME="mac_muladd_8ns_7ns_17ns_17_4_1_U13" IS_FUNCINST="0"/>
+      <MODULE_INSTANCES>stream_in_U mac_muladd_8ns_7ns_17ns_17_4_1_U13</MODULE_INSTANCES>
+    </TPATH>
+    <TPATH DATAPATH_DELAY="1.575" DATAPATH_LOGIC_DELAY="1.213" DATAPATH_NET_DELAY="0.362" ENDPOINT_PIN="proc_stage_U0/grp_proc_stage_Pipeline_VITIS_LOOP_24_1_fu_50/mac_muladd_8ns_7ns_17ns_17_4_1_U13/gray_kernel_mac_muladd_8ns_7ns_17ns_17_4_1_DSP48_0_U/p_reg_reg/DSP_A_B_DATA_INST/B[5]" LOGIC_LEVELS="0" MAX_FANOUT="1" SLACK="1.830" STARTPOINT_PIN="stream_in_U/U_gray_kernel_fifo_w24_d256_A_ram/mem_reg/CLKARDCLK">
+      <CELL NAME="stream_in_U/U_gray_kernel_fifo_w24_d256_A_ram/mem_reg" PRIMITIVE_TYPE="BLOCKRAM.BRAM.RAMB18E2" FILE_NAME="gray_kernel_fifo_w24_d256_A.v" LINE_NUMBER="225" MODULE_INSTNAME="stream_in_U" IS_FUNCINST="0"/>
+      <CELL NAME="proc_stage_U0/grp_proc_stage_Pipeline_VITIS_LOOP_24_1_fu_50/mac_muladd_8ns_7ns_17ns_17_4_1_U13/gray_kernel_mac_muladd_8ns_7ns_17ns_17_4_1_DSP48_0_U/p_reg_reg/DSP_A_B_DATA_INST" PRIMITIVE_TYPE="ARITHMETIC.DSP.DSP48E2" FILE_NAME="" LINE_NUMBER="" MODULE_INSTNAME="mac_muladd_8ns_7ns_17ns_17_4_1_U13" IS_FUNCINST="0"/>
+      <MODULE_INSTANCES>stream_in_U mac_muladd_8ns_7ns_17ns_17_4_1_U13</MODULE_INSTANCES>
+    </TPATH>
+    <TPATH DATAPATH_DELAY="1.570" DATAPATH_LOGIC_DELAY="1.221" DATAPATH_NET_DELAY="0.349" ENDPOINT_PIN="proc_stage_U0/grp_proc_stage_Pipeline_VITIS_LOOP_24_1_fu_50/mac_muladd_8ns_7ns_17ns_17_4_1_U13/gray_kernel_mac_muladd_8ns_7ns_17ns_17_4_1_DSP48_0_U/p_reg_reg/DSP_A_B_DATA_INST/B[6]" LOGIC_LEVELS="0" MAX_FANOUT="1" SLACK="1.836" STARTPOINT_PIN="stream_in_U/U_gray_kernel_fifo_w24_d256_A_ram/mem_reg/CLKARDCLK">
+      <CELL NAME="stream_in_U/U_gray_kernel_fifo_w24_d256_A_ram/mem_reg" PRIMITIVE_TYPE="BLOCKRAM.BRAM.RAMB18E2" FILE_NAME="gray_kernel_fifo_w24_d256_A.v" LINE_NUMBER="225" MODULE_INSTNAME="stream_in_U" IS_FUNCINST="0"/>
+      <CELL NAME="proc_stage_U0/grp_proc_stage_Pipeline_VITIS_LOOP_24_1_fu_50/mac_muladd_8ns_7ns_17ns_17_4_1_U13/gray_kernel_mac_muladd_8ns_7ns_17ns_17_4_1_DSP48_0_U/p_reg_reg/DSP_A_B_DATA_INST" PRIMITIVE_TYPE="ARITHMETIC.DSP.DSP48E2" FILE_NAME="" LINE_NUMBER="" MODULE_INSTNAME="mac_muladd_8ns_7ns_17ns_17_4_1_U13" IS_FUNCINST="0"/>
+      <MODULE_INSTANCES>stream_in_U mac_muladd_8ns_7ns_17ns_17_4_1_U13</MODULE_INSTANCES>
+    </TPATH>
+    <TPATH DATAPATH_DELAY="1.543" DATAPATH_LOGIC_DELAY="1.224" DATAPATH_NET_DELAY="0.319" ENDPOINT_PIN="proc_stage_U0/grp_proc_stage_Pipeline_VITIS_LOOP_24_1_fu_50/mac_muladd_8ns_7ns_17ns_17_4_1_U13/gray_kernel_mac_muladd_8ns_7ns_17ns_17_4_1_DSP48_0_U/m_reg_reg/DSP_A_B_DATA_INST/A[5]" LOGIC_LEVELS="0" MAX_FANOUT="1" SLACK="1.853" STARTPOINT_PIN="stream_in_U/U_gray_kernel_fifo_w24_d256_A_ram/mem_reg/CLKARDCLK">
+      <CELL NAME="stream_in_U/U_gray_kernel_fifo_w24_d256_A_ram/mem_reg" PRIMITIVE_TYPE="BLOCKRAM.BRAM.RAMB18E2" FILE_NAME="gray_kernel_fifo_w24_d256_A.v" LINE_NUMBER="225" MODULE_INSTNAME="stream_in_U" IS_FUNCINST="0"/>
+      <CELL NAME="proc_stage_U0/grp_proc_stage_Pipeline_VITIS_LOOP_24_1_fu_50/mac_muladd_8ns_7ns_17ns_17_4_1_U13/gray_kernel_mac_muladd_8ns_7ns_17ns_17_4_1_DSP48_0_U/m_reg_reg/DSP_A_B_DATA_INST" PRIMITIVE_TYPE="ARITHMETIC.DSP.DSP48E2" FILE_NAME="" LINE_NUMBER="" MODULE_INSTNAME="mac_muladd_8ns_7ns_17ns_17_4_1_U13" IS_FUNCINST="0"/>
+      <MODULE_INSTANCES>stream_in_U mac_muladd_8ns_7ns_17ns_17_4_1_U13</MODULE_INSTANCES>
+    </TPATH>
+    <TPATH DATAPATH_DELAY="1.530" DATAPATH_LOGIC_DELAY="1.214" DATAPATH_NET_DELAY="0.316" ENDPOINT_PIN="proc_stage_U0/grp_proc_stage_Pipeline_VITIS_LOOP_24_1_fu_50/mac_muladd_8ns_7ns_17ns_17_4_1_U13/gray_kernel_mac_muladd_8ns_7ns_17ns_17_4_1_DSP48_0_U/m_reg_reg/DSP_A_B_DATA_INST/A[6]" LOGIC_LEVELS="0" MAX_FANOUT="1" SLACK="1.858" STARTPOINT_PIN="stream_in_U/U_gray_kernel_fifo_w24_d256_A_ram/mem_reg/CLKARDCLK">
+      <CELL NAME="stream_in_U/U_gray_kernel_fifo_w24_d256_A_ram/mem_reg" PRIMITIVE_TYPE="BLOCKRAM.BRAM.RAMB18E2" FILE_NAME="gray_kernel_fifo_w24_d256_A.v" LINE_NUMBER="225" MODULE_INSTNAME="stream_in_U" IS_FUNCINST="0"/>
+      <CELL NAME="proc_stage_U0/grp_proc_stage_Pipeline_VITIS_LOOP_24_1_fu_50/mac_muladd_8ns_7ns_17ns_17_4_1_U13/gray_kernel_mac_muladd_8ns_7ns_17ns_17_4_1_DSP48_0_U/m_reg_reg/DSP_A_B_DATA_INST" PRIMITIVE_TYPE="ARITHMETIC.DSP.DSP48E2" FILE_NAME="" LINE_NUMBER="" MODULE_INSTNAME="mac_muladd_8ns_7ns_17ns_17_4_1_U13" IS_FUNCINST="0"/>
+      <MODULE_INSTANCES>stream_in_U mac_muladd_8ns_7ns_17ns_17_4_1_U13</MODULE_INSTANCES>
+    </TPATH>
+  </TimingPaths>
+  <VivadoReportFiles>
+    <ReportFile TYPE="design_analysis" PATH="verilog/report/gray_kernel_design_analysis_synth.rpt"/>
+    <ReportFile TYPE="failfast" PATH="verilog/report/gray_kernel_failfast_synth.rpt"/>
+    <ReportFile TYPE="timing" PATH="verilog/report/gray_kernel_timing_synth.rpt"/>
+    <ReportFile TYPE="timing_paths" PATH="verilog/report/gray_kernel_timing_paths_synth.rpt"/>
+    <ReportFile TYPE="utilization" PATH="verilog/report/gray_kernel_utilization_synth.rpt"/>
+    <ReportFile TYPE="utilization_hierarchical" PATH="verilog/report/gray_kernel_utilization_hierarchical_synth.rpt"/>
+  </VivadoReportFiles>
+  <GeneralInfo NAME="General Information">
+    <item NAME="Date" VALUE="Sun Jul 19 18:31:10 CST 2026"/>
+    <item NAME="Version" VALUE="2024.1 (Build 5069499 on May 21 2024)"/>
+    <item NAME="Project" VALUE="gray_kernel_prj"/>
+    <item NAME="Solution" VALUE="solution1 (Vivado IP Flow Target)"/>
+    <item NAME="Product family" VALUE="zynquplus"/>
+    <item NAME="Target device" VALUE="xck26-sfvc784-2LV-c"/>
+  </GeneralInfo>
+  <RunOptions NAME="Run Constraints &amp; Options">
+    <General NAME="Design Constraints &amp; Options">
+      <item NAME="RTL Synthesis target clock" VALUE="4 ns"/>
+      <item NAME="C-Synthesis target clock" VALUE="4 ns"/>
+      <item NAME="C-Synthesis uncertainty" VALUE="27%"/>
+      <item NAME="config_export -ip_xdc_file" VALUE=""/>
+      <item NAME="config_export -ip_xdc_ooc_file" VALUE=""/>
+    </General>
+    <Syn NAME="RTL Synthesis Options">
+      <item NAME="config_export -vivado_synth_strategy" VALUE="default"/>
+      <item NAME="config_export -vivado_synth_design_args" VALUE="-directive sdx_optimization_effort_high"/>
+    </Syn>
+    <Reporting NAME="Reporting Options">
+      <item NAME="config_export -vivado_report_level" VALUE="2"/>
+      <item NAME="config_export -vivado_max_timing_paths" VALUE="10"/>
+    </Reporting>
+  </RunOptions>
+</profile>
+

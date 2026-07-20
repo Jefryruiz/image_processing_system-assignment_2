@@ -1,0 +1,51 @@
+<xilinx:hls_fe_msgs>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="gray_kernel.cpp:14:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="read_stage" ARG_PragmaIsValid="1" ARG_PragmaOptions="off" ARG_PragmaType="inline" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="gray_kernel.cpp:16:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="read_stage" ARG_PragmaIsValid="1" ARG_PragmaOptions="II=1" ARG_PragmaType="pipeline" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="gray_kernel.cpp:23:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="proc_stage" ARG_PragmaIsValid="1" ARG_PragmaOptions="off" ARG_PragmaType="inline" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="gray_kernel.cpp:25:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="proc_stage" ARG_PragmaIsValid="1" ARG_PragmaOptions="II=1" ARG_PragmaType="pipeline" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="gray_kernel.cpp:37:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="write_stage" ARG_PragmaIsValid="1" ARG_PragmaOptions="off" ARG_PragmaType="inline" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="gray_kernel.cpp:39:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="write_stage" ARG_PragmaIsValid="1" ARG_PragmaOptions="II=1" ARG_PragmaType="pipeline" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="/home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/run_hls.tcl:43:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaContext="directive" ARG_PragmaFunction="gray_kernel" ARG_PragmaIsValid="1" ARG_PragmaOptions="name=gray_kernel" ARG_PragmaType="top" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="gray_kernel.cpp:46:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="gray_kernel" ARG_PragmaIsValid="1" ARG_PragmaOptions="m_axi port=in offset=slave bundle=gmem depth=1920*1080*3" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="gray_kernel.cpp:47:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="gray_kernel" ARG_PragmaIsValid="1" ARG_PragmaOptions="m_axi port=out offset=slave bundle=gmem depth=1920*1080" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="gray_kernel.cpp:48:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="gray_kernel" ARG_PragmaIsValid="1" ARG_PragmaOptions="s_axilite port=in bundle=control" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="gray_kernel.cpp:49:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="gray_kernel" ARG_PragmaIsValid="1" ARG_PragmaOptions="s_axilite port=out bundle=control" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="gray_kernel.cpp:50:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="gray_kernel" ARG_PragmaIsValid="1" ARG_PragmaOptions="s_axilite port=num_pixels bundle=control" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="gray_kernel.cpp:51:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="gray_kernel" ARG_PragmaIsValid="1" ARG_PragmaOptions="s_axilite port=return bundle=control" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="gray_kernel.cpp:53:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="gray_kernel" ARG_PragmaIsValid="1" ARG_PragmaType="dataflow" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="gray_kernel.cpp:56:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="gray_kernel" ARG_PragmaIsValid="1" ARG_PragmaOptions="variable=stream_in depth=256" ARG_PragmaType="stream" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="gray_kernel.cpp:57:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="gray_kernel" ARG_PragmaIsValid="1" ARG_PragmaOptions="variable=stream_out depth=256" ARG_PragmaType="stream" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+</xilinx:hls_fe_msgs>
+

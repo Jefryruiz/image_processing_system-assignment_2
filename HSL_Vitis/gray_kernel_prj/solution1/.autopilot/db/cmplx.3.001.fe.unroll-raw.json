@@ -1,0 +1,44 @@
+{
+  "0": {
+    "basicblocks": 1,
+    "calls": "3 2 1",
+    "file": "gray_kernel.cpp",
+    "fileloc": 45,
+    "instructions": 26,
+    "name": "gray_kernel",
+    "total_instructions": 113
+  },
+  "1": {
+    "basicblocks": 7,
+    "calls": "",
+    "file": "gray_kernel.cpp",
+    "fileloc": 36,
+    "instructions": 17,
+    "name": "write_stage",
+    "stores": {
+      "L": 1
+    },
+    "total_instructions": 17
+  },
+  "2": {
+    "basicblocks": 7,
+    "calls": "",
+    "file": "gray_kernel.cpp",
+    "fileloc": 22,
+    "instructions": 32,
+    "name": "proc_stage",
+    "total_instructions": 32
+  },
+  "3": {
+    "basicblocks": 7,
+    "calls": "",
+    "file": "gray_kernel.cpp",
+    "fileloc": 13,
+    "instructions": 38,
+    "loads": {
+      "L": 3
+    },
+    "name": "read_stage",
+    "total_instructions": 38
+  }
+}

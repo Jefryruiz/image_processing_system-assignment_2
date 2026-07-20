@@ -1,0 +1,24 @@
+#-----------------------------------------------------------
+# Vivado v2024.1 (64-bit)
+# SW Build 5076996 on Wed May 22 18:36:09 MDT 2024
+# IP Build 5075265 on Wed May 22 21:45:21 MDT 2024
+# SharedData Build 5076995 on Wed May 22 18:29:18 MDT 2024
+# Start of session at: Sun Jul 19 18:29:28 2026
+# Process ID: 90833
+# Current directory: /home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.runs/bd_0_hls_inst_0_synth_1
+# Command line: vivado -log bd_0_hls_inst_0.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source bd_0_hls_inst_0.tcl
+# Log file: /home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.runs/bd_0_hls_inst_0_synth_1/bd_0_hls_inst_0.vds
+# Journal file: /home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/impl/verilog/project.runs/bd_0_hls_inst_0_synth_1/vivado.jou
+# Running On        :ezr45
+# Platform          :Ubuntu
+# Operating System  :Ubuntu 26.04 LTS
+# Processor Detail  :AMD Ryzen 9 5900X 12-Core Processor
+# CPU Frequency     :3445.607 MHz
+# CPU Physical cores:12
+# CPU Logical cores :24
+# Host memory       :32474 MB
+# Swap memory       :8589 MB
+# Total Virtual     :41064 MB
+# Available Virtual :27633 MB
+#-----------------------------------------------------------
+source bd_0_hls_inst_0.tcl -notrace

@@ -1,0 +1,1 @@
+set ::AESL_AUTOSIM::gTopFileName /home/jezuniga/mnt/HDD/Maestria/2026Q2/Diseno_de_alto_nivel_de_sistemas_electronicos/image_processing_system/HSL_Vitis/gray_kernel_prj/solution1/./sim/autowrap/testbench/gray_kernel.cpp_pre.cpp.tb.cpp

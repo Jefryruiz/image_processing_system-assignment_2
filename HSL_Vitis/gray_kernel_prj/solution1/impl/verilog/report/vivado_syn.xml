@@ -1,0 +1,163 @@
+<profile>
+<RunData>
+  <RUN_TYPE>synth</RUN_TYPE>
+  <VIVADO_VERSION>v.2024.1</VIVADO_VERSION>
+  <ROOT_MODULE_CELL>bd_0_i/hls_inst</ROOT_MODULE_CELL>
+</RunData>
+<TimingReport>
+  <TargetClockPeriod>4.000</TargetClockPeriod>
+  <AchievedClockPeriod>2.182</AchievedClockPeriod>
+  <CLOCK_NAME>ap_clk</CLOCK_NAME>
+  <CP_FINAL>2.182</CP_FINAL>
+  <CP_ROUTE>NA</CP_ROUTE>
+  <CP_SYNTH>2.182</CP_SYNTH>
+  <CP_TARGET>4.000</CP_TARGET>
+  <SLACK_FINAL>1.818</SLACK_FINAL>
+  <SLACK_ROUTE></SLACK_ROUTE>
+  <SLACK_SYNTH>1.818</SLACK_SYNTH>
+  <TIMING_MET>TRUE</TIMING_MET>
+  <TNS_FINAL>0.000</TNS_FINAL>
+  <TNS_ROUTE>NA</TNS_ROUTE>
+  <TNS_SYNTH>0.000</TNS_SYNTH>
+  <WNS_FINAL>1.818</WNS_FINAL>
+  <WNS_ROUTE>NA</WNS_ROUTE>
+  <WNS_SYNTH>1.818</WNS_SYNTH>
+</TimingReport>
+<AreaReport>
+  <Resources>
+    <BRAM>3</BRAM>
+    <CLB>0</CLB>
+    <DSP>3</DSP>
+    <FF>3092</FF>
+    <LATCH>0</LATCH>
+    <LUT>2551</LUT>
+    <SRL>404</SRL>
+    <URAM>0</URAM>
+  </Resources>
+  <AvailableResources>
+    <BRAM>288</BRAM>
+    <CLB>0</CLB>
+    <DSP>1248</DSP>
+    <FF>234240</FF>
+    <LUT>117120</LUT>
+    <URAM>64</URAM>
+  </AvailableResources>
+</AreaReport>
+<RtlModules>
+  <RtlModule CELL="inst" DEPTH="0" FILE_NAME="bd_0_hls_inst_0.v" ORIG_REF_NAME="gray_kernel" TOP_CELL="bd_0_i/hls_inst/inst">
+    <SubModules count="13">control_s_axi_U entry_proc_U0 gmem_m_axi_U num_pixels_c1_U num_pixels_c_U out_r_c_U proc_stage_U0 read_stage_U0 start_for_proc_stage_U0_U start_for_write_stage_U0_U stream_in_U stream_out_U write_stage_U0</SubModules>
+    <Resources BRAM="3" DSP="3" FF="3092" LUT="2551" LUTRAM="40" LogicLUT="2107" RAMB18="3" SRL="404"/>
+    <LocalResources FF="2"/>
+  </RtlModule>
+  <RtlModule CELL="inst/control_s_axi_U" DEPTH="1" FILE_NAME="gray_kernel.v" ORIG_REF_NAME="gray_kernel_control_s_axi">
+    <Resources FF="213" LUT="263" LogicLUT="263"/>
+  </RtlModule>
+  <RtlModule CELL="inst/entry_proc_U0" DEPTH="1" FILE_NAME="gray_kernel.v" ORIG_REF_NAME="gray_kernel_entry_proc">
+    <Resources FF="1"/>
+  </RtlModule>
+  <RtlModule CELL="inst/gmem_m_axi_U" DEPTH="1" FILE_NAME="gray_kernel.v" ORIG_REF_NAME="gray_kernel_gmem_m_axi">
+    <Resources BRAM="2" FF="2274" LUT="1668" LogicLUT="1329" RAMB18="2" SRL="339"/>
+  </RtlModule>
+  <RtlModule CELL="inst/num_pixels_c1_U" DEPTH="1" FILE_NAME="gray_kernel.v" ORIG_REF_NAME="gray_kernel_fifo_w32_d2_S">
+    <Resources FF="70" LUT="23" LogicLUT="23"/>
+    <LocalResources FF="6" LUT="7" LogicLUT="7"/>
+  </RtlModule>
+  <RtlModule CELL="inst/num_pixels_c_U" DEPTH="1" FILE_NAME="gray_kernel.v" ORIG_REF_NAME="gray_kernel_fifo_w32_d2_S">
+    <Resources FF="70" LUT="41" LogicLUT="41"/>
+    <LocalResources FF="6" LUT="9" LogicLUT="9"/>
+  </RtlModule>
+  <RtlModule CELL="inst/out_r_c_U" DEPTH="1" FILE_NAME="gray_kernel.v" ORIG_REF_NAME="gray_kernel_fifo_w64_d4_S">
+    <Resources FF="7" LUT="74" LogicLUT="10" SRL="64"/>
+    <LocalResources FF="7" LUT="10" LogicLUT="10"/>
+  </RtlModule>
+  <RtlModule CELL="inst/proc_stage_U0" DEPTH="1" FILE_NAME="gray_kernel.v" ORIG_REF_NAME="gray_kernel_proc_stage">
+    <SubModules count="1">grp_proc_stage_Pipeline_VITIS_LOOP_24_1_fu_50</SubModules>
+    <Resources DSP="3" FF="75" LUT="88" LogicLUT="87" SRL="1"/>
+    <LocalResources FF="36" LUT="1" LogicLUT="1"/>
+  </RtlModule>
+  <RtlModule CELL="inst/proc_stage_U0/grp_proc_stage_Pipeline_VITIS_LOOP_24_1_fu_50" DEPTH="2" FILE_NAME="gray_kernel_proc_stage.v" ORIG_REF_NAME="gray_kernel_proc_stage_Pipeline_VITIS_LOOP_24_1">
+    <SubModules count="3">flow_control_loop_pipe_sequential_init_U mac_muladd_10ns_8ns_17ns_18_4_1_U14 mac_muladd_8ns_7ns_17ns_17_4_1_U13</SubModules>
+    <Resources DSP="3" FF="39" LUT="87" LogicLUT="86" SRL="1"/>
+    <LocalResources FF="37" LUT="11" LogicLUT="10" SRL="1"/>
+  </RtlModule>
+  <RtlModule CELL="inst/proc_stage_U0/grp_proc_stage_Pipeline_VITIS_LOOP_24_1_fu_50/flow_control_loop_pipe_sequential_init_U" DEPTH="3" FILE_NAME="gray_kernel_proc_stage_Pipeline_VITIS_LOOP_24_1.v" ORIG_REF_NAME="gray_kernel_flow_control_loop_pipe_sequential_init">
+    <Resources FF="2" LUT="75" LogicLUT="75"/>
+  </RtlModule>
+  <RtlModule CELL="inst/proc_stage_U0/grp_proc_stage_Pipeline_VITIS_LOOP_24_1_fu_50/mac_muladd_10ns_8ns_17ns_18_4_1_U14" DEPTH="3" FILE_NAME="gray_kernel_proc_stage_Pipeline_VITIS_LOOP_24_1.v" ORIG_REF_NAME="gray_kernel_mac_muladd_10ns_8ns_17ns_18_4_1">
+    <Resources DSP="1"/>
+  </RtlModule>
+  <RtlModule CELL="inst/proc_stage_U0/grp_proc_stage_Pipeline_VITIS_LOOP_24_1_fu_50/mac_muladd_8ns_7ns_17ns_17_4_1_U13" DEPTH="3" FILE_NAME="gray_kernel_proc_stage_Pipeline_VITIS_LOOP_24_1.v" ORIG_REF_NAME="gray_kernel_mac_muladd_8ns_7ns_17ns_17_4_1">
+    <Resources DSP="2" LUT="1" LogicLUT="1"/>
+  </RtlModule>
+  <RtlModule CELL="inst/read_stage_U0" DEPTH="1" FILE_NAME="gray_kernel.v" ORIG_REF_NAME="gray_kernel_read_stage">
+    <SubModules count="1">grp_read_stage_Pipeline_VITIS_LOOP_15_1_fu_82</SubModules>
+    <Resources FF="108" LUT="111" LogicLUT="111"/>
+    <LocalResources FF="45" LUT="26" LogicLUT="26"/>
+  </RtlModule>
+  <RtlModule CELL="inst/read_stage_U0/grp_read_stage_Pipeline_VITIS_LOOP_15_1_fu_82" DEPTH="2" FILE_NAME="gray_kernel_read_stage.v" ORIG_REF_NAME="gray_kernel_read_stage_Pipeline_VITIS_LOOP_15_1">
+    <SubModules count="1">flow_control_loop_pipe_sequential_init_U</SubModules>
+    <Resources FF="63" LUT="85" LogicLUT="85"/>
+    <LocalResources FF="61" LUT="24" LogicLUT="24"/>
+  </RtlModule>
+  <RtlModule CELL="inst/read_stage_U0/grp_read_stage_Pipeline_VITIS_LOOP_15_1_fu_82/flow_control_loop_pipe_sequential_init_U" DEPTH="3" FILE_NAME="gray_kernel_read_stage_Pipeline_VITIS_LOOP_15_1.v" ORIG_REF_NAME="gray_kernel_flow_control_loop_pipe_sequential_init">
+    <Resources FF="2" LUT="61" LogicLUT="61"/>
+  </RtlModule>
+  <RtlModule CELL="inst/start_for_proc_stage_U0_U" DEPTH="1" FILE_NAME="gray_kernel.v" ORIG_REF_NAME="gray_kernel_start_for_proc_stage_U0">
+    <Resources FF="4" LUT="5" LogicLUT="5"/>
+  </RtlModule>
+  <RtlModule CELL="inst/start_for_write_stage_U0_U" DEPTH="1" FILE_NAME="gray_kernel.v" ORIG_REF_NAME="gray_kernel_start_for_write_stage_U0">
+    <Resources FF="5" LUT="7" LogicLUT="7"/>
+  </RtlModule>
+  <RtlModule CELL="inst/stream_in_U" DEPTH="1" FILE_NAME="gray_kernel.v" ORIG_REF_NAME="gray_kernel_fifo_w24_d256_A">
+    <Resources BRAM="1" FF="37" LUT="40" LogicLUT="40" RAMB18="1"/>
+    <LocalResources FF="37" LUT="40" LogicLUT="40"/>
+  </RtlModule>
+  <RtlModule CELL="inst/stream_out_U" DEPTH="1" FILE_NAME="gray_kernel.v" ORIG_REF_NAME="gray_kernel_fifo_w8_d256_A">
+    <Resources FF="45" LUT="92" LUTRAM="40" LogicLUT="52"/>
+    <LocalResources FF="37" LUT="40" LogicLUT="40"/>
+  </RtlModule>
+  <RtlModule CELL="inst/write_stage_U0" DEPTH="1" FILE_NAME="gray_kernel.v" ORIG_REF_NAME="gray_kernel_write_stage">
+    <SubModules count="1">grp_write_stage_Pipeline_VITIS_LOOP_38_1_fu_69</SubModules>
+    <Resources FF="181" LUT="139" LogicLUT="139"/>
+    <LocalResources FF="137" LUT="56" LogicLUT="56"/>
+  </RtlModule>
+  <RtlModule CELL="inst/write_stage_U0/grp_write_stage_Pipeline_VITIS_LOOP_38_1_fu_69" DEPTH="2" FILE_NAME="gray_kernel_write_stage.v" ORIG_REF_NAME="gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1">
+    <SubModules count="1">flow_control_loop_pipe_sequential_init_U</SubModules>
+    <Resources FF="44" LUT="83" LogicLUT="83"/>
+    <LocalResources FF="42" LUT="12" LogicLUT="12"/>
+  </RtlModule>
+  <RtlModule CELL="inst/write_stage_U0/grp_write_stage_Pipeline_VITIS_LOOP_38_1_fu_69/flow_control_loop_pipe_sequential_init_U" DEPTH="3" FILE_NAME="gray_kernel_write_stage_Pipeline_VITIS_LOOP_38_1.v" ORIG_REF_NAME="gray_kernel_flow_control_loop_pipe_sequential_init">
+    <Resources FF="2" LUT="71" LogicLUT="71"/>
+  </RtlModule>
+</RtlModules>
+<TimingPaths>
+  <TPATH DATAPATH_DELAY="1.582" DATAPATH_LOGIC_DELAY="1.210" DATAPATH_NET_DELAY="0.372" ENDPOINT_PIN="bd_0_i/hls_inst/inst/proc_stage_U0/grp_proc_stage_Pipeline_VITIS_LOOP_24_1_fu_50/mac_muladd_8ns_7ns_17ns_17_4_1_U13/gray_kernel_mac_muladd_8ns_7ns_17ns_17_4_1_DSP48_0_U/p_reg_reg/DSP_A_B_DATA_INST/B[4]" LOGIC_LEVELS="0" MAX_FANOUT="1" SLACK="1.818" STARTPOINT_PIN="bd_0_i/hls_inst/inst/stream_in_U/U_gray_kernel_fifo_w24_d256_A_ram/mem_reg/CLKARDCLK">
+    <CELL NAME="bd_0_i/hls_inst/inst/stream_in_U/U_gray_kernel_fifo_w24_d256_A_ram/mem_reg" PRIMITIVE_TYPE="BLOCKRAM.BRAM.RAMB18E2" FILE_NAME="gray_kernel_fifo_w24_d256_A.v" LINE_NUMBER="225"/>
+    <CELL NAME="bd_0_i/hls_inst/inst/proc_stage_U0/grp_proc_stage_Pipeline_VITIS_LOOP_24_1_fu_50/mac_muladd_8ns_7ns_17ns_17_4_1_U13/gray_kernel_mac_muladd_8ns_7ns_17ns_17_4_1_DSP48_0_U/p_reg_reg/DSP_A_B_DATA_INST" PRIMITIVE_TYPE="ARITHMETIC.DSP.DSP48E2" FILE_NAME="" LINE_NUMBER=""/>
+  </TPATH>
+  <TPATH DATAPATH_DELAY="1.575" DATAPATH_LOGIC_DELAY="1.213" DATAPATH_NET_DELAY="0.362" ENDPOINT_PIN="bd_0_i/hls_inst/inst/proc_stage_U0/grp_proc_stage_Pipeline_VITIS_LOOP_24_1_fu_50/mac_muladd_8ns_7ns_17ns_17_4_1_U13/gray_kernel_mac_muladd_8ns_7ns_17ns_17_4_1_DSP48_0_U/p_reg_reg/DSP_A_B_DATA_INST/B[5]" LOGIC_LEVELS="0" MAX_FANOUT="1" SLACK="1.830" STARTPOINT_PIN="bd_0_i/hls_inst/inst/stream_in_U/U_gray_kernel_fifo_w24_d256_A_ram/mem_reg/CLKARDCLK">
+    <CELL NAME="bd_0_i/hls_inst/inst/stream_in_U/U_gray_kernel_fifo_w24_d256_A_ram/mem_reg" PRIMITIVE_TYPE="BLOCKRAM.BRAM.RAMB18E2" FILE_NAME="gray_kernel_fifo_w24_d256_A.v" LINE_NUMBER="225"/>
+    <CELL NAME="bd_0_i/hls_inst/inst/proc_stage_U0/grp_proc_stage_Pipeline_VITIS_LOOP_24_1_fu_50/mac_muladd_8ns_7ns_17ns_17_4_1_U13/gray_kernel_mac_muladd_8ns_7ns_17ns_17_4_1_DSP48_0_U/p_reg_reg/DSP_A_B_DATA_INST" PRIMITIVE_TYPE="ARITHMETIC.DSP.DSP48E2" FILE_NAME="" LINE_NUMBER=""/>
+  </TPATH>
+  <TPATH DATAPATH_DELAY="1.570" DATAPATH_LOGIC_DELAY="1.221" DATAPATH_NET_DELAY="0.349" ENDPOINT_PIN="bd_0_i/hls_inst/inst/proc_stage_U0/grp_proc_stage_Pipeline_VITIS_LOOP_24_1_fu_50/mac_muladd_8ns_7ns_17ns_17_4_1_U13/gray_kernel_mac_muladd_8ns_7ns_17ns_17_4_1_DSP48_0_U/p_reg_reg/DSP_A_B_DATA_INST/B[6]" LOGIC_LEVELS="0" MAX_FANOUT="1" SLACK="1.836" STARTPOINT_PIN="bd_0_i/hls_inst/inst/stream_in_U/U_gray_kernel_fifo_w24_d256_A_ram/mem_reg/CLKARDCLK">
+    <CELL NAME="bd_0_i/hls_inst/inst/stream_in_U/U_gray_kernel_fifo_w24_d256_A_ram/mem_reg" PRIMITIVE_TYPE="BLOCKRAM.BRAM.RAMB18E2" FILE_NAME="gray_kernel_fifo_w24_d256_A.v" LINE_NUMBER="225"/>
+    <CELL NAME="bd_0_i/hls_inst/inst/proc_stage_U0/grp_proc_stage_Pipeline_VITIS_LOOP_24_1_fu_50/mac_muladd_8ns_7ns_17ns_17_4_1_U13/gray_kernel_mac_muladd_8ns_7ns_17ns_17_4_1_DSP48_0_U/p_reg_reg/DSP_A_B_DATA_INST" PRIMITIVE_TYPE="ARITHMETIC.DSP.DSP48E2" FILE_NAME="" LINE_NUMBER=""/>
+  </TPATH>
+  <TPATH DATAPATH_DELAY="1.543" DATAPATH_LOGIC_DELAY="1.224" DATAPATH_NET_DELAY="0.319" ENDPOINT_PIN="bd_0_i/hls_inst/inst/proc_stage_U0/grp_proc_stage_Pipeline_VITIS_LOOP_24_1_fu_50/mac_muladd_8ns_7ns_17ns_17_4_1_U13/gray_kernel_mac_muladd_8ns_7ns_17ns_17_4_1_DSP48_0_U/m_reg_reg/DSP_A_B_DATA_INST/A[5]" LOGIC_LEVELS="0" MAX_FANOUT="1" SLACK="1.853" STARTPOINT_PIN="bd_0_i/hls_inst/inst/stream_in_U/U_gray_kernel_fifo_w24_d256_A_ram/mem_reg/CLKARDCLK">
+    <CELL NAME="bd_0_i/hls_inst/inst/stream_in_U/U_gray_kernel_fifo_w24_d256_A_ram/mem_reg" PRIMITIVE_TYPE="BLOCKRAM.BRAM.RAMB18E2" FILE_NAME="gray_kernel_fifo_w24_d256_A.v" LINE_NUMBER="225"/>
+    <CELL NAME="bd_0_i/hls_inst/inst/proc_stage_U0/grp_proc_stage_Pipeline_VITIS_LOOP_24_1_fu_50/mac_muladd_8ns_7ns_17ns_17_4_1_U13/gray_kernel_mac_muladd_8ns_7ns_17ns_17_4_1_DSP48_0_U/m_reg_reg/DSP_A_B_DATA_INST" PRIMITIVE_TYPE="ARITHMETIC.DSP.DSP48E2" FILE_NAME="" LINE_NUMBER=""/>
+  </TPATH>
+  <TPATH DATAPATH_DELAY="1.530" DATAPATH_LOGIC_DELAY="1.214" DATAPATH_NET_DELAY="0.316" ENDPOINT_PIN="bd_0_i/hls_inst/inst/proc_stage_U0/grp_proc_stage_Pipeline_VITIS_LOOP_24_1_fu_50/mac_muladd_8ns_7ns_17ns_17_4_1_U13/gray_kernel_mac_muladd_8ns_7ns_17ns_17_4_1_DSP48_0_U/m_reg_reg/DSP_A_B_DATA_INST/A[6]" LOGIC_LEVELS="0" MAX_FANOUT="1" SLACK="1.858" STARTPOINT_PIN="bd_0_i/hls_inst/inst/stream_in_U/U_gray_kernel_fifo_w24_d256_A_ram/mem_reg/CLKARDCLK">
+    <CELL NAME="bd_0_i/hls_inst/inst/stream_in_U/U_gray_kernel_fifo_w24_d256_A_ram/mem_reg" PRIMITIVE_TYPE="BLOCKRAM.BRAM.RAMB18E2" FILE_NAME="gray_kernel_fifo_w24_d256_A.v" LINE_NUMBER="225"/>
+    <CELL NAME="bd_0_i/hls_inst/inst/proc_stage_U0/grp_proc_stage_Pipeline_VITIS_LOOP_24_1_fu_50/mac_muladd_8ns_7ns_17ns_17_4_1_U13/gray_kernel_mac_muladd_8ns_7ns_17ns_17_4_1_DSP48_0_U/m_reg_reg/DSP_A_B_DATA_INST" PRIMITIVE_TYPE="ARITHMETIC.DSP.DSP48E2" FILE_NAME="" LINE_NUMBER=""/>
+  </TPATH>
+</TimingPaths>
+<VivadoReportFiles>
+  <ReportFile TYPE="design_analysis" PATH="verilog/report/gray_kernel_design_analysis_synth.rpt"/>
+  <ReportFile TYPE="failfast" PATH="verilog/report/gray_kernel_failfast_synth.rpt"/>
+  <ReportFile TYPE="timing" PATH="verilog/report/gray_kernel_timing_synth.rpt"/>
+  <ReportFile TYPE="timing_paths" PATH="verilog/report/gray_kernel_timing_paths_synth.rpt"/>
+  <ReportFile TYPE="utilization" PATH="verilog/report/gray_kernel_utilization_synth.rpt"/>
+  <ReportFile TYPE="utilization_hierarchical" PATH="verilog/report/gray_kernel_utilization_hierarchical_synth.rpt"/>
+</VivadoReportFiles>
+</profile>

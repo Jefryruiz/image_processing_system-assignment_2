@@ -1,0 +1,7 @@
+Running: xsim.dir/gray_kernel/xsimk -simmode gui -wdb gray_kernel.wdb -simrunnum 0 -socket 59175
+Design successfully loaded
+Design Loading Memory Usage: 21020 KB (Peak: 21028 KB)
+Design Loading CPU Usage: 10 ms
+Simulation completed
+Simulation Memory Usage: 794976 KB (Peak: 860512 KB)
+Simulation CPU Usage: 184160 ms
