@@ -5,51 +5,18 @@
 #include <tlm.h>
 #include <tlm_utils/simple_target_socket.h>
 #include <tlm_utils/simple_initiator_socket.h>
-
 #include <vector>
 #include <cstring>
 #include <iostream>
 #include "defines.h"
 
-/* GEM5 adaptation includes */
-#ifndef WITHOUT_GEM5 /*Funciona para compilar de las dos maneras con o sin GEM5*/
-#include "mem/port.hh"
-#include "params/ImageAccelerator.hh"
-#include "sim/sim_object.hh"
-#endif
-
-/* Módulo original de la Evaluación 1, con adaptaciones para GEM5:
-
- ADAPTACIÓN 1: Hereda opcionalmente de gem5::SimObject para que GEM5 pueda
- registrar este módulo como un dispositivo del sistema.
-
- ADAPTACIÓN 2: Se agregó getAddrRanges(), GEM5 llama a esto para saber qué
- direcciones físicas pertenecen a este periférico.
-
- ADAPTACIÓN 3: Clase interna AccelPort, convierte el formato Packet de GEM5 a tlm_generic_payload de TLM-2.0 
- antes de llamar a b_transport.
-
- SIN CAMBIOS: b_transport(), mem_access(), process_image(), sockets, mapa de registros, conversión BT.601, SC_THREAD.
-*/ 
-
-#ifndef WITHOUT_GEM5
-struct image_accelerator
-    : public sc_core::sc_module
-    , public gem5::SimObject
-{
-    typedef gem5::ImageAcceleratorParams Params;
-#else
 SC_MODULE(image_accelerator) {
-#endif
 
-// Recibe configuracion y control del CPU (via bus)
+    // Recibe configuracion y control del CPU (via bus)
     tlm_utils::simple_target_socket<image_accelerator>    target_socket;
     // Accede a RAM para leer RGB y escribir Gray (via bus)
     tlm_utils::simple_initiator_socket<image_accelerator> init_socket;
- 
-    // ---------------------------------------------------------------
-    // Constructor original — standalone SystemC (UNCHANGED)
-    // ---------------------------------------------------------------
+
     SC_CTOR(image_accelerator)
         : target_socket("target_socket"), init_socket("initiator_socket"),
           reg_base_in(0), reg_base_out(0), reg_num_pixels(0), reg_status(0)
@@ -57,98 +24,20 @@ SC_MODULE(image_accelerator) {
         target_socket.register_b_transport(this, &image_accelerator::b_transport);
         SC_THREAD(process_image);
     }
- 
-#ifndef WITHOUT_GEM5
-    
-// ADAPTACIÓN 1: Hereda de gem5::SimObject, se agrega constructor con parámetros de GEM5
-
-     image_accelerator(const Params &p)
-        : sc_core::sc_module(sc_core::sc_module_name(p.name.c_str())),
-          gem5::SimObject(p),
-          target_socket("target_socket"),
-          init_socket("initiator_socket"),
-          reg_base_in(0), reg_base_out(0),
-          reg_num_pixels(0), reg_status(0)
-    {
-        target_socket.register_b_transport(
-            this, &image_accelerator::b_transport);
-        SC_THREAD(process_image);
-    }
-
-    // ADAPTACIÓN 2: getAddrRanges()
-    gem5::AddrRangeList getAddrRanges() const {
-        gem5::AddrRangeList ranges;
-        ranges.push_back(gem5::AddrRange(
-            sys_cfg::ACCEL_BASE_ADDR,
-            sys_cfg::ACCEL_BASE_ADDR + sys_cfg::ACCEL_REG_SIZE - 1
-        ));
-        return ranges;
-    }
-
-    // ADAPTACIÓN 3: Clase interna AccelPort, convierte el formato Packet de GEM5 a tlm_generic_payload de TLM-2.0 
-    class AccelPort : public gem5::SimpleTimingPort {
-      public:
-        AccelPort(const std::string &name, image_accelerator *owner)
-            : gem5::SimpleTimingPort(name, owner), accel(owner) {}
- 
-        gem5::AddrRangeList getAddrRanges() const override {
-            return accel->getAddrRanges();
-        }
- 
-      protected:
-        gem5::Tick recvAtomic(gem5::PacketPtr pkt) override {
-            tlm::tlm_generic_payload trans;
-            sc_core::sc_time delay = sc_core::SC_ZERO_TIME;
- 
-            // Ajustar direccion al offset desde ACCEL_BASE (igual que routing.h)
-            trans.set_address(pkt->getAddr() - sys_cfg::ACCEL_BASE_ADDR);
-            trans.set_data_ptr(pkt->getPtr<unsigned char>());
-            trans.set_data_length(pkt->getSize());
-            trans.set_streaming_width(pkt->getSize());
-            trans.set_byte_enable_ptr(nullptr);
-            trans.set_dmi_allowed(false);
-            trans.set_command(pkt->isWrite()
-                ? tlm::TLM_WRITE_COMMAND
-                : tlm::TLM_READ_COMMAND);
-            trans.set_response_status(tlm::TLM_INCOMPLETE_RESPONSE);
- 
-            accel->b_transport(trans, delay);
-            pkt->makeAtomicResponse();
-            return 1;
-        }
- 
-      private:
-        image_accelerator *accel;
-    };
- 
-    AccelPort cpu_side_port{"cpu_side", this};
- 
-    gem5::Port &getPort(const std::string &if_name,
-                        gem5::PortID idx = gem5::InvalidPortID) override {
-        if (if_name == "cpu_side")
-            return cpu_side_port;
-        return gem5::SimObject::getPort(if_name, idx);
-    }
-#endif // WITHOUT_GEM5
 
 private:
-    // Registros internos de control y estado
     uint32_t reg_base_in;
     uint32_t reg_base_out;
     uint32_t reg_num_pixels;
     uint32_t reg_status;
 
-    // Evento que dispara el procesamiento
     sc_event start_event;
 
-    // b_transport: recibe escrituras o lecturas de registros desde l CPU
-    // Las direcciones llegan ya ajustadas por el routing (offset desde ACCEL_BASE)
     void b_transport(tlm::tlm_generic_payload& trans, sc_time& delay) {
         uint64_t       addr     = trans.get_address();
         unsigned char* ptr      = trans.get_data_ptr();
         bool           is_write = (trans.get_command() == tlm::TLM_WRITE_COMMAND);
 
-        // REG_CONTROL: arrancar el procesamiento
         if (addr == 0x0C) {
             if (is_write) {
                 uint32_t val = 0;
@@ -164,7 +53,6 @@ private:
             return;
         }
 
-        // Mapa del resto de registros (offset desde ACCEL_BASE_ADDR)
         uint32_t* reg = nullptr;
         if      (addr == 0x00) reg = &reg_base_in;
         else if (addr == 0x04) reg = &reg_base_out;
@@ -181,7 +69,6 @@ private:
         trans.set_response_status(tlm::TLM_OK_RESPONSE);
     }
 
-    // Acceso a RAM via init_socket -> routing -> ram_memory
     void mem_access(tlm::tlm_command cmd, uint64_t addr, unsigned char* data, unsigned int len) {
         tlm::tlm_generic_payload trans;
         sc_time delay = SC_ZERO_TIME;
@@ -203,8 +90,6 @@ private:
                       << std::hex << addr << std::dec << std::endl;
     }
 
-    // SC_THREAD: conversion RGB -> Gris, fila por fila
-    // Conversion BT.601: gray = 0.299*R + 0.587*G + 0.114*B
     void process_image() {
         std::vector<unsigned char> row_rgb (sys_cfg::IMG_WIDTH * sys_cfg::IMG_CHANNELS);
         std::vector<unsigned char> row_gray(sys_cfg::IMG_WIDTH);
@@ -221,23 +106,19 @@ private:
                 uint64_t addr_in  = reg_base_in  + (uint64_t)y * sys_cfg::IMG_WIDTH * sys_cfg::IMG_CHANNELS;
                 uint64_t addr_out = reg_base_out + (uint64_t)y * sys_cfg::IMG_WIDTH;
 
-                // 1. Leer fila RGB desde RAM (5,760 bytes)
                 mem_access(tlm::TLM_READ_COMMAND, addr_in, row_rgb.data(), row_rgb.size());
 
-                // 2. Conversion BT.601 pixel a pixel
                 for (int x = 0; x < sys_cfg::IMG_WIDTH; x++) {
                     unsigned char r = row_rgb[x * 3 + 0];
                     unsigned char g = row_rgb[x * 3 + 1];
                     unsigned char b = row_rgb[x * 3 + 2];
                     row_gray[x] = static_cast<unsigned char>(
-                        0.299f * r + 0.587f * g + 0.114f * b
-                    );
+                        0.299f * r + 0.587f * g + 0.114f * b);
                 }
 
-                // 3. Escribir fila Gray en RAM (1,920 bytes)
                 mem_access(tlm::TLM_WRITE_COMMAND, addr_out, row_gray.data(), row_gray.size());
 
-                wait(sc_time(100, SC_NS)); // latencia por fila
+                wait(sc_time(100, SC_NS));
             }
 
             reg_status = 1;
@@ -246,3 +127,5 @@ private:
         }
     }
 };
+
+#endif // IMAGE_ACCELERATOR_H
