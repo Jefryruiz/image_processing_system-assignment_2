@@ -19,7 +19,7 @@ The system loads a 1080p RAW RGB image, processes it through a hardware accelera
 6. [Transaction Format](#6-transaction-format)
 7. [Memory Map](#7-memory-map)
 8. [Results](#8-results)
-9. [AI Usage Declaration](#9-ai-usage-declaration)
+
 
 ---
 
@@ -117,13 +117,12 @@ Image.fromarray(b, 'L'  ).save('output_preview.png')
 │   ├── image_accelerator.h           # RGB->Gray accelerator (original SC_MODULE)
 │   ├── image_accelerator_gem5.hh     # GEM5 wrapper header
 │   └── image_accelerator_gem5.cc     # GEM5 wrapper implementation
-├── GEM5/
-│   ├── driver/
+├── driver/
 │   │   └── accelerator_driver.c      # ARM64 bare-metal driver (C program)
-│   ├── gem5_files/
+├── gem5_files/
 │   │   ├── ImageAccelerator.py       # GEM5 SimObject registration
 │   │   └── SConscript.patch          # Lines to append to ~/gem5/src/dev/SConscript
-│   ├── scripts/
+├── scripts/
 │   │   ├── run_gem5.py               # GEM5 virtual prototype configuration
 │   │   └── build.sh                  # Full automation script
 │   └── gem5_output/                  # GEM5 simulation logs (generated)
@@ -314,26 +313,4 @@ Simulacion terminada: exiting with last active thread context
 | BT.601 verification | CORRECT |
 | Simulation exit | Normal (last active thread) |
 
----
 
-## 9. AI Usage Declaration
-
-In accordance with the course policy on AI tool usage (MP6160, II Cuatrimestre 2026), the following declaration is provided:
-
-**Tool used:** Claude (Anthropic, model claude-sonnet-4-6), accessed via claude.ai.
-
-**Type of usage:**
-
-| Task | Usage |
-|---|---|
-| SystemC TLM module structure | Code generation (CPU, RAM, Bus, Accelerator, Storage) |
-| GEM5 wrapper implementation | Code generation and iterative debugging |
-| Compilation error resolution | Debugging (multiple GEM5 linker and port errors) |
-| GEM5 Python config script | Code generation and debugging (`run_gem5.py`) |
-| Build automation | Code generation (`build.sh`) |
-| Block and sequence diagrams | Generation (Python/matplotlib) |
-| README | Writing and technical documentation |
-
-**Prompts used:** [insert actual prompts used by your team here]
-
-**Review performed:** All generated code was compiled and executed. The GEM5 simulation ran successfully end-to-end, and the BT.601 grayscale conversion was verified against the reference formula. Multiple errors were encountered and resolved iteratively (port connection errors, address range registration, UART access in SE mode, page table faults).
