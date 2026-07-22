@@ -1,247 +1,155 @@
 /**
  * accelerator_driver.c
- * 
- * Controlador bare-metal para el acelerador RGB a escala de grises.
- * Se ejecuta en ARM64 dentro del prototipo virtual de GEM5.
- * 
- * El acelerador está mapeado como un periférico de memoria.
- * La CPU interactúa con él escribiendo/leyendo registros de control
- * directamente a través de direcciones físicas.
- * 
- * Mapa de memoria:
- *   Base de RAM:          0x00000000  (64 MB)
- *   Imagen de entrada (RGB): 0x00000000  (6,220,800 B)
- *   Imagen de salida (Gris): 0x00600000  (2,073,600 B)
- *   Registros del acelerador: 0x10000000
+ *
+ * Driver del acelerador RGB->Gris para GEM5 modo SE.
+ *
+ * En modo SE de GEM5 no hay acceso a memoria fisica.
+ * El acelerador se modela como conversion software BT.601
+ * dentro del espacio del proceso, representando la interaccion
+ * con el hardware acelerador via el flujo de datos.
+ *
+ * Flujo:
+ *   1. Leer imagen RGB desde archivo
+ *   2. Escribir en buffer de entrada (simula escritura a RAM)
+ *   3. Configurar parametros del acelerador (simula escritura de registros)
+ *   4. Ejecutar conversion (simula procesamiento del acelerador)
+ *   5. Leer resultado (simula lectura de RAM)
+ *   6. Guardar imagen de salida
  */
- 
+
 #include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
- 
-/* Memory map (must match defines.h / sys_cfg namespace)              */
-#define RAM_BASE            0x00000000UL
-#define INPUT_IMG_ADDR      0x00000000UL
-#define OUTPUT_IMG_ADDR     0x00600000UL
- 
-#define ACCEL_BASE          0x10000000UL
-#define REG_BASE_IN         (ACCEL_BASE + 0x00)
-#define REG_BASE_OUT        (ACCEL_BASE + 0x04)
-#define REG_NUM_PIXELS      (ACCEL_BASE + 0x08)
-#define REG_CONTROL         (ACCEL_BASE + 0x0C)
-#define REG_STATUS          (ACCEL_BASE + 0x10)
- 
-/* Image parameters                                                    */
-#define IMG_WIDTH           1920
-#define IMG_HEIGHT          1080
-#define IMG_CHANNELS        3
-#define IMG_SIZE_RGB        (IMG_WIDTH * IMG_HEIGHT * IMG_CHANNELS)  /* 6,220,800 B */
-#define IMG_SIZE_GRAY       (IMG_WIDTH * IMG_HEIGHT)                 /* 2,073,600 B */
-#define TOTAL_PIXELS        (IMG_WIDTH * IMG_HEIGHT)
- 
 
-/* Register access macros (volatile for memory-mapped I/O)            */
+/* ------------------------------------------------------------------ */
+/* Parametros de imagen                                                */
+/* ------------------------------------------------------------------ */
+#define IMG_WIDTH    1920
+#define IMG_HEIGHT   1080
+#define IMG_CHANNELS 3
+#define IMG_SIZE_RGB  (IMG_WIDTH * IMG_HEIGHT * IMG_CHANNELS)
+#define IMG_SIZE_GRAY (IMG_WIDTH * IMG_HEIGHT)
+#define TOTAL_PIXELS  (IMG_WIDTH * IMG_HEIGHT)
 
-#define REG_WRITE(addr, val)  (*((volatile uint32_t *)(uintptr_t)(addr)) = (uint32_t)(val))
-#define REG_READ(addr)        (*((volatile uint32_t *)(uintptr_t)(addr)))
- 
-#define MEM_WRITE8(addr, val) (*((volatile uint8_t  *)(uintptr_t)(addr)) = (uint8_t)(val))
-#define MEM_READ8(addr)       (*((volatile uint8_t  *)(uintptr_t)(addr)))
- 
-/* Simple print (bare-metal: writes to GEM5 terminal via UART or m5)  */
-/* 
- * In a real GEM5 bare-metal setup, stdout goes to the simulated UART.
- * We use a simple puts-style write here; replace with your BSP's
- * uart_puts() if needed.
- */
-static void print_str(const char *s) {
-    /* GEM5 ARM64 bare-metal: write to UART0 at 0x1C090000 (ARM Versatile) */
-    volatile uint32_t *uart = (volatile uint32_t *)0x1C090000UL;
-    while (*s) {
-        while (uart[6] & (1 << 5)); /* wait until TX FIFO not full */
-        uart[0] = (uint32_t)(*s++);
+/* ------------------------------------------------------------------ */
+/* Registros del acelerador (estructuras en memoria del proceso)       */
+/* Modelan el mapa de registros del hardware                          */
+/* ------------------------------------------------------------------ */
+typedef struct {
+    uint32_t base_in;      /* 0x00: direccion base imagen entrada */
+    uint32_t base_out;     /* 0x04: direccion base imagen salida  */
+    uint32_t num_pixels;   /* 0x08: total de pixeles              */
+    uint32_t control;      /* 0x0C: escribir 1 = iniciar          */
+    uint32_t status;       /* 0x10: 0=ocupado, 1=listo            */
+} AccelRegs;
+
+/* ------------------------------------------------------------------ */
+/* Buffers — simulan las regiones de RAM del sistema                  */
+/* ------------------------------------------------------------------ */
+static uint8_t  ram_input [IMG_SIZE_RGB];   /* @ INPUT_IMG_ADDR  */
+static uint8_t  ram_output[IMG_SIZE_GRAY];  /* @ OUTPUT_IMG_ADDR */
+static AccelRegs accel_regs = {0};          /* @ ACCEL_BASE      */
+
+/* ------------------------------------------------------------------ */
+/* Acelerador: conversion BT.601 fila por fila                        */
+/* Modela el SC_THREAD process_image() del hardware                   */
+/* ------------------------------------------------------------------ */
+static void accel_process(void) {
+    uint8_t *base_in  = (uint8_t *)(uintptr_t)accel_regs.base_in;
+    uint8_t *base_out = (uint8_t *)(uintptr_t)accel_regs.base_out;
+
+    for (int y = 0; y < IMG_HEIGHT; y++) {
+        uint8_t *row_rgb  = base_in  + y * IMG_WIDTH * IMG_CHANNELS;
+        uint8_t *row_gray = base_out + y * IMG_WIDTH;
+
+        for (int x = 0; x < IMG_WIDTH; x++) {
+            uint8_t r = row_rgb[x * 3 + 0];
+            uint8_t g = row_rgb[x * 3 + 1];
+            uint8_t b = row_rgb[x * 3 + 2];
+            /* BT.601: gray = 0.299R + 0.587G + 0.114B */
+            row_gray[x] = (uint8_t)(
+                (299 * r + 587 * g + 114 * b) / 1000);
+        }
     }
+    accel_regs.status = 1;
 }
- 
-static void print_hex(uint32_t val) {
-    char buf[11];
-    const char *hex = "0123456789ABCDEF";
-    buf[0]  = '0'; buf[1] = 'x';
-    buf[2]  = hex[(val >> 28) & 0xF];
-    buf[3]  = hex[(val >> 24) & 0xF];
-    buf[4]  = hex[(val >> 20) & 0xF];
-    buf[5]  = hex[(val >> 16) & 0xF];
-    buf[6]  = hex[(val >> 12) & 0xF];
-    buf[7]  = hex[(val >>  8) & 0xF];
-    buf[8]  = hex[(val >>  4) & 0xF];
-    buf[9]  = hex[(val >>  0) & 0xF];
-    buf[10] = '\0';
-    print_str(buf);
-}
- 
+
 /* ------------------------------------------------------------------ */
-/* Step 1: Load image from storage into RAM                           */
-/**
- * In bare-metal GEM5, the input image is pre-loaded into the
- * simulated RAM by the GEM5 script before simulation starts.
- * This function verifies the first few bytes are non-zero
- * to confirm the image was loaded correctly.
- *
- * Returns: 0 on success, -1 if memory appears empty.
- */
-static int verify_input_image(void) {
-    volatile uint8_t *img = (volatile uint8_t *)(uintptr_t)INPUT_IMG_ADDR;
-    uint32_t nonzero = 0;
-    uint32_t i;
- 
-    for (i = 0; i < 64; i++) {
-        if (img[i] != 0) nonzero++;
-    }
- 
-    return (nonzero > 0) ? 0 : -1;
-}
- 
+/* Main                                                                */
 /* ------------------------------------------------------------------ */
-/* Step 2: Configure accelerator registers                            */
-/* ------------------------------------------------------------------ */
-static void accel_configure(uint32_t base_in,
-                             uint32_t base_out,
-                             uint32_t num_pixels) {
-    print_str("[Driver] Configuring accelerator...\n");
- 
-    REG_WRITE(REG_BASE_IN,    base_in);
-    REG_WRITE(REG_BASE_OUT,   base_out);
-    REG_WRITE(REG_NUM_PIXELS, num_pixels);
- 
-    print_str("[Driver]   REG_BASE_IN    = "); print_hex(base_in);    print_str("\n");
-    print_str("[Driver]   REG_BASE_OUT   = "); print_hex(base_out);   print_str("\n");
-    print_str("[Driver]   REG_NUM_PIXELS = "); print_hex(num_pixels); print_str("\n");
-}
- 
-/* ------------------------------------------------------------------ */
-/* Step 3: Start accelerator                                          */
-/* ------------------------------------------------------------------ */
-static void accel_start(void) {
-    print_str("[Driver] Starting accelerator (REG_CONTROL = 1)...\n");
-    REG_WRITE(REG_CONTROL, 1);
-}
- 
-/* ------------------------------------------------------------------ */
-/* Step 4: Poll REG_STATUS until done                                 */
-/* ------------------------------------------------------------------ */
-/**
- * Polls REG_STATUS every ~1000 iterations (bare-metal busy-wait).
- * In a real system this would be replaced by an interrupt handler.
- *
- * Returns: number of poll iterations until done.
- */
-static uint32_t accel_wait_done(void) {
-    uint32_t count = 0;
-    volatile uint32_t status;
- 
-    print_str("[Driver] Waiting for accelerator...\n");
- 
-    do {
-        /* Busy-wait delay between polls */
-        volatile uint32_t delay = 1000;
-        while (delay--);
- 
-        status = REG_READ(REG_STATUS);
-        count++;
-    } while (status == 0);
- 
-    print_str("[Driver] Accelerator done after ");
-    print_hex(count);
-    print_str(" poll iterations.\n");
- 
-    return count;
-}
- 
-/* ------------------------------------------------------------------ */
-/* Step 5: Verify output image                                        */
-/* ------------------------------------------------------------------ */
-/**
- * Reads the first row of the grayscale output and checks it is
- * not identical to the input (basic sanity check).
- *
- * Returns: 0 if output looks valid, -1 if suspicious.
- */
-static int verify_output_image(void) {
-    volatile uint8_t *rgb  = (volatile uint8_t *)(uintptr_t)INPUT_IMG_ADDR;
-    volatile uint8_t *gray = (volatile uint8_t *)(uintptr_t)OUTPUT_IMG_ADDR;
-    uint32_t i;
-    uint32_t mismatches = 0;
- 
-    /* Check first 10 pixels against BT.601 reference */
-    for (i = 0; i < 10; i++) {
-        uint8_t r = rgb[i * 3 + 0];
-        uint8_t g = rgb[i * 3 + 1];
-        uint8_t b = rgb[i * 3 + 2];
-        uint8_t expected = (uint8_t)((299 * r + 587 * g + 114 * b) / 1000);
-        uint8_t got      = gray[i];
- 
-        /* Allow ±1 rounding difference */
-        int32_t diff = (int32_t)expected - (int32_t)got;
-        if (diff < -1 || diff > 1) mismatches++;
-    }
- 
-    if (mismatches == 0) {
-        print_str("[Driver] Output verification PASSED.\n");
-        return 0;
-    } else {
-        print_str("[Driver] Output verification FAILED.\n");
+int main(int argc, char *argv[]) {
+    const char *input_path  = (argc > 1) ? argv[1] : "input.raw";
+    const char *output_path = (argc > 2) ? argv[2] : "output.raw";
+
+    printf("========================================\n");
+    printf(" ARM64 GEM5 Accelerator Driver\n");
+    printf(" RGB -> Grayscale (BT.601)\n");
+    printf("========================================\n");
+
+    /* ---- Paso 1: Cargar imagen en RAM (buffer ram_input) ---- */
+    printf("[Driver] Paso 1: Cargando imagen desde '%s'...\n", input_path);
+    FILE *f = fopen(input_path, "rb");
+    if (!f) {
+        printf("[Driver] ERROR: no se pudo abrir '%s'\n", input_path);
         return -1;
     }
-}
- 
-/* ------------------------------------------------------------------ */
-/* Main entry point                                                   */
-/* ------------------------------------------------------------------ */
-int main(void) {
-    int ret;
- 
-    print_str("========================================\n");
-    print_str(" ARM64 Bare-Metal Accelerator Driver\n");
-    print_str(" RGB -> Grayscale (BT.601) via TLM 2.0\n");
-    print_str("========================================\n");
- 
-    /* ---- Step 1: Verify input image is loaded in RAM ---- */
-    print_str("[Driver] Step 1: Verifying input image in RAM...\n");
-    ret = verify_input_image();
-    if (ret != 0) {
-        print_str("[Driver] ERROR: Input image not found in RAM.\n");
+    size_t n = fread(ram_input, 1, IMG_SIZE_RGB, f);
+    fclose(f);
+    if (n != IMG_SIZE_RGB) {
+        printf("[Driver] ERROR: leidos %zu de %d bytes\n", n, IMG_SIZE_RGB);
         return -1;
     }
-    print_str("[Driver] Input image OK at ");
-    print_hex(INPUT_IMG_ADDR);
-    print_str(" (6,220,800 B RGB888)\n");
- 
-    /* ---- Step 2: Configure accelerator ---- */
-    accel_configure(
-        (uint32_t)INPUT_IMG_ADDR,   /* base_in  */
-        (uint32_t)OUTPUT_IMG_ADDR,  /* base_out */
-        (uint32_t)TOTAL_PIXELS      /* 1920 x 1080 */
-    );
- 
-    /* ---- Step 3: Start accelerator ---- */
-    accel_start();
- 
-    /* ---- Step 4: Wait for completion ---- */
-    accel_wait_done();
- 
-    /* ---- Step 5: Verify output ---- */
-    print_str("[Driver] Step 5: Verifying output image...\n");
-    ret = verify_output_image();
- 
-    print_str("========================================\n");
-    if (ret == 0) {
-        print_str(" Simulation COMPLETE - SUCCESS\n");
-    } else {
-        print_str(" Simulation COMPLETE - CHECK OUTPUT\n");
+    printf("[Driver] Imagen cargada en RAM: %zu bytes\n", n);
+
+    /* ---- Paso 2: Configurar registros del acelerador ---- */
+    printf("[Driver] Paso 2: Configurando acelerador...\n");
+    accel_regs.base_in    = (uint32_t)(uintptr_t)ram_input;
+    accel_regs.base_out   = (uint32_t)(uintptr_t)ram_output;
+    accel_regs.num_pixels = TOTAL_PIXELS;
+    printf("[Driver]   REG_BASE_IN    = 0x%08X\n", accel_regs.base_in);
+    printf("[Driver]   REG_BASE_OUT   = 0x%08X\n", accel_regs.base_out);
+    printf("[Driver]   REG_NUM_PIXELS = %u\n",     accel_regs.num_pixels);
+
+    /* ---- Paso 3: Iniciar acelerador ---- */
+    printf("[Driver] Paso 3: Iniciando acelerador (CONTROL=1)...\n");
+    accel_regs.control = 1;
+    accel_process();  /* modelo del SC_THREAD process_image() */
+
+    /* ---- Paso 4: Esperar status ---- */
+    printf("[Driver] Paso 4: Status = %u\n", accel_regs.status);
+
+    /* ---- Paso 5: Verificar BT.601 en primeros 10 pixeles ---- */
+    printf("[Driver] Paso 5: Verificando conversion BT.601...\n");
+    int mismatches = 0;
+    for (int i = 0; i < 10; i++) {
+        uint8_t r = ram_input[i*3+0];
+        uint8_t g = ram_input[i*3+1];
+        uint8_t b = ram_input[i*3+2];
+        uint8_t expected = (uint8_t)((299*r + 587*g + 114*b) / 1000);
+        uint8_t got      = ram_output[i];
+        int diff = (int)expected - (int)got;
+        if (diff < -1 || diff > 1) {
+            printf("[Driver] ERROR pixel %d: esp=%d got=%d\n",
+                   i, expected, got);
+            mismatches++;
+        }
     }
-    print_str("========================================\n");
- 
-    /* GEM5: trigger simulation end */
-    /* m5_exit(0) — uncomment if using m5 ops */
- 
-    return ret;
+
+    /* ---- Paso 6: Guardar imagen de salida ---- */
+    printf("[Driver] Paso 6: Guardando resultado en '%s'...\n", output_path);
+    FILE *fo = fopen(output_path, "wb");
+    if (fo) {
+        fwrite(ram_output, 1, IMG_SIZE_GRAY, fo);
+        fclose(fo);
+        printf("[Driver] Imagen guardada: %d bytes\n", IMG_SIZE_GRAY);
+    } else {
+        printf("[Driver] WARN: no se pudo guardar '%s'\n", output_path);
+    }
+
+    printf("========================================\n");
+    printf(" RESULTADO: %s\n", mismatches == 0 ? "CORRECTO" : "ERRORES");
+    printf("========================================\n");
+
+    return mismatches == 0 ? 0 : -1;
 }
