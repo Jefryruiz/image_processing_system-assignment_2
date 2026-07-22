@@ -83,7 +83,7 @@ fi
 if [ "$NEEDS_RECOMPILE" -eq 1 ]; then
     info "Paso 4: Recompilando GEM5..."
     cd "$GEM5_DIR"
-    scons build/ARM/gem5.opt -j1
+    scons build/ARM/gem5.opt -j$(nproc)
     cd "$PROJECT_DIR"
     info "GEM5 recompilado."
 else
