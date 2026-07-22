@@ -1,207 +1,339 @@
-# gem5 SystemC TLM-2.0 Integration Guide
+# SystemC TLM 2.0 + GEM5 — Image Processing Virtual Prototype
 
-## Overview
+This repository contains two deliverables built on top of each other:
 
-This project integrates gem5's SystemC TLM-2.0 support with your image processing platform. Your system already uses SystemC with TLM-2.0 sockets, making it fully compatible with gem5's simulation infrastructure.
+1. **Evaluation 1** — Transaction-level model (TLM 2.0) of an image processing platform in SystemC.
+2. **Evaluation 2** — HLS implementation of the accelerator (Vitis 2024.1) and GEM5 virtual prototype with ARM64 CPU.
 
-## Setup Information
+The system loads a 1080p RAW RGB image, processes it through a hardware accelerator that converts it to grayscale using ITU-R BT.601, and saves the result to disk.
 
-- **gem5 Installation**: `~/Documents/gem5/`
-- **Supported Architectures**: ARM, X86, ALL
-- **Your Project**: Pure SystemC/TLM-2.0 (no gem5 kernel simulation)
+---
 
-## Running Your Project
+## Table of Contents
 
-### Option 1: Standalone SystemC (Pure Simulation - No gem5)
+1. [Requirements and Compilation](#1-requirements-and-compilation)
+2. [Repository Organization](#2-repository-organization)
+3. [Module Organization](#3-module-organization)
+4. [Block Diagram](#4-block-diagram)
+5. [Sequence Diagram](#5-sequence-diagram)
+6. [Transaction Format](#6-transaction-format)
+7. [Memory Map](#7-memory-map)
+8. [Results](#8-results)
+9. [AI Usage Declaration](#9-ai-usage-declaration)
 
-This is the **recommended starting approach** for your image processing system:
+---
 
+## 1. Requirements and Compilation
+
+### 1.1 Evaluation 1 — Standalone SystemC TLM
+
+**Dependencies (Ubuntu 24.04 / WSL2):**
 ```bash
-cd /path/to/project
-make clean
-make config          # Verify configuration
-make run
+sudo apt-get install -y libsystemc-dev g++ make
 ```
 
-**Output**: Direct simulation of your image processor without gem5's system simulation overhead.
-
-**Use Case**: When you want fast TLM-2.0 communication between CPU, RAM, disk, and accelerator without modeling a full system.
-
-### Option 2: With gem5 Integration (Advanced)
-
-To connect your SystemC platform with gem5's CPU/memory models:
-
+**Compile and run:**
 ```bash
-# Build configuration
-export GEM5_ARCH=ARM
-make GEM5_HOME=~/Documents/gem5 run-with-gem5
+make
+./simulacion
 ```
 
-**What This Does**:
-- Connects gem5's simulated CPU to your TLM-2.0 bus
-- Uses gem5's memory models alongside your components
-- Enables detailed performance analysis with gem5 stats
-
-## Architecture Integration
-
-Your current system:
-```
-CPU (initiator) ──┐
-                  ├─→ TLM-2.0 Bus (Routing) ──→ RAM (target)
-Accelerator (I)   │                           ├→ Disk (target)
-                  └─→                          └→ Accel (target)
+**Manual compile command:**
+```bash
+g++ -std=c++17 -Wall -O2 -I. -I/usr/include \
+    main.cpp -o simulacion \
+    -L/usr/lib/x86_64-linux-gnu -lsystemc \
+    -Wl,-rpath=/usr/lib/x86_64-linux-gnu
 ```
 
-With gem5 integration:
-```
-┌─────────────────────────────────────────────────┐
-│         gem5 CPU Simulator (O3/InOrder)         │
-│  (Optional: models ISA, caches, pipelines)      │
-└──────────┬──────────────────────────────────────┘
-           │
-    TLM-2.0 Bridge Socket
-           │
-    ┌──────▼──────────────────────────────┐
-    │    Your SystemC Platform            │
-    │  ┌─────────────────────────────────┐│
-    │  │  TLM-2.0 Bus (Routing)          ││
-    │  │  - CPU Socket (from app)        ││
-    │  │  - Accelerator Socket           ││
-    │  └─────────────────────────────────┘│
-    │  ┌──────────┬──────────┬───────────┐│
-    │  │   RAM    │   Disk   │ Accelerat││
-    │  └──────────┴──────────┴───────────┘│
-    └─────────────────────────────────────┘
+---
+
+### 1.2 Evaluation 2 — GEM5 Virtual Prototype
+
+**Additional dependencies:**
+```bash
+sudo apt-get install -y \
+    build-essential git m4 scons zlib1g-dev \
+    libprotobuf-dev protobuf-compiler \
+    libgoogle-perftools-dev python3-dev \
+    libboost-all-dev pkg-config python3-pybind11 \
+    gcc-aarch64-linux-gnu
 ```
 
-## Files Modified for gem5 Support
+**Step 1 — Clone and compile GEM5:**
+```bash
+git clone https://github.com/gem5/gem5.git ~/gem5
+cd ~/gem5
+scons build/ARM/gem5.opt -j2
+```
 
-### Updated: `Makefile`
-- Detects gem5 installation (`GEM5_HOME`)
-- Adds gem5 include paths and libraries
-- Provides `make config` to verify setup
-- Supports `GEM5_ARCH` selection
+**Step 2 — Run the full build & simulation script:**
+```bash
+cd GEM5/
+chmod +x scripts/build.sh
+./scripts/build.sh
+```
 
-### New: `README.gem5.md` (this file)
-- Integration documentation
-- Build instructions
-- Example configurations
+The script automatically:
+- Copies accelerator files to `~/gem5/src/dev/`
+- Patches the GEM5 SConscript
+- Recompiles GEM5 if needed
+- Cross-compiles the ARM64 driver
+- Runs the GEM5 simulation
+- Verifies the output image
 
-## Example: Creating a gem5 Config
+**Manual GEM5 run:**
+```bash
+~/gem5/build/ARM/gem5.opt \
+    --outdir=GEM5/gem5_output \
+    GEM5/scripts/run_gem5.py
+```
 
-To run your SystemC system within a gem5 simulation:
-
-**File: `configs/image_processor.py`** (example structure)
-
+**Visualize RAW images (optional):**
 ```python
-import os
-import m5
-from m5.objects import *
-
-# Create the SystemC platform
-# This would instantiate your image_processor module
-# and connect it to gem5's CPU ports
-
-root = Root(full_system=False)
-root.system = System()
-root.system.clk_domain = SrcClockDomain()
-root.system.clk_domain.clock = '2GHz'
-
-# Add your SystemC components here via gem5's Python API
-# and connect them to the memory hierarchy
-
-m5.instantiate(None)
-exit_event = m5.simulate()
-print(f"Simulation exited: {exit_event.getCause()}")
+from PIL import Image
+import numpy as np
+W, H = 1920, 1080
+a = np.fromfile('images/input.raw',  dtype=np.uint8).reshape(H, W, 3)
+b = np.fromfile('images/output.raw', dtype=np.uint8).reshape(H, W)
+Image.fromarray(a, 'RGB').save('input_preview.png')
+Image.fromarray(b, 'L'  ).save('output_preview.png')
 ```
 
-## Key Components for gem5 Integration
+---
 
-### 1. TLM Sockets (Already in Your Code)
-Your modules use `simple_initiator_socket` and target sockets - **fully compatible with gem5**.
+## 2. Repository Organization
 
-### 2. Generic Payload Transactions
-Your `tlm::tlm_generic_payload` usage works with gem5's TLM infrastructure.
-
-### 3. Blocking Transport (b_transport)
-Your current implementation using `b_transport()` is compatible with gem5's TLM bridge.
-
-## Performance Analysis with gem5
-
-Once integrated, you can:
-
-1. **Collect statistics**:
-   ```bash
-   ./gem5.opt -d m5out configs/image_processor.py
-   cat m5out/stats.txt
-   ```
-
-2. **Profile memory access patterns**:
-   - Track cache hits/misses
-   - Analyze memory bandwidth usage
-   - Monitor TLM transaction timing
-
-3. **Compare architectures**:
-   - Run same simulation on ARM vs X86
-   - Profile different CPU models (O3, InOrder)
-
-## Troubleshooting
-
-### Build Issues
-
-**Problem**: `error: cannot find -lm5`
-```bash
-# Solution: Verify gem5 build
-ls -la ~/Documents/gem5/build/ARM/libm5.so
-# Rebuild gem5 if missing: scons build/ARM/gem5.opt
+```
+.
+├── Makefile                          # Eval 1: standalone SystemC build
+├── main.cpp                          # Eval 1: sc_main
+├── src/
+│   ├── defines.h                     # Memory map and image parameters (sys_cfg::)
+│   ├── cpu.h                         # CPU module (TLM-2.0 initiator)
+│   ├── ram_mem.h                     # RAM module (TLM-2.0 target, 64 MB)
+│   ├── disk_storage.h                # Persistent storage (fstream-based target)
+│   ├── routing.h                     # Bus / address decoder
+│   ├── image_accelerator.h           # RGB->Gray accelerator (original SC_MODULE)
+│   ├── image_accelerator_gem5.hh     # GEM5 wrapper header
+│   └── image_accelerator_gem5.cc     # GEM5 wrapper implementation
+├── GEM5/
+│   ├── driver/
+│   │   └── accelerator_driver.c      # ARM64 bare-metal driver (C program)
+│   ├── gem5_files/
+│   │   ├── ImageAccelerator.py       # GEM5 SimObject registration
+│   │   └── SConscript.patch          # Lines to append to ~/gem5/src/dev/SConscript
+│   ├── scripts/
+│   │   ├── run_gem5.py               # GEM5 virtual prototype configuration
+│   │   └── build.sh                  # Full automation script
+│   └── gem5_output/                  # GEM5 simulation logs (generated)
+├── images/
+│   ├── input.raw                     # Input image (RAW RGB888, 1920x1080)
+│   └── output.raw                    # Output image (RAW Gray8, 1920x1080)
+└── docs/
+    ├── block_diagram.png
+    └── sequence_diagram.png
 ```
 
-**Problem**: SystemC headers not found
-```bash
-# Solution: Install/verify SystemC
-pkg-config --cflags --libs systemc
+---
+
+## 3. Module Organization
+
+### Evaluation 1 — SystemC TLM 2.0
+
+| Module | File | TLM Role | Description |
+|---|---|---|---|
+| CPU | `cpu.h` | Initiator | Orchestrates full flow via `SC_THREAD run()` |
+| RAM | `ram_mem.h` | Target | 64 MB — `std::vector<uint8_t>` + `std::copy` |
+| Storage | `disk_storage.h` | Target | File-backed — `fstream` read/write by offset |
+| Bus | `routing.h` | Target + Initiator | Address decoder — routes by address range |
+| Accelerator | `image_accelerator.h` | Target + Initiator | BT.601 conversion, row-by-row SC_THREAD |
+
+### Evaluation 2 — GEM5 Virtual Prototype
+
+| Component | File | Description |
+|---|---|---|
+| GEM5 wrapper | `image_accelerator_gem5.hh/.cc` | Wraps SC_MODULE as `gem5::SimObject`, exposes `ResponsePort` |
+| SimObject registration | `ImageAccelerator.py` | Declares device to GEM5's Python/pybind11 system |
+| SConscript patch | `SConscript.patch` | Registers `.cc` file with SCons build system |
+| Virtual prototype config | `run_gem5.py` | Instantiates ARM64 CPU + RAM + Accelerator in GEM5 SE mode |
+| ARM64 driver | `accelerator_driver.c` | C program running on simulated ARM64 — reads image, runs accelerator, saves result |
+| Build automation | `build.sh` | End-to-end script: install → compile → simulate → verify |
+
+### Accelerator GEM5 Adaptation
+
+The original `SC_MODULE` is kept **unchanged**. A separate wrapper class handles GEM5 integration:
+
+```
+GEM5 System
+  └── ImageAcceleratorGem5 (SimObject)
+        ├── AccelPort (ResponsePort) ← connected to SystemXBar
+        │     └── recvAtomic() converts Packet → tlm_generic_payload
+        ├── getAddrRanges() → [0x10000000, 0x100000FF]
+        ├── init() → sendRangeChange() (notifies bus)
+        └── image_accelerator (SC_MODULE, original unchanged)
+              ├── b_transport() — register access
+              └── process_image() — BT.601 SC_THREAD
 ```
 
-### Runtime Issues
+---
 
-**Problem**: Library path errors
-```bash
-# Solution: Set library path
-export LD_LIBRARY_PATH=~/Documents/gem5/build/ARM:$LD_LIBRARY_PATH
+## 4. Block Diagram
+
+![Block diagram](docs/block_diagram.png)
+
+---
+
+## 5. Sequence Diagram
+
+![Sequence diagram](docs/sequence_diagram.png)
+
+### GEM5 Virtual Prototype Flow
+
+| Step | Actor | Action |
+|---|---|---|
+| 1 | Driver | `fread()` → loads `input.raw` into virtual buffer |
+| 2 | Driver | Writes `REG_BASE_IN`, `REG_BASE_OUT`, `REG_NUM_PIXELS` |
+| 3 | Driver | Writes `REG_CONTROL = 1` → triggers accelerator |
+| 4 | Accelerator | Reads RGB rows, applies BT.601, writes Gray rows |
+| 5 | Driver | Reads `REG_STATUS` until = 1 |
+| 6 | Driver | `fwrite()` → saves `output.raw` |
+
+---
+
+## 6. Transaction Format
+
+### Evaluation 1 — TLM 2.0
+
+All transactions use `tlm::tlm_generic_payload` with `b_transport` (loosely-timed):
+
+| Field | Value |
+|---|---|
+| `set_command()` | `TLM_READ_COMMAND` or `TLM_WRITE_COMMAND` |
+| `set_address()` | 64-bit global address (decoded by `routing.h`) |
+| `set_data_ptr()` | Pointer to source/destination buffer |
+| `set_data_length()` | 4 B (registers), up to 6,220,800 B (full frame) |
+| `set_streaming_width()` | = `data_length` |
+| `set_byte_enable_ptr()` | `nullptr` |
+| `response_status` | `TLM_OK_RESPONSE` / `TLM_ADDRESS_ERROR_RESPONSE` |
+
+**Granularity:**
+
+| Path | Size |
+|---|---|
+| CPU ↔ RAM (image) | 6,220,800 B / 2,073,600 B |
+| CPU ↔ Accelerator (registers) | 4 B (uint32_t) |
+| CPU ↔ Disk | 6,220,800 B / 2,073,600 B |
+| Accelerator ↔ RAM (pixels) | 5,760 B (RGB row) / 1,920 B (Gray row) |
+
+### Evaluation 2 — GEM5 AccelPort
+
+The `AccelPort::recvAtomic()` converts GEM5 `Packet` to TLM payload:
+
+```cpp
+trans.set_address(pkt->getAddr() - ACCEL_BASE_ADDR); // offset
+trans.set_data_ptr(pkt->getPtr<unsigned char>());
+trans.set_data_length(pkt->getSize());
+trans.set_command(pkt->isWrite() ? TLM_WRITE_COMMAND : TLM_READ_COMMAND);
 ```
 
-## Building gem5 with SystemC Support
+---
 
-If you need to rebuild gem5:
+## 7. Memory Map
 
-```bash
-cd ~/Documents/gem5
+### Register Map (Accelerator)
 
-# Build for ARM with SystemC support
-scons build/ARM/gem5.opt -j16
+| Register | Offset | Size | Access | Description |
+|---|---|---|---|---|
+| `REG_BASE_IN` | `0x00` | 4 B | W | Input frame base address in RAM |
+| `REG_BASE_OUT` | `0x04` | 4 B | W | Output frame base address in RAM |
+| `REG_NUM_PIXELS` | `0x08` | 4 B | W | Total pixels (1920 × 1080 = 2,073,600) |
+| `REG_CONTROL` | `0x0C` | 4 B | W | Write 1 to start processing |
+| `REG_STATUS` | `0x10` | 4 B | R | 0 = busy, 1 = done |
 
-# Build for X86
-scons build/X86/gem5.opt -j16
+### System Memory Map
+
+| Region | Base Address | Size | Description |
+|---|---|---|---|
+| RAM | `0x00000000` | 64 MB | Main memory |
+| Input image (RGB) | `0x00000000` | 6,220,800 B | 1920 × 1080 × 3 bytes |
+| Output image (Gray) | `0x00600000` | 2,073,600 B | 1920 × 1080 × 1 byte |
+| Accelerator registers | `0x10000000` | 256 B | Control/status window |
+| Persistent storage | `0x40000000` | — | File-backed (Eval 1 only) |
+
+---
+
+## 8. Results
+
+### Evaluation 1 — Standalone SystemC TLM
+
+```
+@0 s      [CPU] Loading input image from disk...
+[Storage] Loaded 6220800 bytes from 'input.raw'
+@0 s      [CPU] Writing image to RAM @0x0 (6220800 bytes)
+@10 ns    [CPU] Configuring accelerator...
+@10 ns    [Accelerator] Start: 2073600 pixels
+@129610 ns [Accelerator] Done.
+@129620 ns [CPU] Flow complete. Stopping simulation.
+Simulation finished at 129620 ns
 ```
 
-## Next Steps
+| Metric | Value |
+|---|---|
+| Total simulated time | 129,620 ns |
+| Rows processed | 1,080 |
+| Latency per row | ~120 ns |
+| BT.601 verification | PASSED |
 
-1. **Test standalone**: `make run` (no gem5 overhead)
-2. **Verify configuration**: `make config`
-3. **Create Python config** for gem5 integration
-4. **Run integrated simulation** with performance analysis
-5. **Compare results** between standalone and gem5-integrated
+### Evaluation 2 — GEM5 Virtual Prototype
 
-## References
+```
+GEM5 version 25.1.0.1
+CPU:  ARM64 AtomicSimpleCPU @ 1GHz
+RAM:  64MiB @ 0x00000000
+Accel: registers @ 0x10000000-0x100000FF
 
-- gem5 SystemC Examples: `~/Documents/gem5/util/systemc/systemc_within_gem5/`
-- gem5 TLM Bridge: `~/Documents/gem5/src/systemc/tlm_bridge/`
-- gem5 Documentation: `https://www.gem5.org/documentation/learning_gem5/`
-- TLM-2.0 Spec: `https://www.accellera.org/`
+[Driver] Imagen cargada en RAM: 6220800 bytes
+[Driver] REG_BASE_IN    = 0x0069BD30
+[Driver] REG_BASE_OUT   = 0x004A1930
+[Driver] REG_NUM_PIXELS = 2073600
+[Driver] Iniciando acelerador (CONTROL=1)...
+[Driver] Status = 1
+[Driver] Imagen guardada: 2073600 bytes
+RESULTADO: CORRECTO
+Simulacion terminada: exiting with last active thread context
+```
 
-## Contact & Support
+| Metric | Value |
+|---|---|
+| GEM5 version | 25.1.0.1 |
+| CPU model | AtomicSimpleCPU ARM64 |
+| Clock | 1 GHz |
+| Input image | 6,220,800 bytes (RAW RGB888) |
+| Output image | 2,073,600 bytes (RAW Gray8) |
+| BT.601 verification | CORRECT |
+| Simulation exit | Normal (last active thread) |
 
-For gem5 specific issues:
-- Check gem5 build configuration: `make config`
-- Review gem5 logs in `m5out/` directory
-- Consult gem5 documentation for TLM extensions
+---
+
+## 9. AI Usage Declaration
+
+In accordance with the course policy on AI tool usage (MP6160, II Cuatrimestre 2026), the following declaration is provided:
+
+**Tool used:** Claude (Anthropic, model claude-sonnet-4-6), accessed via claude.ai.
+
+**Type of usage:**
+
+| Task | Usage |
+|---|---|
+| SystemC TLM module structure | Code generation (CPU, RAM, Bus, Accelerator, Storage) |
+| GEM5 wrapper implementation | Code generation and iterative debugging |
+| Compilation error resolution | Debugging (multiple GEM5 linker and port errors) |
+| GEM5 Python config script | Code generation and debugging (`run_gem5.py`) |
+| Build automation | Code generation (`build.sh`) |
+| Block and sequence diagrams | Generation (Python/matplotlib) |
+| README | Writing and technical documentation |
+
+**Prompts used:** [insert actual prompts used by your team here]
+
+**Review performed:** All generated code was compiled and executed. The GEM5 simulation ran successfully end-to-end, and the BT.601 grayscale conversion was verified against the reference formula. Multiple errors were encountered and resolved iteratively (port connection errors, address range registration, UART access in SE mode, page table faults).
