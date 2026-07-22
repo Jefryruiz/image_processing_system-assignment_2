@@ -1,15 +1,12 @@
 /**
  * image_accelerator_gem5.cc
- *
- * Implementacion del wrapper GEM5 para el acelerador SystemC.
  * Ubicacion en GEM5: ~/gem5/src/dev/image_accelerator_gem5.cc
  */
 
 #include "dev/image_accelerator_gem5.hh"
-#include "base/trace.hh"
 
 #include <tlm.h>
-#include <systemc.h>
+#include <systemc>
 
 namespace gem5 {
 
@@ -21,6 +18,14 @@ ImageAcceleratorGem5::ImageAcceleratorGem5(const Params &p)
       accel("image_accelerator"),
       cpu_side_port("cpu_side", this)
 {}
+
+void
+ImageAcceleratorGem5::init()
+{
+    // Notificar al bus que este dispositivo tiene rangos de direcciones.
+    // Sin esto el bus nunca registra 0x10000000 y falla con gotAllAddrRanges.
+    cpu_side_port.sendRangeChange();
+}
 
 Port &
 ImageAcceleratorGem5::getPort(const std::string &if_name, PortID idx)
@@ -58,11 +63,9 @@ ImageAcceleratorGem5::AccelPort::getAddrRanges() const
 void
 ImageAcceleratorGem5::AccelPort::doAccess(PacketPtr pkt)
 {
-    // Construir tlm_generic_payload desde el Packet de GEM5
     tlm::tlm_generic_payload trans;
     sc_core::sc_time delay = sc_core::SC_ZERO_TIME;
 
-    // Ajustar offset desde ACCEL_BASE (igual que routing.h)
     uint64_t offset = pkt->getAddr() - sys_cfg::ACCEL_BASE_ADDR;
 
     trans.set_address(offset);
@@ -76,13 +79,10 @@ ImageAcceleratorGem5::AccelPort::doAccess(PacketPtr pkt)
         : tlm::TLM_READ_COMMAND);
     trans.set_response_status(tlm::TLM_INCOMPLETE_RESPONSE);
 
-    // Llamar b_transport del SC_MODULE original
-    // target_socket es un simple_target_socket que expone b_transport
-    // directamente mediante operator->
-    tlm_utils::simple_target_socket<image_accelerator> &sock =
-        wrapper->accel.target_socket;
-
-    sock->b_transport(trans, delay);
+    tlm::tlm_fw_transport_if<> &fw_if =
+        static_cast<tlm::tlm_fw_transport_if<> &>(
+            wrapper->accel.target_socket);
+    fw_if.b_transport(trans, delay);
 }
 
 Tick
@@ -90,7 +90,7 @@ ImageAcceleratorGem5::AccelPort::recvAtomic(PacketPtr pkt)
 {
     doAccess(pkt);
     pkt->makeAtomicResponse();
-    return 1; // 1 tick de latencia
+    return 1;
 }
 
 void
@@ -107,15 +107,6 @@ ImageAcceleratorGem5::AccelPort::recvTimingReq(PacketPtr pkt)
     pkt->makeTimingResponse();
     sendTimingResp(pkt);
     return true;
-}
-
-// -----------------------------------------------------------------------
-// Factory — GEM5 llama esto para instanciar desde Python
-// -----------------------------------------------------------------------
-ImageAcceleratorGem5 *
-ImageAcceleratorParams::create() const
-{
-    return new ImageAcceleratorGem5(*this);
 }
 
 } // namespace gem5
