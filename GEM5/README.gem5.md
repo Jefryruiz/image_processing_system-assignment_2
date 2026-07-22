@@ -64,7 +64,7 @@ sudo apt-get install -y \
 ```bash
 git clone https://github.com/gem5/gem5.git ~/gem5
 cd ~/gem5
-scons build/ARM/gem5.opt -j2
+scons build/ARM/gem5.opt -j$(nproc)
 ```
 
 **Step 2 — Run the full build & simulation script:**
