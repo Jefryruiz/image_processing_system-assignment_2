@@ -1,0 +1,6 @@
+# Lineas a agregar al SConscript de ~/gem5/src/dev/
+# El build.sh las agrega automaticamente al final del archivo existente.
+
+# Image Accelerator — TLM 2.0 virtual prototype
+SimObject('ImageAccelerator.py', sim_objects=['ImageAccelerator'])
+Source('image_accelerator_gem5.cc')
