@@ -14,7 +14,7 @@ extern "C" {
  *  - the SystemVerilog/UVM testbench imports the byte/file functions below
  *    via `import "DPI-C"` to backdoor-load images and to check the RTL
  *    axi_ram.sv DUT against a golden reference,
- *  - the SystemC model (systemc-image-processing-platform/src/ram_mem.h)
+ *  - the SystemC model (verification/systemc-image-processing-platform/src/ram_mem.h)
  *    links against this same object file and calls the bulk pointer API
  *    directly, so the RAM storage backing the TLM model is the very same
  *    module referenced by the RTL testbench.

@@ -27,11 +27,10 @@ further down.
 ├── input.raw
 ├── output.png
 ├── output.raw
-├── systemc-image-processing-platform
+├── systemc-image-processing-platform   # original model (evaluations 1/2, no DPI-C)
 │   ├── Makefile
 │   ├── build
-│   │   ├── main.o
-│   │   └── ram_model.o
+│   │   └── main.o
 │   ├── image_processor
 │   └── src
 │       ├── cpu.h
@@ -39,9 +38,10 @@ further down.
 │       ├── disk_storage.h
 │       ├── image_accelerator.h
 │       ├── main.cpp
-│       ├── ram_mem.h            # now backed by verification/dpi/ram_model.c
+│       ├── ram_mem.h            # plain std::vector<uint8_t> backing store
 │       └── routing.h
-├── verification                 # RTL + UVM + DPI-C deliverable (3rd evaluation)
+├── verification                 # RTL + UVM + DPI-C deliverable (evaluation 4)
+│   ├── input.raw                # RAW RGB 1080p input image (place it here)
 │   ├── dpi
 │   │   ├── ram_model.c          # shared DPI-C RAM behavioral model
 │   │   └── ram_model.h
@@ -61,9 +61,13 @@ further down.
 │   │   ├── axi_ram_sequencer.sv
 │   │   ├── axi_ram_test_lib.sv
 │   │   └── tb_top.sv
-│   └── scripts
-│       ├── build_all.sh         # builds SystemC model + RTL/UVM in one shot
-│       └── run_uvm_sim.sh       # xvlog/xelab/xsim automation for sv_tb/
+│   ├── scripts
+│   │   ├── build_all.sh         # builds the verification/ SystemC model + RTL/UVM in one shot
+│   │   └── run_uvm_sim.sh       # xvlog/xelab/xsim automation for sv_tb/
+│   └── systemc-image-processing-platform   # modified copy: ram_mem.h backed by ../dpi/ram_model.c
+│       ├── Makefile
+│       └── src
+│           └── ram_mem.h
 └── testbench
     └── main.cpp
 ```
@@ -246,8 +250,10 @@ DPI-C component instead:
 
 - **`verification/dpi/ram_model.c` / `ram_model.h`** implement one 64 MB
   byte-addressable RAM behavioral model in plain C.
-- The **SystemC model** (`systemc-image-processing-platform/src/ram_mem.h`)
-  links this object directly and calls its bulk pointer API
+- The **SystemC model** (`verification/systemc-image-processing-platform/src/ram_mem.h`
+  — a copy of the model moved inside `verification/` for this assignment; the
+  original, unmodified copy still lives at `systemc-image-processing-platform/`
+  in the repo root) links this object directly and calls its bulk pointer API
   (`ram_model_read`/`ram_model_write`) from `b_transport`, replacing the
   previous private `std::vector<uint8_t>`.
 - The **UVM testbench** (`verification/sv_tb/axi_ram_dpi_import.svh`) imports
@@ -320,7 +326,7 @@ source <vivado_install>/settings64.sh
 SYSTEMC_HOME=/path/to/systemc verification/scripts/build_all.sh
 ```
 
-This builds the SystemC executable (`make -C systemc-image-processing-platform clean all`)
+This builds the SystemC executable (`make -C verification/systemc-image-processing-platform clean all`)
 and then does an RTL/UVM compile + `axi_ram_base_test` smoke run
 (`verification/scripts/run_uvm_sim.sh axi_ram_base_test`) to confirm the whole
 toolchain is wired up. It does **not** run the full system or the full UVM
@@ -329,11 +335,15 @@ regressions - do that with the commands below.
 ## Running the SystemC system model
 
 ```bash
-cd systemc-image-processing-platform
+cd verification/systemc-image-processing-platform
 SYSTEMC_HOME=/path/to/systemc make clean all
 ./image_processor      # must be run from this directory: paths to
-                        # ../input.raw / ../output.raw are relative
+                        # ../input.raw / ../output.raw are relative,
+                        # i.e. verification/input.raw and verification/output.raw
 ```
+
+Place your input RAW RGB 1080p image at `verification/input.raw` before
+running this — it's read from there, not from the repo root.
 
 Expected console output (abridged):
 

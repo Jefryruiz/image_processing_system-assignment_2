@@ -2,7 +2,7 @@
 //
 // ram_model_* comes from dpi/ram_model.c - the same golden RAM model that
 // is linked directly into the SystemC executable (see
-// systemc-image-processing-platform/src/ram_mem.h). Importing it here lets
+// verification/systemc-image-processing-platform/src/ram_mem.h). Importing it here lets
 // the scoreboard/sequences use it as an independent reference and lets test
 // sequences load/dump the exact RAW image files the SystemC flow uses.
 //

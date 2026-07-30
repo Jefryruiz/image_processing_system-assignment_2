@@ -37,7 +37,7 @@ LDFLAGS = $(SYSTEMC_LIBS)
 SRC_DIR = src
 BUILD_DIR = build
 BIN_DIR = .
-DPI_DIR = ../verification/dpi
+DPI_DIR = ../dpi
 
 # Files
 SOURCES = $(SRC_DIR)/main.cpp

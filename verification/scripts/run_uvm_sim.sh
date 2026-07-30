@@ -16,11 +16,10 @@
 set -euo pipefail
 
 VERIFICATION_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-REPO_ROOT="$(cd "$VERIFICATION_DIR/.." && pwd)"
 RTL_DIR="$VERIFICATION_DIR/rtl"
 SV_TB_DIR="$VERIFICATION_DIR/sv_tb"
 DPI_DIR="$VERIFICATION_DIR/dpi"
-WORK_DIR="$REPO_ROOT/sim_uvm"
+WORK_DIR="$VERIFICATION_DIR/sim_uvm"
 
 TEST_NAME="${1:-axi_ram_random_test}"
 shift || true

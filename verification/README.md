@@ -2,8 +2,15 @@
 
 RTL + UVM + DPI-C deliverable for **Evaluación Corta 4** (`Verificacion_Diseno_Alto_Nivel.pdf`).
 Adds a real AXI4-Full RAM in SystemVerilog, verifies it with a UVM testbench,
-and integrates it into the previously-built SystemC image-processing model
-(`../systemc-image-processing-platform/`) via DPI-C.
+and integrates it into a SystemC image-processing model via DPI-C.
+
+**Nota:** `./systemc-image-processing-platform/` es una **copia modificada**
+del modelo SystemC, movida dentro de `verification/` para esta evaluación:
+su `ram_mem.h` enlaza contra `dpi/ram_model.c` (el mismo modelo que importa
+el testbench UVM), en vez del `std::vector<uint8_t>` interno original. La
+copia "original" (evaluación 1/2, sin DPI) sigue viviendo en
+`../systemc-image-processing-platform/` en la raíz del repo — son dos
+directorios independientes a propósito, no un duplicado accidental.
 
 ## Qué se pide (resumen del PDF)
 
@@ -35,6 +42,11 @@ Este README solo cubre cómo ejecutar lo que hay en esta carpeta.
   source <vivado_install>/settings64.sh
   ```
 - Para el paso 1 de `build_all.sh` (modelo SystemC): `g++` (C++17), `make` y una instalación de SystemC (`SYSTEMC_HOME`).
+- **`input.raw` dentro de `verification/`** (junto a este README, no en la raíz
+  del repo): imagen RAW RGB 1080p de entrada. Tanto `systemc-image-processing-platform/`
+  (vía `../input.raw` relativo a esa carpeta) como `axi_ram_image_test`
+  (vía el plusarg `IMG_PATH`) la leen desde aquí. Cópiala a `verification/input.raw`
+  antes de correr cualquiera de los dos flujos.
 
 ## Ejecución
 
@@ -44,7 +56,7 @@ Este README solo cubre cómo ejecutar lo que hay en esta carpeta.
 SYSTEMC_HOME=/ruta/a/systemc ./scripts/build_all.sh
 ```
 
-Compila el modelo SystemC (`make -C ../systemc-image-processing-platform clean all`)
+Compila el modelo SystemC (`make -C ./systemc-image-processing-platform clean all`)
 y luego compila + corre `axi_ram_base_test` como smoke check del RTL/UVM.
 No corre las regresiones completas; para eso usar `run_uvm_sim.sh` directamente.
 
@@ -68,8 +80,14 @@ Ejemplos:
 
 ./scripts/run_uvm_sim.sh axi_ram_image_test -- \
     IMG_PATH=../input.raw IMG_OUT=../sv_tb_output.raw IMG_BYTES=6220800
-diff <(head -c 6220800 ../input.raw) ../sv_tb_output.raw && echo "identical"
+diff <(head -c 6220800 input.raw) sv_tb_output.raw && echo "identical"
 ```
+
+`IMG_PATH`/`IMG_OUT` son relativos al directorio de trabajo del simulador
+(`verification/sim_uvm/`), así que `../input.raw` y `../sv_tb_output.raw`
+apuntan a `verification/input.raw` y `verification/sv_tb_output.raw`. El
+`diff` de arriba, en cambio, se corre con cwd en `verification/`, por eso
+usa las rutas sin `../`.
 
 Una corrida exitosa termina con:
 
@@ -81,8 +99,9 @@ UVM_ERROR :    0
 UVM_FATAL :    0
 ```
 
-`run_uvm_sim.sh` trabaja bajo un directorio de trabajo `../sim_uvm/` (regenerado
-en cada corrida); se puede borrar con `rm -rf ../sim_uvm` entre corridas.
+`run_uvm_sim.sh` trabaja bajo un directorio de trabajo `sim_uvm/` (dentro de
+`verification/`, regenerado en cada corrida); se puede borrar con
+`rm -rf sim_uvm` entre corridas.
 
 ## Troubleshooting
 
@@ -106,12 +125,16 @@ en cada corrida); se puede borrar con `rm -rf ../sim_uvm` entre corridas.
 
   Para revertir: `sudo rm <VIVADO_HOME>/tps/lnx64/binutils-2.37/bin/ld && sudo mv <VIVADO_HOME>/tps/lnx64/binutils-2.37/bin/ld.orig-2.37 <VIVADO_HOME>/tps/lnx64/binutils-2.37/bin/ld`.
 
-### Modelo SystemC (referencia)
+### Modelo SystemC (esta copia, integrada con DPI-C)
 
 ```bash
-cd ../systemc-image-processing-platform
+cd systemc-image-processing-platform
 SYSTEMC_HOME=/ruta/a/systemc make clean all
-./image_processor
+./image_processor      # debe ejecutarse desde aquí: usa ../input.raw y
+                        # ../output.raw como rutas relativas, es decir
+                        # verification/input.raw y verification/output.raw
 ```
 
-Ver `../README.md` para el detalle completo del flujo CPU → RAM → acelerador → disco.
+Ver `../README.md` para el detalle completo del flujo CPU → RAM → acelerador → disco
+(nota: esa versión del README describe la copia original en la raíz del repo;
+el flujo es idéntico, solo cambian las rutas como se indica arriba).

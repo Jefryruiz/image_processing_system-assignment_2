@@ -2,7 +2,7 @@
 #include <tlm.h>
 #include <tlm_utils/simple_target_socket.h>
 #include "defines.h"
-#include "../../verification/dpi/ram_model.h"
+#include "../../dpi/ram_model.h"
 
 // Storage for this module is delegated to verification/dpi/ram_model.c/.h:
 // the same module is `import "DPI-C"`'d by the SystemVerilog/UVM testbench
