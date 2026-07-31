@@ -44,6 +44,64 @@ class axi_ram_random_seq extends uvm_sequence #(axi_ram_seq_item);
 endclass
 
 
+// Deliberate failure-injection sequence: runs the same write-then-read-back
+// flow as axi_ram_random_seq, but after each write, pokes the golden
+// model's copy of ONE byte (not the DUT, not the RTL - purely the
+// reference used for comparison) to a corrupted value. The DUT still holds
+// the correct data, so the read-back the monitor observes will legitimately
+// disagree with the (now-wrong) golden model, and the scoreboard's
+// `SCBD_MISMATCH -> UVM_ERROR` path fires exactly as it would for a real
+// RTL bug. Exists only to demonstrate/exercise the checker; a passing run
+// of this sequence is expected to end with UVM_ERROR > 0.
+class axi_ram_fault_inject_seq extends axi_ram_random_seq;
+    `uvm_object_utils(axi_ram_fault_inject_seq)
+
+    function new(string name = "axi_ram_fault_inject_seq");
+        super.new(name);
+    endfunction
+
+    task body();
+        bit [25:0]   addrs[$];
+        int unsigned lens[$];
+
+        for (int i = 0; i < num_bursts; i++) begin
+            axi_ram_seq_item wr;
+            bit [25:0] addr = ($urandom() % (addr_span >> 10)) << 10; // 1KB aligned
+
+            wr = axi_ram_seq_item::type_id::create("wr");
+            start_item(wr);
+            if (!wr.randomize() with { op == axi_ram_seq_item::OP_WRITE; addr == local::addr; })
+                `uvm_fatal("RANDSEQ", "randomize failed on write item")
+            finish_item(wr);
+
+            addrs.push_back(addr);
+            lens.push_back(wr.len_bytes);
+
+            // Fault injection: corrupt the golden model's record of byte 0
+            // of this burst so it no longer matches what was actually
+            // written to the DUT.
+            begin
+                byte unsigned good = ram_model_read_byte(addr);
+                ram_model_write_byte(addr, good ^ 8'hFF);
+                `uvm_info("FAULT_INJECT",
+                    $sformatf("corrupted golden-model byte at addr=0x%0h (0x%0h -> 0x%0h)",
+                              addr, good, good ^ 8'hFF), UVM_LOW)
+            end
+        end
+
+        foreach (addrs[i]) begin
+            axi_ram_seq_item rd;
+            rd = axi_ram_seq_item::type_id::create("rd");
+            start_item(rd);
+            rd.op        = axi_ram_seq_item::OP_READ;
+            rd.addr      = addrs[i];
+            rd.len_bytes = lens[i];
+            finish_item(rd);
+        end
+    endtask
+endclass
+
+
 // Loads a real RAW image file into the golden model via DPI-C
 // (dpi/ram_model.c, the same one linked into the SystemC executable), then
 // streams it into the axi_ram DUT as AXI write bursts, reads it back, and
