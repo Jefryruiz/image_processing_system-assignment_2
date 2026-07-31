@@ -37,6 +37,17 @@ run with `scripts/run_uvm_sim.sh`:
   toggling cleanly and no scoreboard mismatches:
 
   ![Good case waveform](docs/images/good_case_waveform.png)
+
+  Example of the results in the log:
+  ```
+  UVM_INFO ... [SCBD_SUMMARY] bytes checked=<N> errors=0
+  UVM_INFO ... [SCBD_SUMMARY] *** SCOREBOARD PASSED ***
+  ...
+  UVM_ERROR :    0
+  UVM_FATAL :    0
+  ```
+
+
 - **Bad case** — runs a test with a fault deliberately injected in the
   testbench, to see how the scoreboard catches it:
   ```bash
@@ -48,6 +59,11 @@ run with `scripts/run_uvm_sim.sh`:
   mismatched byte the scoreboard flags:
 
   ![Fault injection waveform](docs/images/fault_injection_waveform.png)
+
+
+  Any `UVM_ERROR`/`UVM_FATAL` (or `errors=` being nonzero) means the RTL RAM
+  diverged from the golden model - check the address printed in the
+  `SCBD_MISMATCH` message.
 
 To view the waveform of the run:
 
@@ -62,3 +78,19 @@ logged in:
 sim_uvm/mismatches.log
 ```
 
+
+
+
+
+
+
+### Cleaning up
+
+`verification/scripts/run_uvm_sim.sh` does all its work under a scratch `sim_uvm/`
+directory (compiled libraries, `xsim.dir/`, logs, `.wdb` files). It's
+regenerated on every run and safe to delete between runs or before
+committing:
+
+```bash
+rm -rf sim_uvm
+```
