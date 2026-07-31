@@ -4,13 +4,14 @@ RTL + UVM + DPI-C deliverable for **Evaluación Corta 4** (`Verificacion_Diseno_
 Adds a real AXI4-Full RAM in SystemVerilog, verifies it with a UVM testbench,
 and integrates it into a SystemC image-processing model via DPI-C.
 
-**Nota:** `./systemc-image-processing-platform/` es una **copia modificada**
-del modelo SystemC, movida dentro de `verification/` para esta evaluación:
-su `ram_mem.h` enlaza contra `dpi/ram_model.c` (el mismo modelo que importa
-el testbench UVM), en vez del `std::vector<uint8_t>` interno original. La
-copia "original" (evaluación 1/2, sin DPI) sigue viviendo en
-`../systemc-image-processing-platform/` en la raíz del repo — son dos
-directorios independientes a propósito, no un duplicado accidental.
+**Note:** `./systemc-image-processing-platform/` is a **modified copy** of
+the SystemC model, moved inside `verification/` for this evaluation: its
+`ram_mem.h` links against `dpi/ram_model.c` (the same model the UVM
+testbench imports), instead of the original internal
+`std::vector<uint8_t>`. The "original" copy (evaluation 1/2, without DPI)
+still lives at `../systemc-image-processing-platform/` at the repo root —
+these are two independent directories on purpose, not an accidental
+duplicate.
 
 
 # How to run the validation
