@@ -1,0 +1,6 @@
+Vivado Simulator v2024.2.0
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: /home/rex/tools/Xilinx/Vivado/2024.2/bin/unwrapped/lnx64.o/xelab -L uvm --timescale 1ns/1ps -s tb_snapshot tb_top --sv_lib ram_model_dpi -debug typical 
+Multi-threading is on. Using 6 slave threads.
+ERROR: [XSIM 43-3225] Cannot find design unit work.tb_top in library work located at xsim.dir/work.
