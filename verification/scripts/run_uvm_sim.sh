@@ -47,7 +47,7 @@ xvlog --sv -L uvm \
 
 echo "== [4/4] Elaborating and running snapshot (test=$TEST_NAME) =="
 xelab -L uvm --timescale 1ns/1ps -s tb_snapshot tb_top \
-    --sv_lib ram_model_dpi
+    --sv_lib ram_model_dpi --debug typical
 
 PLUSARG_FLAGS=(-testplusarg "UVM_TESTNAME=$TEST_NAME")
 for kv in "${EXTRA_PLUSARGS[@]}"; do
@@ -55,3 +55,16 @@ for kv in "${EXTRA_PLUSARGS[@]}"; do
 done
 
 xsim tb_snapshot -runall "${PLUSARG_FLAGS[@]}"
+
+echo "== Correlating xsim.log mismatches with sim_uvm/waves.vcd =="
+MISMATCH_LOG="$WORK_DIR/mismatches.log"
+grep -E "^UVM_(ERROR|FATAL) .* @ [0-9]+:" xsim.log > "$MISMATCH_LOG" || true
+if [[ -s "$MISMATCH_LOG" ]]; then
+    echo "$(wc -l < "$MISMATCH_LOG") mismatch(es) logged to $MISMATCH_LOG"
+    echo "Open sim_uvm/waves.vcd in a waveform viewer (e.g. gtkwave) and seek to"
+    echo "each '@ <time>' timestamp below to inspect the AXI signals at that point:"
+    cat "$MISMATCH_LOG"
+else
+    rm -f "$MISMATCH_LOG"
+    echo "No UVM_ERROR/UVM_FATAL found in xsim.log."
+fi

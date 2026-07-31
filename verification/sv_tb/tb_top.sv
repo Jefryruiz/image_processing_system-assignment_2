@@ -63,6 +63,15 @@ module tb_top;
         .s_axi_rready (vif.rready)
     );
 
+    // Full signal waveform, correlated against the UVM_ERROR/UVM_FATAL
+    // timestamps in xsim.log (see scripts/run_uvm_sim.sh, which extracts
+    // those timestamps into sim_uvm/mismatches.log after the run). Requires
+    // xelab -debug typical so xsim honors $dumpvars.
+    initial begin
+        $dumpfile("waves.vcd");
+        $dumpvars(0, tb_top);
+    end
+
     initial begin
         uvm_config_db#(virtual axi_if)::set(null, "uvm_test_top.env.agent.driver", "vif", vif);
         uvm_config_db#(virtual axi_if)::set(null, "uvm_test_top.env.agent.monitor", "vif", vif);
